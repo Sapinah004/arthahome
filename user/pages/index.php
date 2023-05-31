@@ -69,6 +69,9 @@
                             case 'checkout';
                             include "../pages/checkout.php";
                             break;
+                            case 'notifikasi';
+                            include "../pages/notifikasi-detail.php";
+                            break;
                             // case 'thank-you';
                             // include "../pages/thankyou.php";
                             // break;

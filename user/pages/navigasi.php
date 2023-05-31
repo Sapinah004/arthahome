@@ -31,7 +31,31 @@
                 </li>
             </ul>
         </div>
-        <div class="flex items-center space-x-3 lg:space-x-8">
+        <div class="flex items-center space-x-3 lg:space-x-5">
+            <?php
+                if(isset($_SESSION['loggedin']) == true){
+            ?>
+            <button id="dropdownAvatarNameButton" data-dropdown-toggle="dropdownNotification" class="px-3 py-1.5 rounded-md hover:bg-primary/10 focus:bg-primary/10 ease-in-out duration-200" type="button">
+                <i class="fa-solid fa-bell text-2xl text-primary"></i>
+            </button>
+                <div id="dropdownNotification" class="hidden divide-y-2 p-3 z-10 w-80 max-h-96 shadow-lg bg-white border rounded-md">
+                    <div class="text-2xl tracking-wide text-primary font-bold pb-1">
+                        Notifikasi
+                    </div>
+                    <div class="py-2 overflow-y-scroll">
+                        abc
+                    </div>
+                    <div class="pt-3">
+                        <button>
+                            <a href="../pages/index.php?page=notifikasi" class="px-3 py-1.5 rounded-md bg-primary hover:bg-blue-900 ease-in-out duration-300 text-white">
+                                Lihat Semua
+                            </a>    
+                        </button>
+                    </div>
+                </div>
+                <?php
+                }
+                ?>
             <?php
                 if(isset($_SESSION['loggedin']) == true){
             ?>
