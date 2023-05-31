@@ -1,0 +1,25 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+::-webkit-scrollbar {
+    @apply w-2 h-2
+}
+ 
+::-webkit-scrollbar-track {
+    @apply rounded-lg bg-slate-200
+}
+::-webkit-scrollbar-thumb {
+    @apply bg-slate-400 rounded-lg
+}
+
+::-webkit-scrollbar-thumb:hover {
+    @apply bg-slate-500
+}
+
+ol {
+    list-style: auto;
+}
+ul{
+    list-style-type: disc;
+}
