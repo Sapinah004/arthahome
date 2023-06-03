@@ -21,10 +21,10 @@
                 <!-- <br>Harap periksa email anda secara berkala -->
             </div>
             <div class="flex justify-center space-x-5 mt-5">
-                   <a href="../pages/index.php?page=list-rumah" class="px-5 py-3 w-48 font-medium rounded-md border-2 border-primary hover:bg-primary hover:text-white ease-in-out duration-300">
+                   <a href="../index.php?page=list-rumah" class="px-5 py-3 w-48 font-medium rounded-md border-2 border-primary hover:bg-primary hover:text-white ease-in-out duration-300">
                         Kembali Berbelanja
                    </a> 
-                   <a href="../pages/index.php?page=order" class="px-5 py-3 flex justify-center w-48 text-white border-2 border-transparent hover:border-primary hover:text-primary bg-primary hover:bg-transparent rounded-md ease-in-out duration-300 font-medium">
+                   <a href="../index.php?page=order" class="px-5 py-3 flex justify-center w-48 text-white border-2 border-transparent hover:border-primary hover:text-primary bg-primary hover:bg-transparent rounded-md ease-in-out duration-300 font-medium">
                     Pesanan Saya
                    </a> 
             </div>

@@ -1,5 +1,5 @@
 <?php
-    include ("../core/config.php");
+    include ("./core/config.php");
 ?>
 <div class="container mx-auto max-w-5xl pt-32 lg:pt-52 pb-24 px-5 text-primary font-yantramanav">
     <h1 class="text-3xl md:text-4xl font-playfair font-semibold">Forum Diskusi Saya</h1>
@@ -11,7 +11,7 @@
             if(mysqli_num_rows($query) > 0){
                 while($data = mysqli_fetch_array($query)){
         ?>
-        <div class="px-4 md:px-7 py-5 md:py-10 bg-gray-100 rounded-2xl shadow-lg">
+        <div class="px-4 md:px-7 py-5 md:py-10 bg-gray-100 rounded-2xl shadow-lg mb-8">
                 <div class="md:flex md:space-x-5 justify-between">
                     <div>
                         <h1 class="text-2xl md:text-3xl font-playfair font-bold text-primary">
@@ -39,7 +39,7 @@
                 <p class="mt-3 md:mt-5 text-xl"> <?php echo $data['topik']?> </p>
                 <form method="post" class="flex justify-end mt-3">
                     <input type="hidden" name="id_forum" value="<?php echo $data['id_forum']?>">
-                    <a href="../pages/index.php?page=forum-detail&id=<?php echo $data['id_forum']?>" class="text-sm md:text-base bg-primary px-3 lg:px-5 py-2.5 flex text-white rounded-tr-xl rounded-bl-xl hover:bg-blue-900  items-center space-x-2 ease-in-out duration-300"> 
+                    <a href="./index.php?page=forum-detail&id=<?php echo $data['id_forum']?>" class="text-sm md:text-base bg-primary px-3 lg:px-5 py-2.5 flex text-white rounded-tr-xl rounded-bl-xl hover:bg-blue-900  items-center space-x-2 ease-in-out duration-300"> 
                         <span class="font-bold">Lihat Forum</span> 
                         <i class="fa-solid fa-arrow-right-long"></i>
                     </a>

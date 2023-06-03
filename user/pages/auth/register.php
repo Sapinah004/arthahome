@@ -25,7 +25,7 @@
                         <img class="h-full object-cover object-center " src="../../assets/images/bg-auth.webp" alt="background">
                     </picture>
                     <div class="absolute top-10 left-10 font-bold hover:underline">
-                        <a href="../index.php">
+                        <a href="../../index.php">
                             <i class="fa-solid fa-house mr-2"></i>
                             Kembali ke halaman utama
                         </a>
@@ -63,3 +63,8 @@
         </section>
     </body>
 </html>
+<script>
+    if ( window.history.replaceState ) {
+  window.history.replaceState( null, null, window.location.href );
+}
+</script>

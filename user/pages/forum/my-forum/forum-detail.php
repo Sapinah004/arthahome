@@ -1,6 +1,5 @@
 <?php
-    include('../core/config.php');
-    include('../core/forum.php');
+    include('./core/forum.php');
 ?>
 <div class="pt-32 lg:pt-52 pb-24 px-5 container mx-auto font-yantramanav max-w-6xl">
     <?php
@@ -10,7 +9,7 @@
     ?>
     <div class="flex space-x-3 text-lg mb-8 md:mb-12">
         <span class="text-primary font-semibold hover:underline">
-            <a href="../pages/index.php?page=forum-saya">Diskusi</a>
+            <a href="./index.php?page=forum-saya">Diskusi</a>
         </span>
         <span class="text-slate-500"> / </span>
         <span class="text-slate-500"><?php echo $data['judul']?></span>
@@ -22,11 +21,11 @@
                     <?php echo $data['judul']?>
                 </h1>
                 <div class=" flex space-x-4 mb-6 text-sm md:text-base">
-                    <a href="../pages/index.php?page=update-forum&id=<?php echo $data['id_forum']?>" class="px-5 pt-2 pb-[6px] space-x-2 items-center bg-green-500 hover:bg-green-700 rounded-tr-xl rounded-bl-xl text-white ease-in-out duration-300">
+                    <a href="./index.php?page=update-forum&id=<?php echo $data['id_forum']?>" class="px-5 pt-2 pb-[6px] space-x-2 items-center bg-green-500 hover:bg-green-700 rounded-tr-xl rounded-bl-xl text-white ease-in-out duration-300">
                         <i class="fa-solid fa-pen-to-square"></i>
                         <span class="tracking-wider">Edit</span> 
                     </a>
-                    <a onClick="return confirm('Anda yakin ingin menghapus forum ini ?')" href="../core/forum.php?hapus_forum=<?php echo $data['id_forum']?>" class="px-5 pt-2 pb-[6px] space-x-2 bg-red-600 hover:bg-red-700 rounded-tr-xl rounded-bl-xl ease-in-out duration-300 text-white">
+                    <a onClick="return confirm('Anda yakin ingin menghapus forum ini ?')" href="./core/forum.php?hapus_forum=<?php echo $data['id_forum']?>" class="px-5 pt-2 pb-[6px] space-x-2 bg-red-600 hover:bg-red-700 rounded-tr-xl rounded-bl-xl ease-in-out duration-300 text-white">
                         <i class="fa-solid fa-trash-can"></i>   
                         <span>Hapus</span> 
                     </a>
@@ -35,7 +34,7 @@
             <div class="md:flex justify-between items-end mb-8">
                 <div class="flex space-x-4 items-center">
                     <div class="flex-none p-2 w-12 h-12 rounded-full bg-primary border-2 border-white">
-                        <img src="../assets/images/user-picture.png" alt="foto pengguna">
+                        <img src="./assets/images/user-picture.png" alt="foto pengguna">
                     </div>
                     <div>
                         <h2 class="text-secondary font-bold text-lg"><?php echo $data['username']?></h2>
@@ -78,7 +77,7 @@
             <div class="mt-6 p-3 bg-gray-100 rounded-md mb-3 shadow">
                 <div class="flex space-x-6 items-center mb-3">
                     <div class="p-2 flex-none w-10 h-10 rounded-full bg-primary border-2 border-white">
-                        <img src="../assets/images/user-picture.png" alt="">
+                        <img src="./assets/images/user-picture.png" alt="">
                     </div>
                     <div>
                         <h2 class="text-secondary font-bold"><?php echo $data['username']?></h2>
@@ -104,7 +103,7 @@
                         <i class="fa-solid fa-comment text-primary mr-3"></i>
                         <span class="font-semibold">Tulis Komentar</span>
                     </label>
-                    <textarea id="komentar" name="komentar" class="mt-3 w-full border-2 rounded-md focus:border-0 focus:outline-0 focus:outline-none focus:border-primary focus:ring-primary block focus:ring-2 border-primary" name="komentar" id="" cols="30" rows="5" placeholder="Masukkan komentar anda disini"></textarea>
+                    <textarea id="komentar" required="required" name="komentar" class="mt-3 w-full border-2 rounded-md focus:border-0 focus:outline-0 focus:outline-none focus:border-primary focus:ring-primary block focus:ring-2 border-primary" name="komentar" id="" cols="30" rows="5" placeholder="Masukkan komentar anda disini"></textarea>
                     <button type="submit" name="unggahKomentar" class="px-5 py-2.5 items-center bg-primary tracking-wider text-white mt-5 rounded-tr-xl rounded-bl-xl ml-auto flex hover:bg-blue-900 ease-in-out duration-300">
                         <span class="font-bold">Unggah</span> 
                         <i class="fa-solid fa-paper-plane ml-3 text-sm "></i>
@@ -114,3 +113,8 @@
         </div>
     </div>
 </div>
+<script>
+    if ( window.history.replaceState ) {
+        window.history.replaceState( null, null, window.location.href );
+    }
+</script>

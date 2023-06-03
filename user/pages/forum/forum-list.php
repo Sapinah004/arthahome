@@ -1,10 +1,9 @@
 <?php
-    include('../core/config.php');
-    include('../core/forum.php');
+    include('./core/forum.php');
     if( !isset($_SESSION['loggedin']) ){
         // header("Location:../pages/auth/login.php");
         ?>
-       <script>window.location.replace("../pages/auth/login.php");</script> 
+       <script>window.location.replace("./pages/auth/login.php");</script> 
         <?php
         die;
     }
@@ -16,7 +15,7 @@
             <p class="mt-2 lg:mt-5 tracking-wider text-lg lg:text-xl text-slate-500">Buat forum untuk memulai diskusi atau bertanya</p>
         </div>
         <button class="text-sm md:text-base flex mt-6 items-center lg:flex-none lg:mt-0 px-5 py-2.5 tracking-wider rounded-tr-xl rounded-bl-xl font-semibold text-white bg-primary hover:bg-blue-900 ease-in-out duration-300">
-            <a href="../pages/index.php?page=buat-forum"> 
+            <a href="./index.php?page=buat-forum"> 
                 <i class="fa-solid fa-square-plus mr-2 mb-[3px]"></i>
                 Mulai Diskusi
             </a> 

@@ -1,5 +1,5 @@
 <?php
-    include("../core/config.php");
+    include($_SERVER['DOCUMENT_ROOT'] . "/ArthaHome/User/core/config.php");
     global $connect;
 
     if(isset($_POST['addWishlist'])){
@@ -19,10 +19,8 @@
         $query = mysqli_query($connect, $sql);
         
         if($query == TRUE){
-            // header("location:javascript://history.go(-1)");
-            $url = "../pages/index.php?page=wishlist";
+            $url = "../index.php?page=wishlist";
             echo '<script>window.location.replace("'.$url.'")</script>';
-            // echo "gagal";
         }else{
             $message = "Wishlist gagal dihapus, mohon coba kembali";
             echo "<script type='text/javascript'>alert('$message')</script>";
@@ -35,10 +33,7 @@
         $query = mysqli_query($connect, $sql);
         
         if($query == TRUE){
-            header("location:../pages/index.php?page=produk&id=".$_GET['delete_wishlist']);
-            // $url = "../pages/index.php?page=list-rumah";
-            // echo '<script>window.location.replace("'.$url.'")</script>';
-            // echo "gagal";
+            header("location:../index.php?page=produk&id=".$_GET['delete_wishlist']);
         }else{
             $message = "Wishlist gagal dihapus, mohon coba kembali";
             echo "<script type='text/javascript'>alert('$message')</script>";

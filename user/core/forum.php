@@ -1,8 +1,5 @@
 <?php
-    $docroot = $_SERVER['DOCUMENT_ROOT'];
-    include("$docroot/ArthaHome/User/core/config.php");
-    // session_start();
-
+    include($_SERVER['DOCUMENT_ROOT'] . '/ArthaHome/user/core/config.php');
     if(isset($_POST['unggahTopik'])){
         global $connect;
         $judul = trim($_POST["judul"]);
@@ -14,12 +11,13 @@
             $id_forum = $connect->insert_id;
             $sql = "INSERT INTO tb_view_forum (total_view, id_forum) VALUES ('0', '".$id_forum."')";
             $query = mysqli_query($connect, $sql);
-            $url = "../pages/index.php?page=list-forum";
+            $url = "./index.php?page=list-forum";
             echo '<script> window.location.replace("'. $url .'");</script>';
             return true;
         }
         else{
-            echo "<div class='alert alert-danger text-center'> Failed upload blog. Please try again. </div>";                
+            $message = "Gagal unggah forum, harap coba kembali";
+            echo "<script type='text/javascript'>alert('$message')</script>";           
         }
     }
     if(isset($_POST['unggahKomentar'])){
@@ -29,12 +27,13 @@
         $sql = "INSERT INTO tb_komentar (komentar, id_user, tanggal , id_forum) VALUES ('".$komentar."','".$id_user."', NOW(), '".$_GET['id']."')";
         $query = mysqli_query($connect, $sql);
         if($query == TRUE){
-            $url = "../pages/index.php?page=forum&id=".$_GET['id'];
+            $url = "./index.php?page=forum&id=".$_GET['id'];
             echo '<script> window.location.replace("'. $url .'");</script>';
             return true;
         }
         else{
-            echo "<div class='alert alert-danger text-center'> Failed upload comment. Please try again. </div>";  
+            $message = "gagal unggah komentar, harap coba kembali";
+            echo "<script type='text/javascript'>alert('$message')</script>";
         }
     }
     if(isset($_POST['updateForum'])){
@@ -52,12 +51,12 @@
         if($query == TRUE){
             $message = "Forum berhasil diubah";
              echo "<script type='text/javascript'>alert('$message')</script>";
-            $url = "../pages/index.php?page=forum-detail&id='".$id_forum."'" ;
+            $url = "./index.php?page=forum-detail&id=$id_forum" ;
             echo '<script>window.location.replace("'.$url.'");</script>';
             return true;
         }
         else{
-            $message = "forum gagal diubah";
+            $message = "Forum gagal diubah";
             echo "<script type='text/javascript'>alert('$message')</script>";
         }
     }
@@ -70,7 +69,7 @@
             if($queryHapus == TRUE){
                 $message = "Forum berhasil dihapus";
                 echo "<script type='text/javascript'>alert('$message')</script>";
-                $url = '../pages/index.php?page=forum-saya';
+                $url = '../index.php?page=forum-saya';
                 echo '<script> window.location.replace("'. $url .'");</script>';
             }else{
                 $message = "Forum gagal dihapus";
@@ -84,7 +83,7 @@
         $sql = "UPDATE tb_view_forum SET total_view = total_view + 1 WHERE id_forum = '".$id_forum."'";
         $query = mysqli_query($connect, $sql);
         if($query == TRUE){
-            $url = '../pages/index.php?page=forum&id='.$id_forum;
+            $url = './index.php?page=forum&id='.$id_forum;
             echo '<script> window.location.replace("'. $url .'");</script>';
         }
     }

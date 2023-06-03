@@ -1,10 +1,10 @@
 <?php
-    include('../core/config.php');
-    include("../core/wishlist.php");
+    include('./core/config.php');
+    include("./core/wishlist.php");
 ?>
-<div class=" w-full bg-cover bg-bottom" style="background-image: linear-gradient(to right bottom, rgba(3, 43, 77, 0.3), rgba(3, 43, 77,0.3)), url('../assets/images/banner-produk.webp');" >
+<div class=" w-full bg-cover bg-bottom" style="background-image: linear-gradient(to right bottom, rgba(3, 43, 77, 0.3), rgba(3, 43, 77,0.3)), url('./assets/images/banner-produk.webp');" >
     <div class="pt-36 lg:pt-72 pb-24 px-5 flex space-x-5 justify-center font-semibold text-white text-3xl items-center font-playfair container mx-auto text-center">
-        <a href="../pages/index.php?page=list-rumah" class="hover:underline">Produk List</a>
+        <a href="./index.php?page=list-rumah" class="hover:underline">Produk List</a>
         <span>.</span>
         <span>Produk</span>
     </div>
@@ -20,7 +20,7 @@
                         while($data = mysqli_fetch_array($query)){
                 ?>
                     <div class="swiper-slide">
-                        <img class="h-72 mx-auto w-full !object-contain object-center" src=" ../../Admin/core/product/images/<?php echo $data['gambar']?>" />
+                        <img class="h-72 mx-auto w-full !object-contain object-center" src=" ./../Admin/core/product/images/<?php echo $data['gambar']?>" />
                     </div>
                 <?php
                         }
@@ -41,7 +41,7 @@
                         while($data = mysqli_fetch_array($query)){
                 ?>
                     <div class="swiper-slide">
-                        <img class="!h-36 object-cover object-center" src=" ../../Admin/core/product/images/<?php echo $data['gambar']?>" />
+                        <img class="!h-36 object-cover object-center" src=" ./../Admin/core/product/images/<?php echo $data['gambar']?>" />
                     </div>
                 <?php
                         }
@@ -89,7 +89,7 @@
                                 if(mysqli_num_rows($query) == 1){
                                     $data = mysqli_fetch_array($query);
                             ?>
-                            <a title="favorit" href="../core/wishlist.php?delete_wishlist=<?php echo $id?>"><i class="fa-solid fa-star text-xl"></i></a>
+                            <a title="favorit" href="./core/wishlist.php?delete_wishlist=<?php echo $id?>"><i class="fa-solid fa-star text-xl"></i></a>
                             <?php
                                 }else{
                                     echo '<button title="favorit" type="submit" name="addWishlist" class="text-primary"><i class="fa-regular fa-star text-xl"></i></button>';
@@ -259,7 +259,7 @@
                     Whatsapp
                 </button>
             </div>
-            <a href="../pages/index.php?page=checkout&rumah=<?php echo $data['id_rumah']?>">
+            <a href="./index.php?page=checkout&rumah=<?php echo $data['id_rumah']?>">
                 <button class="px-5 py-3 w-full bg-primary hover:bg-blue-900 text-white text-lg font-semibold font-yantramanav rounded-tr-xl rounded-bl-xl mt-6 ease-in-out duration-300">
                     Beli Sekarang
                 </button>
@@ -288,5 +288,8 @@
           swiper: swiper,
         },
     });
+    if ( window.history.replaceState ) {
+        window.history.replaceState( null, null, window.location.href );
+    }
 </script>
     

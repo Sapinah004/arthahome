@@ -1,5 +1,5 @@
 <?php
-    include('../core/config.php');
+    include('./core/config.php');
 ?>
 <div class="px-5 pt-52 pb-24 container mx-auto max-w-7xl font-yantramanav">
     <div class="lg:flex justify-between items-center">
@@ -37,7 +37,7 @@
                 <div class="grid grid-cols-12 lg:space-x-5 mb-10 items-center bg-gray-100 rounded-2xl p-7 shadow-lg">
                     <div class="col-span-12 lg:col-span-4">
                         <picture>
-                            <img class="w-full h-full object-cover object-center" src="../../Admin/core/product/images/<?php echo $data['gambar']?>" alt="<?php echo $data['gambar']?>">
+                            <img class="w-full h-full object-cover object-center" src="./../Admin/core/product/images/<?php echo $data['gambar']?>" alt="<?php echo $data['gambar']?>">
                         </picture>
                     </div>
                     <div class="col-span-12 lg:col-span-8 mt-6 lg:mt-0">
@@ -77,7 +77,7 @@
                             </div>
                         </div>
                         <button class="flex ml-auto">
-                            <a href="../pages/index.php?page=order-detail&order=<?php echo $data['id_order']?>" class="flex items-center space-x-2 mt-5 px-5 py-2.5 bg-primary rounded-tr-xl rounded-bl-xl tracking-wider font-bold hover:bg-blue-900 text-white justify-end ease-in-out duration-300">
+                            <a href="./index.php?page=order-detail&order=<?php echo $data['id_order']?>" class="flex items-center space-x-2 mt-5 px-5 py-2.5 bg-primary rounded-tr-xl rounded-bl-xl tracking-wider font-bold hover:bg-blue-900 text-white justify-end ease-in-out duration-300">
                                 <span>Detail Pesanan</span>  
                                 <i class="fa-solid fa-arrow-right-long mt-1"></i>
                             </a>
@@ -109,7 +109,7 @@
                 <div class="grid grid-cols-12 lg:space-x-5 mb-10 items-center bg-gray-100 p-7 rounded-2xl shadow-lg">
                     <div class="col-span-12 lg:col-span-4">
                         <picture>
-                            <img class="w-full h-full object-cover object-center" src="../../Admin/core/product/images/<?php echo $data['gambar']?>" alt="<?php echo $data['gambar']?>">
+                            <img class="w-full h-full object-cover object-center" src="./../Admin/core/product/images/<?php echo $data['gambar']?>" alt="<?php echo $data['gambar']?>">
                         </picture>
                     </div>
                     <div class="col-span-12 lg:col-span-8 mt-6 lg:mt-0">
@@ -152,7 +152,7 @@
                             </div>
                         </div>
                         <button class="flex ml-auto">
-                            <a href="../pages/index.php?page=order-detail&order=<?php echo $data['id_order']?>" class="flex items-center space-x-2 mt-5 px-5 py-2.5 bg-primary rounded-tr-xl rounded-bl-xl tracking-wider font-bold hover:bg-blue-900 text-white justify-end ease-in-out duration-300">
+                            <a href="./index.php?page=order-detail&order=<?php echo $data['id_order']?>" class="flex items-center space-x-2 mt-5 px-5 py-2.5 bg-primary rounded-tr-xl rounded-bl-xl tracking-wider font-bold hover:bg-blue-900 text-white justify-end ease-in-out duration-300">
                                 <span>Detail Pesanan</span>  
                                 <i class="fa-solid fa-arrow-right-long mt-1"></i>
                             </a>
@@ -183,7 +183,7 @@
                 <div class="grid grid-cols-12 lg:space-x-5 mb-10 items-center bg-gray-100 p-7 rounded-2xl shadow-lg">
                     <div class="col-span-12 lg:col-span-4">
                         <picture>
-                            <img class="w-full h-full object-cover object-center" src="../../Admin/core/product/images/<?php echo $data['gambar']?>" alt="">
+                            <img class="w-full h-full object-cover object-center" src="./../Admin/core/product/images/<?php echo $data['gambar']?>" alt="">
                         </picture>
                     </div>
                     <div class="col-span-12 lg:col-span-8 mt-6 lg:mt-0">
@@ -217,7 +217,7 @@
                             </div>
                         </div>
                         <button class="flex ml-auto">
-                            <a href="../pages/index.php?page=order-detail&order=<?php echo $data['id_order']?>" class="flex items-center space-x-2 mt-5 px-5 py-2.5 bg-primary rounded-tr-xl rounded-bl-xl tracking-wider font-bold hover:bg-blue-900 text-white justify-end ease-in-out duration-300">
+                            <a href="./index.php?page=order-detail&order=<?php echo $data['id_order']?>" class="flex items-center space-x-2 mt-5 px-5 py-2.5 bg-primary rounded-tr-xl rounded-bl-xl tracking-wider font-bold hover:bg-blue-900 text-white justify-end ease-in-out duration-300">
                                 <span>Detail Pesanan</span>  
                                 <i class="fa-solid fa-arrow-right-long mt-1"></i>
                             </a>

@@ -1,10 +1,7 @@
 <?php
-    require_once($_SERVER['DOCUMENT_ROOT'] . '/ArthaHome/User/core/config.php');
-
-
+    include('../../core/config.php');
     session_start();
     global $connect;
-
     if(isset($_POST['registrasi'])){
         $username = mysqli_real_escape_string($connect, $_POST['username']);
         $email = mysqli_real_escape_string($connect, $_POST['email']);
@@ -16,7 +13,6 @@
         $cpassword = mysqli_real_escape_string($connect, $_POST['confirmPassword']);
         $hashPassword = password_hash($password, PASSWORD_DEFAULT);
         $sql_checkEmail = mysqli_query($connect, "SELECT * FROM tb_user WHERE email = '$email'");
-        // $query = mysqli_query($connect, $sql);
         if(!filter_var($email, FILTER_VALIDATE_EMAIL)){
             $message = "Email yang anda masukkan tidak valid";
             echo "<script type='text/javascript'>alert('$message')</script>";
@@ -24,11 +20,7 @@
             $message = "Password should be at least 8 characters in length and should include at least one upper case letter, one number, and one special character.";
             echo "<script type='text/javascript'>alert('$message')</script>";
         }
-         elseif(empty(preg_match("/@gmail.com$/" , $email) || preg_match("/@yahoo.com$/" , $email))){
-            $message = "Cek kembali email anda, email yang diperbolehkan hanya yang berdomain gmail";
-            echo "<script type='text/javascript'>alert('$message')</script>";
-        }
-        // elseif(mb_substr($email, -10) !== "@gmail.com"){
+        //  elseif(empty(preg_match("/@gmail.com$/" , $email) || preg_match("/@yahoo.com$/" , $email))){
         //     $message = "Cek kembali email anda, email yang diperbolehkan hanya yang berdomain gmail";
         //     echo "<script type='text/javascript'>alert('$message')</script>";
         // }
@@ -78,9 +70,10 @@
                 $_SESSION['loggedin'] = true;
                 $_SESSION['username'] = $row['username'];
                 $_SESSION['email'] = $row['email'];
-                header("location: ../index.php");
+                header("location: ../../index.php");
+
             }else{
-                header('Location: ../auth/login.php?pesan=gagal');
+                header('Location: ./auth/login.php?pesan=gagal');
             }    
         }
         }else{

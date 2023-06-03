@@ -1,5 +1,5 @@
 <?php
-    include("../core/config.php");
+    include("./core/config.php");
 ?>
 <div class="container mx-auto px-5 pt-52 pb-24 font-yantramanav">
     <h1 class="text-center text-5xl font-playfair text-primary font-bold">Blog & Artikel</h1>
@@ -14,7 +14,7 @@
         <div>
             <div class="relative">
                 <picture>
-                    <img class="rounded-sm w-full h-72 object-cover object-center " src="../../Admin/assets/images/article/<?php echo $data["gambar"]?>" alt="<?php echo $data["judul"]?>">
+                    <img class="rounded-sm w-full h-72 object-cover object-center " src="./../Admin/assets/images/article/<?php echo $data["gambar"]?>" alt="<?php echo $data["judul"]?>">
                 </picture>
                 <div class="bg-secondary py-2 px-5 tracking-widest w-fit absolute bottom-0 translate-y-1/2 right-8 text-white rounded-md">
                     <?php echo date_format(new DateTime($data['tanggal']), "d-m-Y")?>
@@ -23,7 +23,7 @@
             <div class="shadow-xl pb-7 px-5 rounded-xl">
                 <h1 class="text-xl font-playfair mt-10 font-bold line-clamp-2"><?php echo $data["judul"]?></h1>
                 <button>
-                    <a href="../pages/index.php?page=artikel-detail&id=<?php echo $data['id_artikel']?>"  class="px-5 py-2.5 mt-6 flex space-x-3 rounded-tr-xl rounded-bl-xl tracking-wider items-center rounded-sm bg-secondary hover:bg-yellow-500 text-white ease-in-out duration-300">
+                    <a href="./index.php?page=artikel-detail&id=<?php echo $data['id_artikel']?>"  class="px-5 py-2.5 mt-6 flex space-x-3 rounded-tr-xl rounded-bl-xl tracking-wider items-center rounded-sm bg-secondary hover:bg-yellow-500 text-white ease-in-out duration-300">
                         <span>Selengkapnya</span>
                         <i class="fa-solid fa-angle-right"> </i> 
                     </a>

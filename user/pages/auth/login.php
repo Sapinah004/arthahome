@@ -37,7 +37,7 @@
                         <img class="h-full object-cover object-center " src="../../assets/images/bg-auth.webp" alt="background">
                     </picture>
                     <div class="absolute top-10 left-10 font-bold hover:underline">
-                        <a href="../index.php">
+                        <a href="../../index.php">
                             <i class="fa-solid fa-house mr-2"></i>
                             Kembali ke halaman utama
                         </a>
@@ -55,7 +55,7 @@
                         <form class="mt-5" method="POST">
                             <div>
                                 <label for="email" class="tracking-wider font-semibold ">Email</label>
-                                <input id="email" name="email" type="email" reqiured="required" class="mt-1 mb-4 border-primary bg-white w-full px-3 py-2 text-primary focus:outline-none border-2 font-semibold placeholder-primary focus:placeholder-transparent rounded-sm" placeholder="Masukkan email anda">
+                                <input id="email" name="email" type="email" required="required" class="mt-1 mb-4 border-primary bg-white w-full px-3 py-2 text-primary focus:outline-none border-2 font-semibold placeholder-primary focus:placeholder-transparent rounded-sm" placeholder="Masukkan email anda">
                             </div>
                             <div>
                                 <label for="password" class="tracking-wider font-semibold ">Password</label>
@@ -72,3 +72,8 @@
         </section>
     </body>
 </html>
+<script>
+    if ( window.history.replaceState ) {
+  window.history.replaceState( null, null, window.location.href );
+}
+</script>

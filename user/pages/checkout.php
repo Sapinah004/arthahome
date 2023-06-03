@@ -1,19 +1,15 @@
 <?php
-    include('../core/config.php');
-    include('../core/order.php');
-    // if(!isset($_SESSION['loggedin'])){
-    //     header("location:../pages/auth/login.php");
-    //     die;
-    // }
+    // include('../core/config.php');
+    include('./core/order.php');
     if( !isset($_SESSION['loggedin']) ){
     ?>
-       <script>window.location.replace("../pages/auth/login.php");</script> 
+       <script>window.location.replace("./pages/auth/login.php");</script> 
       <?php
         die;
     }
 ?>
 <div class="pt-52 pb-24 container mx-auto font-yantramanav text-primary">
-    <a class="px-5 text-secondary font-semibold text-xl" href="../pages/index.php?page=list-rumah">
+    <a class="px-5 text-secondary font-semibold text-xl" href="./index.php?page=list-rumah">
         <i class="fa-solid fa-arrow-left-long mr-2"></i>
         <span class="hover:underline underline-offset-4 ">Kembali Berbelanja</span>
     </a>
@@ -29,7 +25,7 @@
             ?>
     <div class="grid grid-cols-2 gap-5 mt-10">
     <picture>
-                <img class=" h-60 rounded-lg w-full object-center object-cover" src="../../Admin/core/product/images/<?php echo $data['gambar']?>" alt="">
+                <img class=" h-60 rounded-lg w-full object-center object-cover" src="./../Admin/core/product/images/<?php echo $data['gambar']?>" alt="">
             </picture>
             <div class="">
                 <h2 class="text-primary font-playfair font-semibold text-2xl">
@@ -262,185 +258,9 @@
                 </button>
             </form>
     </div>
-    
-
-<!-- 
-
-    <div class="grid grid-cols-1 lg:grid-cols-2 mt-12 lg:px-5">
-        <div class="bg-blueMain lg:rounded-tl-md lg:rounded-bl-md p-6 lg:p-12">
-            <?php
-                $sql = "SELECT tb_rumah.* , tb_gambar_rumah.* FROM tb_rumah LEFT JOIN tb_gambar_rumah ON tb_rumah.id_rumah = tb_gambar_rumah.id_rumah WHERE tb_rumah.id_rumah = ".$_GET['rumah'];
-                $query = mysqli_query($connect, $sql);
-                if($query == TRUE){
-                    $data = mysqli_fetch_array($query);
-                }
-            ?>
-            <h1 class="text-3xl font-playfair font-bold text-primary tracking-wider">
-                Detail Pesanan
-            </h1>
-            <picture>
-                <img class="mt-6 lg:mt-10 h-60 rounded-lg w-full object-center object-cover" src="../../Admin/core/product/images/<?php echo $data['gambar']?>" alt="">
-            </picture>
-            <div class="mt-6">
-                <h2 class="text-primary font-playfair font-semibold text-2xl">
-                    Type <?php echo $data['tipe']?>
-                </h2>
-                <h3 class="mt-3 text-secondary font-bold flex space-x-2 items-center">
-                    <i class="fa-sharp fa-solid fa-location-dot"></i>
-                    <span><?php echo $data['lokasi']?></span>
-                </h3>
-                <div class="mt-3 flex items-center gap-4 md:gap-7 flex-wrap justify-around md:justify-start">
-                    <div class="py-2 flex justify-center items-center space-x-2">
-                        <picture>
-                            <img class="w-5" src="../assets/images/icon/width.png" alt="">
-                        </picture>
-                        <span class="text-primary mt-1"><?php echo $data['luas_bangunan']?> m <sup>2</sup></span>
-                    </div>
-                    <div class="py-2 flex justify-center items-center space-x-2">
-                        <picture>
-                            <img class="w-5" src="../assets/images/icon/bedroom.png" alt="">
-                        </picture>
-                        <span class="text-primary mt-1"><?php echo $data['kamar_tidur']?> Kamar Tidur</span>
-                    </div>
-                    <div class="py-2 flex items-center space-x-2">
-                        <picture>
-                            <img class="w-5" src="../assets/images/icon/bathroom.png" alt="">
-                        </picture>
-                        <span class="text-primary mt-1"><?php echo $data['kamar_mandi']?> Kamar Mandi</span>
-                    </div>
-                    <div class="py-2 flex items-center space-x-2">
-                        <picture>
-                            <img class="w-5" src="../assets/images/icon/floor.png" alt="">
-                        </picture>
-                        <span class="text-primary"><?php echo $data['jumlah_lantai']?> Lantai</span>
-                    </div>
-                </div>
-                <div>
-                    <form method="post" class="w-full">
-                        <div class="mt-5 flex space-x-5 items-end">
-                            <div class="w-full">
-                                <label for="paket_harga" class=" font-semibold text-lg">Pilih Paket Harga</label>
-                                <select id="harga" name="paket_harga" class="mt-2 border-primary bg-blueMain w-full px-3 py-2  text-primary focus:border-primary focus:ring-primary focus:outline-none border-2 font-semibold placeholder-primary focus:placeholder-transparent rounded-md">
-                                    <?php 
-                                        $sql = "SELECT * FROM tb_harga_rumah WHERE id_rumah =" .$_GET['rumah']." ORDER BY harga ASC";
-                                        $query = mysqli_query($connect, $sql);
-                                        while($data = mysqli_fetch_array($query)){
-                                    ?>
-                                    <option value="<?php echo $data['harga']?>">Rp. <?php echo number_format($data['harga']) ?></option>
-                                    <?php
-                                        }
-                                    ?>    
-                                </select>
-                            </div>
-                            <button type="submit" name="pilih" class="flex-none px-5 py-2 tracking-wider text-lg text-white bg-primary  hover:bg-blue-900 font-medium rounded-tr-xl rounded-bl-xl ease-in-out duration-300">
-                                Pilih 
-                            </button>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-        <div class="px-6 py-12 lg:p-12">
-            <h5 class="text-3xl font-playfair text-primary font-bold tracking-wider mb-10">
-                Detail Pembayaran
-            </h5>
-            <form action="" method="post">
-                <?php 
-                    $sql = "SELECT * FROM tb_rumah WHERE id_rumah =" .$_GET['rumah'];
-                    $query = mysqli_query($connect, $sql);
-                    $data = mysqli_fetch_array($query);
-                ?>
-                <input type="hidden" name="id_user" value="<?php echo $_SESSION['id_user']?>">
-                <input type="hidden" name="id_rumah" value=<?php echo $data['id_rumah']?>>
-                <div>
-                    <label for="email" class="font-semibold text-lg">Email</label>
-                    <input id="email" name="email" type="email" class="mt-1 border-primary bg-white w-full px-3 py-2  text-primary focus:outline-none border-2 focus:border-primary focus:ring-primary font-semibold placeholder-primary focus:placeholder-transparent rounded-md" value="<?php echo $_SESSION['email']?>">
-                    <p class="text-xs mb-5 mt-1 text-slate-500  font-bold italic before:content-['*']">Kami akan mengirim informasi mengenai pembayaran di email yang anda masukkan</p>
-                </div>
-                <div>
-                    <label for="telephone" class="font-semibold text-lg">No Telephone</label>
-                    <input type="tel" name="telephone" id="telephone"  class="mt-2 border-primary bg-white w-full px-3 py-2 text-primary focus:outline-none focus:border-primary focus:ring-primary border-2 font-semibold placeholder-primary focus:placeholder-transparent rounded-md" placeholder="0858xxxxxxxx"> 
-                </div>
-                <div class="grid grid-cols-2  gap-6">
-                    <div>
-                        <label for="tipe" class="font-semibold text-lg">Type Rumah</label>
-                        <input type="text" name="tipe" id="tipe"  class="mt-2 border-primary bg-white w-full px-3 py-2 text-primary focus:outline-none focus:border-primary focus:ring-primary border-2 font-semibold placeholder-primary focus:placeholder-transparent rounded-md" value="<?php echo $data['tipe']?>" readonly> 
-                    </div>
-                    <div class="relative">
-                        <label for="no_rumah" class="font-semibold text-lg">No Rumah</label>
-                        <select id="no_rumah" name="no_rumah" class="mt-2 border-primary bg-white w-full px-3 py-2 text-primary focus:outline-none border-2 font-semibold focus:border-primary focus:ring-primary placeholder-primary focus:placeholder-transparent rounded-md">
-                        <?php 
-                            $sql = "SELECT * FROM tb_norumah WHERE id_rumah =" .$_GET['rumah'];
-                            $query = mysqli_query($connect, $sql);
-                            while($data = mysqli_fetch_array($query)){
-                        ?>
-                            <option value="<?php echo $data['no_rumah']?>"><?php echo $data['no_rumah']?></option>
-                        <?php
-                            }
-                        ?>    
-                        </select>
-                    </div>
-                </div>
-               <div class="mt-5">
-                    <?php
-                        if(isset($_POST['pilih']) && isset($_POST['paket_harga'])){
-                            $harga = mysqli_real_escape_string($connect, $_POST['paket_harga']);
-                            $sql = "SELECT * FROM tb_harga_rumah WHERE harga = '".$harga."' AND id_rumah =" .$_GET['rumah'];
-                            $query = mysqli_query($connect, $sql);
-                            $data = mysqli_fetch_array($query);
-                    ?>
-                    <div>
-                        <input type="hidden" name="id_rumahdetail" value="<?php echo $data['id_rumahdetail']?>">
-                        <label for="harga" class="font-semibold text-lg">Harga Rumah</label>
-                        <input type="text" name="harga" id="harga" class="mt-2 border-primary bg-white w-full px-3 py-2 text-primary focus:outline-none focus:border-primary focus:ring-primary border-2 font-semibold placeholder-primary focus:placeholder-transparent rounded-md" value=" <?php echo $data['harga'] ?>" readonly> 
-                    </div>
-                    <div class="mt-5 grid grid-cols-2 gap-x-6 gap-y-5">
-                        <div>
-                            <label for="harga_dp" class="font-semibold text-lg">Harga Dp</label>
-                            <input type="text"  id="harga_dp"  class="mt-2 border-primary bg-white w-full px-3 py-2 text-primary focus:outline-none focus:border-primary focus:ring-primary border-2 font-semibold placeholder-primary focus:placeholder-transparent rounded-md" value="Rp. <?php echo number_format($data['harga_dp']) ?>" readonly> 
-                        </div>
-                        <div>
-                            <label for="harga_bulanan" class="font-semibold text-lg">Harga Per Bulan</label>
-                            <input type="text"  id="harga_bulanan"  class="mt-2 border-primary bg-white w-full px-3 py-2 text-primary focus:outline-none focus:border-primary focus:ring-primary border-2 font-semibold placeholder-primary focus:placeholder-transparent rounded-md" value="Rp. <?php echo number_format($data['harga_bulanan']) ?>" readonly> 
-                        </div>
-                        <div>
-                            <label for="lama_bayar" class="font-semibold text-lg">Lama Bayar</label>
-                            <input type="text"  id="lama_bayar"  class="mt-2 border-primary bg-white w-full px-3 py-2 text-primary focus:outline-none focus:border-primary focus:ring-primary border-2 font-semibold placeholder-primary focus:placeholder-transparent rounded-md" value="<?php echo $data['lama_bayar']?> bulan" readonly> 
-                        </div>
-                    </div>
-                </div>
-                    <?php
-                        }else{
-                            $sql = "SELECT * FROM tb_harga_rumah WHERE id_rumah =" .$_GET['rumah']." ORDER BY harga ASC";
-                            $query = mysqli_query($connect, $sql);
-                            $data = mysqli_fetch_array($query);
-                    ?>
-                <div>
-                    <input type="hidden" name="id_rumahdetail" value="<?php echo $data['id_rumahdetail']?>">
-                    <label for="harga_rumah" class="font-semibold text-lg">Harga Rumah</label>
-                    <input type="text" name="harga_rumah" id="harga_rumah"  class="mt-2 border-primary bg-white w-full px-3 py-2 text-primary focus:outline-none focus:border-primary focus:ring-primary border-2 font-semibold placeholder-primary focus:placeholder-transparent rounded-md" value="Rp. <?php echo number_format($data['harga']) ?>" readonly> 
-                </div>
-                <div class="mt-5 grid grid-cols-2 gap-x-12 gap-y-5">
-                    <div>
-                        <label for="harga_dp" class="font-semibold text-lg">Harga Dp</label>
-                        <input type="text"  id="harga_dp"  class="mt-2 border-primary bg-white w-full px-3 py-2 text-primary focus:outline-none focus:border-primary focus:ring-primary border-2 font-semibold placeholder-primary focus:placeholder-transparent rounded-md" value="Rp. <?php echo number_format($data['harga_dp']) ?>" readonly> 
-                    </div>
-                    <div>
-                        <label for="harga_bulanan" class="font-semibold text-lg">Harga Per Bulan</label>
-                        <input type="text"  id="harga_bulanan"  class="mt-2 border-primary bg-white w-full px-3 py-2 text-primary focus:outline-none focus:border-primary focus:ring-primary border-2 font-semibold placeholder-primary focus:placeholder-transparent rounded-md" value="Rp. <?php echo number_format($data['harga_bulanan']) ?>" readonly> 
-                    </div>
-                    <div>
-                        <label for="lama_bayar" class="font-semibold text-lg">Lama Bayar</label>
-                        <input type="text"  id="lama_bayar"  class="mt-2 border-primary bg-white w-full px-3 py-2 text-primary focus:outline-none focus:border-primary focus:ring-primary border-2 font-semibold placeholder-primary focus:placeholder-transparent rounded-md" value="<?php echo $data['lama_bayar']?> bulan" readonly> 
-                    </div>
-                </div>
-                    <?php
-                        }
-                    ?>
-                <button type="submit" name="order" class="mt-10 flex ml-auto px-12 py-2 bg-primary text-lg rounded-tr-xl rounded-bl-xl font-semibold tracking-wider ease-in-out duration-300 hover:bg-blue-900 text-white">
-                    Beli Rumah
-                </button>
-            </form>
-        </div>
-     </div> -->
 </div>
+<script>
+    if ( window.history.replaceState ) {
+        window.history.replaceState( null, null, window.location.href );
+    }
+</script>

@@ -1,6 +1,5 @@
 <?php
-    include('../core/config.php');
-    include('../core/order.php');
+    include('./core/order.php');
 ?>
 <div class="px-5 pt-36 lg:pt-52 pb-24 container mx-auto text-primary font-yantramanav">
     <?php
@@ -10,7 +9,7 @@
     ?>
     <div class="grid grid-cols-12 gap-2 md:gap-8 items-center">
         <picture class="col-span-12 lg:col-span-5">
-            <img src="../../Admin/core/product/images/<?php echo $data['gambar']?>" alt="">
+            <img src="./../Admin/core/product/images/<?php echo $data['gambar']?>" alt="">
         </picture>
         <div class="col-span-12 lg:col-span-7">
             <h1 class="text-2xl font-bold text-primary font-playfair">Rumah Tipe <?php echo $data['tipe']?></h1>
@@ -194,7 +193,7 @@
                                                         </button>
                                                     </div>
                                                     <div class="p-6 space-y-6">
-                                                        <img src="../assets/images/bukti_pembayaran/<?php echo $data['gambar']?>" alt="<?php echo $data['gambar']?>">
+                                                        <img src="./assets/images/bukti_pembayaran/<?php echo $data['gambar']?>" alt="<?php echo $data['gambar']?>">
                                                     </div>
                                                 </div>
                                             </div>
@@ -224,7 +223,7 @@
                                                         <form action="" method="post" enctype="multipart/form-data">
                                                             <input type="hidden" name="id_order" value=<?php echo $data['id_order']?>>
                                                             <input type="hidden" name="id_pembayaran" value=<?php echo $data['id_pembayaran']?>>
-                                                            <label for="update_gambar" class="block font-medium">Upload Gambar</label>
+                                                            <label for="update_gambar" required="required" class="block font-medium">Upload Gambar</label>
                                                             <input name="update_gambar" class="block w-full mt-3 mb-5 text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400" id="gambar" type="file">
                                                             <div class="flex justify-end items-center py-6 space-x-2 border-t border-gray-200 rounded-b dark:border-gray-600">
                                                                 <button data-modal-toggle="updateImageModal<?php echo $a?>" type="submit" name="updateImage" class="tracking-wider text-white bg-primary hover:bg-blue-900 ease-in-out duration-300 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">Upload</button>
@@ -308,4 +307,7 @@
 // modal.toggle();
 // // true or false
 // modal.isHidden();
+if ( window.history.replaceState ) {
+        window.history.replaceState( null, null, window.location.href );
+    }
 </script>

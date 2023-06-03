@@ -1,8 +1,6 @@
 <?php
-    include("../core/config.php");
-    include("../core/wishlist.php");
+    include("./core/wishlist.php");
     if( !isset($_SESSION['loggedin']) ){
-        // header("Location:../pages/auth/login.php");
         ?>
        <script>window.location.replace("../pages/auth/login.php");</script> 
       <?php
@@ -22,17 +20,17 @@
         <div class="p-5 bg-gray-100 shadow-xl mb-8 rounded-md">
             <div class="grid grid-cols-12 gap-y-6 lg:gap-y-0 md:space-x-5 pb-5 items-center border-b-2 border-slate-300">
                 <picture class="col-span-12 md:col-span-4 place-self-center">
-                    <img class="w-full h-64 object-cover rounded-md"  src=" ../../Admin/core/product/images/<?php echo $data['gambar']?>" alt="">
+                    <img class="w-full h-64 object-cover rounded-md"  src=" ./../Admin/core/product/images/<?php echo $data['gambar']?>" alt="">
                 </picture>
                 <div class="relative col-span-12 md:col-span-8  font-raleway overflow-hidden">
                 <form>
-                    <a onClick="return confirm('Anda yakin ingin menghapus rumah ini dari wishlist anda ?')" href="../core/wishlist.php?hapus_wishlist=<?php echo $data['id_rumah']?>" class="absolute text-lg top-0 right-0  text-white px-4 rounded-md py-2 bg-red-500 hover:bg-red-700 hover:text-white ease-in-out duration-300">
+                    <a onClick="return confirm('Anda yakin ingin menghapus rumah ini dari wishlist anda ?')" href="./core/wishlist.php?hapus_wishlist=<?php echo $data['id_rumah']?>" class="absolute text-lg top-0 right-0  text-white px-4 rounded-md py-2 bg-red-500 hover:bg-red-700 hover:text-white ease-in-out duration-300">
                         <i class="fa-solid fa-trash"></i>
                     </a>
                 </form>
                 <div class="text-2xl md:text-3xl mb-6 text-primary font-bold">Rp <?php echo number_format($data['harga']) ?>,-</div>
                     <h1 class="text-xl md:text-2xl font-semibold">Type <?php echo $data['tipe']?></h1>
-                    <p class="deskripsi mt-1 md:mt-3 "><?php echo $data['deskripsi']?></p>
+                    <p class="deskripsi mt-1 md:mt-3 line-clamp-3"><?php echo $data['deskripsi']?></p>
                     <div class="space-x-3 mt-3 text-sm font-semibold">
                         <i class="fa-solid fa-location-dot text-secondary "></i>
                         <span class="capitalize"><?php echo $data['lokasi']?></span>
@@ -80,3 +78,8 @@
         }
     ?>
 </div>
+<script>
+    if ( window.history.replaceState ) {
+  window.history.replaceState( null, null, window.location.href );
+}
+</script>

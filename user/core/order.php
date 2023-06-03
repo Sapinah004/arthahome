@@ -1,5 +1,5 @@
 <?php
-    include('../core/config.php');
+    include('./core/config.php');
     if(isset($_POST['order'])){
         global $connect;
         $id_rumah = trim($_POST['id_rumah']);
@@ -56,11 +56,11 @@
             echo "<script type='text/javascript'>alert('$message')</script>";
         }
         else{
-            move_uploaded_file($tmp_ktp,'../assets/images/ktp/'.date('d-m-Y').'-'.$gambar_ktp);
+            move_uploaded_file($tmp_ktp,'./assets/images/ktp/'.date('d-m-Y').'-'.$gambar_ktp);
             $ktp_image = date('d-m-Y').'-'.$gambar_ktp;
-            move_uploaded_file($tmp_kk,'../assets/images/kartu-keluarga/'.date('d-m-Y').'-'.$gambar_kk);
+            move_uploaded_file($tmp_kk,'./assets/images/kartu-keluarga/'.date('d-m-Y').'-'.$gambar_kk);
             $kk_image = date('d-m-Y').'-'.$gambar_kk;
-            move_uploaded_file($tmp_npwp,'../assets/images/surat-npwp/'.date('d-m-Y').'-'.$gambar_npwp);
+            move_uploaded_file($tmp_npwp,'./assets/images/surat-npwp/'.date('d-m-Y').'-'.$gambar_npwp);
             $npwp_image = date('d-m-Y').'-'.$gambar_npwp;
             $sql = "INSERT INTO tb_pesanan (id_rumah, id_user, id_rumahdetail, tanggal, email, telephone, tipe, no_rumah, status_pembelian, gambar_ktp, gambar_kk, gambar_npwp, no_ktp)
             VALUES ('".$id_rumah."', '".$_SESSION['id_user']."', '".$id_rumahdetail."', NOW(), '".$email."', '".$telephone."', '".$tipe."',
@@ -76,7 +76,7 @@
         $sql = "DELETE FROM tb_norumah WHERE no_rumah ='".$no_rumah."' AND id_rumah = '".$id_rumah."'";
         $querydelete = mysqli_query($connect, $sql);
         if($querydelete == true){
-            $url = "../pages/thankyou.php";
+            $url = "./pages/thankyou.php";
             echo '<script> window.location.replace("'. $url .'");</script>';
         }else{
             $message = "Harap periksa kembali form anda dan coba lagi";
@@ -91,31 +91,6 @@
          
         }
         
-        // $sql = "INSERT INTO tb_pesanan (id_rumah, id_user, id_rumahdetail, tanggal, email, telephone, tipe, no_rumah, status_pembelian)
-        //         VALUES ('".$id_rumah."', '".$_SESSION['id_user']."', '".$id_rumahdetail."', NOW(), '".$email."', '".$telephone."', '".$tipe."',
-        //         '".$no_rumah."', '0')";
-        // $query = mysqli_query($connect, $sql);
-        // if($query == true){
-        //     $last_id = $connect->insert_id;
-        //     $sql = "INSERT INTO tb_notifikasi (id_order, tipe_notifikasi, id_user, status, tanggal)
-        //     VALUES ('".$last_id."', '0','".$_SESSION['id_user']."','0', NOW())";
-        //     $queryNotifikasi = mysqli_query($connect, $sql);
-        // }   
-        // if($queryNotifikasi == true){
-        //     $sql = "DELETE FROM tb_norumah WHERE no_rumah ='".$no_rumah."' AND id_rumah = '".$id_rumah."'";
-        //     $querydelete = mysqli_query($connect, $sql);
-        //     if($querydelete == true){
-        //         $url = "../pages/thankyou.php";
-        //         echo '<script> window.location.replace("'. $url .'");</script>';
-        //     }else{
-        //         $message = "Harap periksa kembali form anda dan coba lagi";
-        //         echo "<script type='text/javascript'>alert('$message')</script>";
-        //     }
-        // }
-        // else{
-        //     $message = "Harap periksa kembali form anda dan coba lagi";
-        //     echo "<script type='text/javascript'>alert('$message')</script>";
-        // }
     }
     if(isset($_POST['upload'])){
         global $connect;
@@ -171,7 +146,7 @@
             if($query == TRUE){
                 $message = "Bukti pembayaran berhasil dihapus";
                 echo "<script type='text/javascript'>alert('$message')</script>";
-                $url = "../../User/pages/index.php?page=order-detail&order=$id_order";
+                $url = "./../User/pages/index.php?page=order-detail&order=$id_order";
                 echo '<script>window.location.replace("'.$url.'");</script>';
             }else{
                 $message = "Bukti pembayaran gagal dihapus";
