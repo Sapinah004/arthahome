@@ -105,12 +105,6 @@
                                     class="mt-2 w-full bg-slate-200 rounded-sm p-2 placeholder:text-sm text-black placeholder:text-slate-400 focus:outline-none focus:border-primary focus:ring-primary block focus:ring-1"
                                     placeholder="masukkan hanya angka">
                             </div>
-                            <!-- <div>
-                                <label for="bunga" class="font-bold">Bunga</label>
-                                <input id="bunga" name="bunga[]" type="number" autocomplete="off" required="required"
-                                    class="mt-2 w-full bg-slate-200 rounded-sm p-2 placeholder:text-sm text-black placeholder:text-slate-400 focus:outline-none focus:border-primary focus:ring-primary block focus:ring-1"
-                                    placeholder="masukkan hanya angka">
-                            </div> -->
                         </div>
                 </div>
                 <div class="flex space-x-5 mt-3">

@@ -1,5 +1,5 @@
 <?php
-include("../core/config.php");
+include("./core/config.php");
 
 session_start();
 if(isset($_POST['login']))
@@ -13,10 +13,10 @@ if(isset($_POST['login']))
         $_SESSION['id_admin'] = $data['id_admin'];
         $_SESSION['username'] = $data['username'];
         $_SESSION['loggedin'] = true;
-        header('location: ../pages/dashboard.php?page=product_list');
+        header('location: ./pages/dashboard.php?page=product_list');
     }
     else{
-        header ("location: ../pages/index.php?pesan=gagal");
+        header ("location: ./index.php?pesan=gagal");
     }
 }
 ?>

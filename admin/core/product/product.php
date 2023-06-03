@@ -1,7 +1,6 @@
 <?php
     $direktori = $_SERVER['DOCUMENT_ROOT'].'/ArthaHome/Admin/core/config.php';
     include($direktori);
-    // include("../core/config.php");
     // Tambah Product
     if(isset($_POST['addProduct'])){
         global $connect;
@@ -20,7 +19,6 @@
         $harga_dp =  $_POST["harga_dp"];
         $harga_bulanan =  $_POST["harga_bulanan"];
         $lama_bayar =  $_POST["lama_bayar"];
-        // $bunga =  $_POST["bunga"];
         $harga_pemesanan = $_POST["harga_pemesanan"];
         $jumlah_harga = sizeof($harga);
         

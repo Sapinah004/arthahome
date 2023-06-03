@@ -8,6 +8,7 @@
         <meta name="ketwords" content="website jual rumah, batam, marketplace">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Artha Home</title>
+        <link rel="icon" type="image/png" href="../assets/images/favicon.png"/>
          <!-- Tailwind CSS -->
         <link rel="stylesheet" href="../../assets/css/style.css">
         <link rel="stylesheet" href="../../assets/css/input.css">

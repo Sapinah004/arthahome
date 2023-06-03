@@ -32,7 +32,7 @@
                 <div>
                     <div class="p-0.5" id="artikel">
                         <label for="artikel" class="block font-bold mb-1">Artikel</label>
-                        <input type="hidden" name="artikel">
+                        <input type="hidden" name="artikel" required="required">
                         <div id="editor" class="min-h-[10rem] w-full bg-slate-200 border rounded-sm p-2 placeholder:text-sm text-black focus:outline-none focus:border-primary focus:ring-primary block focus:ring-1"></div>
                     </div>
                     <button type="submit" name="buat_artikel" class="flex ml-auto space-x-3 items-center px-5 py-2 mt-10 text-white bg-primary hover:bg-blue-900 ease-in-out duration-300 rounded-md">

@@ -1,6 +1,5 @@
 <?php
     include('../core/announcement/announcement.php');
-    include('../core/config.php');
 ?>
 <div class="sticky top-0 px-5 py-6 bg-white flex justify-between space-x-5">
     <h1 class="font-playfair text-3xl tracking-widest font-bold text-primary">Poster Pengumuman</h1>

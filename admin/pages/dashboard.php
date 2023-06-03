@@ -5,6 +5,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Artha Home | Admin</title>
+        <link rel="icon" type="image/png" href="../assets/images/favicon.png"/>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
         <script src="https://code.iconify.design/iconify-icon/1.0.1/iconify-icon.min.js"></script>
         <link rel="stylesheet" href="../assets/css/style.css" />
@@ -18,7 +19,7 @@
             session_start();
             include('../core/config.php');
                 if($_SESSION['loggedin']!= true){
-                    header("location: ../pages/index.php?pesan=belum_login");
+                    header("location: ../index.php?pesan=belum_login");
                 }
         ?>
         <div class="min-h-screen h-screen p-3 pl-0 bg-blueMain grid grid-cols-12 font-yantramanav print:p-0">
