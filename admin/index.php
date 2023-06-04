@@ -10,6 +10,7 @@
             <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
             <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700;1,800;1,900&family=Yantramanav:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
             <link rel="stylesheet" href="./assets/css/style.css"/>
+            <link rel="stylesheet" href="./assets/css/input.css"/>
         </head>
         <body>
         <?php
