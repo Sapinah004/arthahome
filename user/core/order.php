@@ -1,5 +1,5 @@
 <?php
-    include('./core/config.php');
+    include($_SERVER['DOCUMENT_ROOT'] . '/ArthaHome/user/core/config.php');
     if(isset($_POST['order'])){
         global $connect;
         $id_rumah = trim($_POST['id_rumah']);
@@ -111,7 +111,7 @@
             echo "<script type='text/javascript'>alert('$message')</script>";
         }
         else{
-            move_uploaded_file($tmp,$_SERVER['DOCUMENT_ROOT'] . '/ArthaHome/User/assets/images/bukti_pembayaran/'.date('d-m-Y').'-'.$gambar);
+            move_uploaded_file($tmp,$_SERVER['DOCUMENT_ROOT'] . '/arthahome/user/assets/images/bukti_pembayaran/'.date('d-m-Y').'-'.$gambar);
             $image = date('d-m-Y').'-'.$gambar;
             $sqlInsertPembayaran = "INSERT INTO tb_pembayaran (id_order, id_user, gambar, tanggal, status_pembayaran) VALUES ('".$id_order."', '".$_SESSION['id_user']."', '".$image."', NOW(), '0')";
             $queryBayar = mysqli_query($connect, $sqlInsertPembayaran);
@@ -138,7 +138,7 @@
         $id_pembayaran = $data['id_pembayaran'];
         $id_order = $data['id_order'];
         $gambar = $data['gambar'];
-        $deletePath = $_SERVER['DOCUMENT_ROOT']. "/ArthaHome/User/assets/images/bukti_pembayaran/".$gambar;
+        $deletePath = $_SERVER['DOCUMENT_ROOT']. "/arthahome/user/assets/images/bukti_pembayaran/".$gambar;
 
         if(unlink($deletePath)){
             $sql = "DELETE FROM tb_pembayaran WHERE id_pembayaran = '".$id_pembayaran."'";
@@ -146,7 +146,7 @@
             if($query == TRUE){
                 $message = "Bukti pembayaran berhasil dihapus";
                 echo "<script type='text/javascript'>alert('$message')</script>";
-                $url = "./../User/pages/index.php?page=order-detail&order=$id_order";
+                $url = "../index.php?page=order-detail&order=$id_order";
                 echo '<script>window.location.replace("'.$url.'");</script>';
             }else{
                 $message = "Bukti pembayaran gagal dihapus";
@@ -159,7 +159,7 @@
         $limit = 10 * 1024 * 1024;
         $ekstensi = array('png', 'jpg', 'jpeg');
         $gambar = ($_FILES["update_gambar"]["name"]);
-        $folder = $_SERVER['DOCUMENT_ROOT']. "/ArthaHome/User/assets/images/bukti_pembayaran/";
+        $folder = $_SERVER['DOCUMENT_ROOT']. "/arthahome/User/assets/images/bukti_pembayaran/";
         $id_pembayaran = trim($_POST['id_pembayaran']);
         $tmp = $_FILES["update_gambar"]["tmp_name"];
         $id_order = trim($_POST['id_order']);
@@ -181,7 +181,7 @@
             $gambarLama = $data['gambar'];
 
             unlink($folder.$gambarLama);
-            move_uploaded_file($tmp, $_SERVER['DOCUMENT_ROOT']. "/ArthaHome/User/assets/images/bukti_pembayaran/".date('d-m-Y').'-'.$gambar);
+            move_uploaded_file($tmp, $_SERVER['DOCUMENT_ROOT']. "/arthahome/user/assets/images/bukti_pembayaran/".date('d-m-Y').'-'.$gambar);
             $x = date('d-m-Y').'-'.$gambar;
             $sql = "UPDATE tb_pembayaran SET
                     gambar = '".$x."',

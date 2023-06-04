@@ -239,7 +239,7 @@
                                         }
                                         elseif($data['status_pembayaran'] == 0){
                                     ?>
-                                    <a onClick="return confirm('Anda yakin menghapus gambar <?php echo $data['gambar']?>')" href="../core/order.php?hapus_gambar=<?php echo $data['id_pembayaran']?>" class="px-5 py-1.5 bg-red-500 hover:bg-red-700 flex items-center space-x-2 ease-in-out duration-300 text-white text-sm rounded-md">
+                                    <a onClick="return confirm('Anda yakin menghapus gambar <?php echo $data['gambar']?>')" href="./core/order.php?hapus_gambar=<?php echo $data['id_pembayaran']?>" class="px-5 py-1.5 bg-red-500 hover:bg-red-700 flex items-center space-x-2 ease-in-out duration-300 text-white text-sm rounded-md">
                                         <i class="fa-regular fa-trash-can"></i>
                                         <span>Hapus</span>
                                     </a>

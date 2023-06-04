@@ -1,6 +1,7 @@
 <?php
   session_start();
-//   header("Cache-Control: no cache");
+  include('./core/function.php');
+    include('./core/config.php');
 ?>
 <nav class="nav fixed z-30 w-full bg-blueMain lg:bg-transparent py-5 font-yantramanav lg:py-20 px-5">
     <div class="padding-navbar container mx-auto  flex flex-wrap items-center justify-between">
@@ -35,19 +36,69 @@
             <?php
                 if(isset($_SESSION['loggedin']) == true){
             ?>
-            <button id="dropdownAvatarNameButton" data-dropdown-toggle="dropdownNotification" class="px-3 py-1.5 rounded-md hover:bg-primary/10 focus:bg-primary/10 ease-in-out duration-200" type="button">
+             <?php
+                $sql = "SELECT tb_user.*, tb_pesanan.*, tb_notifikasi.*, (SELECT lokasi FROM tb_rumah JOIN tb_pesanan ON tb_rumah.id_rumah = tb_pesanan.id_rumah WHERE tb_pesanan.id_order = tb_notifikasi.id_order) as lokasi FROM tb_notifikasi JOIN tb_pesanan ON tb_notifikasi.id_order = tb_pesanan.id_order JOIN tb_user ON tb_pesanan.id_user = tb_user.id_user WHERE tb_notifikasi.status = 0 AND tb_notifikasi.tipe_notifikasi NOT IN (0,1,2) AND tb_user.id_user = ".$_SESSION['id_user']." ORDER BY tb_notifikasi.tanggal DESC;";
+                $query = mysqli_query($connect, $sql);
+                $count = mysqli_num_rows($query);
+            ?>
+            <button id="dropdownAvatarNameButton" data-dropdown-toggle="dropdownNotification" class="relative px-3 py-1.5 rounded-md hover:bg-primary/10 focus:bg-primary/10 ease-in-out duration-200" type="button">
                 <i class="fa-solid fa-bell text-2xl text-primary"></i>
+                <?php
+                if($count > 0){
+            ?>
+            <span class="absolute -top-1 -right-2 w-4 h-4 text-white bg-red-600 rounded-full text-xs ">
+                <?php echo $count?>
+            </span>
+            <?php
+                }
+            ?>
             </button>
-                <div id="dropdownNotification" class="hidden divide-y-2 p-3 z-10 w-80 max-h-96 shadow-lg bg-white border rounded-md">
+                <div id="dropdownNotification" class="hidden divide-y-2 p-3 z-10 w-80 max-h-96 shadow-lg bg-gray-50 border rounded-md">
                     <div class="text-2xl tracking-wide text-primary font-bold pb-1">
                         Notifikasi
                     </div>
-                    <div class="py-2 overflow-y-scroll">
-                        abc
+                    <div class="py-2 overflow-y-scroll max-h-72">
+                    <?php 
+                if(mysqli_num_rows($query) > 0){
+                    while($data = mysqli_fetch_array($query)){
+                        if($data['tipe_notifikasi'] == 3){
+            ?>
+                <div class="text-sm p-2 hover:bg-slate-100 rounded-md ease-in-out duration-300">
+                    <a href="./core/notifikasi.php?notifikasi=<?php echo $data['id_notifikasi']?>" class="">
+                        <div>
+                           Artha Home telah menerima bukti pembayaran yang telah anda unggah untuk rumah tipe <?php echo $data['tipe']?> lokasi <?php echo $data['lokasi']?>
+                        </div>
+                        <time class="text-sm text-slate-300">
+                            <?php echo date_format(new DateTime($data['tanggal']), "d-m-Y, H:i") ?>
+                        </time>
+                    </a>
+                </div>
+            <?php
+                        }
+                        elseif($data['tipe_notifikasi']== 4){
+                            ?>
+                             <div class="text-sm p-2 hover:bg-slate-100 rounded-md ease-in-out duration-300">
+                    <a href="./core/notifikasi.php?notifikasi=<?php echo $data['id_notifikasi']?>" class="">
+                        <div>
+                           Artha Home menolak bukti pembayaran yang telah anda unggah untuk rumah tipe <?php echo $data['tipe']?> lokasi <?php echo $data['lokasi']?>. Harap cek kembali bukti pembayaran anda
+                        </div>
+                        <time class="text-sm text-slate-300">
+                            <?php echo date_format(new DateTime($data['tanggal']), "d-m-Y, H:i")?>
+                        </time>
+                    </a>
+                </div>
+                            <?php
+                        }
+                    }
+                    
+                }     else{
+                    echo "Tidak ada notifikasi";
+                }  
+            ?>
                     </div>
                     <div class="pt-3">
                         <button>
-                            <a href="./index.php?page=notifikasi" class="px-3 py-1.5 rounded-md bg-primary hover:bg-blue-900 ease-in-out duration-300 text-white">
+                            <a href="./index.php?page=notifikasi" class="px-3 py-1.5 text-sm rounded-md bg-primary hover:bg-blue-900 ease-in-out duration-300 text-white">
                                 Lihat Semua
                             </a>    
                         </button>

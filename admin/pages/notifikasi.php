@@ -4,7 +4,7 @@
 ?>
 <div class="font-yantramanav text-primary">
     <?php
-        $sql = "SELECT tb_user.username, tb_notifikasi.*, tb_pesanan.tipe, (SELECT lokasi FROM tb_rumah JOIN tb_pesanan ON tb_rumah.id_rumah = tb_pesanan.id_rumah WHERE id_order = tb_notifikasi.id_order) as lokasi FROM tb_notifikasi JOIN tb_pesanan ON tb_notifikasi.id_order = tb_pesanan.id_order JOIN tb_user ON tb_user.id_user = tb_notifikasi.id_user WHERE tb_notifikasi.status = 0 ORDER BY tb_notifikasi.tanggal  DESC";
+        $sql = "SELECT tb_user.username, tb_notifikasi.*, tb_pesanan.tipe, (SELECT lokasi FROM tb_rumah JOIN tb_pesanan ON tb_rumah.id_rumah = tb_pesanan.id_rumah WHERE id_order = tb_notifikasi.id_order) as lokasi FROM tb_notifikasi JOIN tb_pesanan ON tb_notifikasi.id_order = tb_pesanan.id_order JOIN tb_user ON tb_user.id_user = tb_notifikasi.id_user WHERE tb_notifikasi.status = 0 AND tb_notifikasi.tipe_notifikasi NOT IN (3,4) ORDER BY tb_notifikasi.tanggal DESC";
         $query = mysqli_query($connect, $sql);
         $count = mysqli_num_rows($query);
     ?>
@@ -64,7 +64,7 @@
                 </div>
             <?php
                         }
-                        else{
+                        elseif($data['tipe_notifikasi'] == 2){
             ?>
                 <div class="text-sm p-2 hover:bg-slate-100 rounded-md ease-in-out duration-300">
                     <a href="../core/notifikasi.php?notifikasi=<?php echo $data['id_notifikasi']?>" class="">
