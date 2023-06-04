@@ -220,15 +220,17 @@
                         <div>
                             <?php
                                 $jumlahPembayaran = $data['lama_bayar']+1;
+                                $id_order = $_GET['order'];
                                 $sql_countPayment = mysqli_query($connect, "SELECT  COUNT(status_pembayaran) as status_pembayaran FROM tb_pembayaran WHERE status_pembayaran = 1 AND id_order =" .$_GET['order']);
                                 $data = mysqli_fetch_array($sql_countPayment);
                                 $pembayaran = $data['status_pembayaran'];
                                 if($jumlahPembayaran == $pembayaran){
                                     $sql_updateStatusOrder = mysqli_query($connect, "UPDATE tb_pesanan SET status_pembelian = 1 WHERE id_order =" .$_GET['order']);
                                     echo "Lunas";
+                                 
                                 }else{
                                     $sql = mysqli_query($connect, "UPDATE tb_pesanan SET status_pembelian = 0 WHERE id_order =" .$_GET['order']);
-                                    echo "Dalam Pembayaran";
+                                        echo "Dalam Pembayaran";
                                 }
                             ?>
                         </div>

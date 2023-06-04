@@ -61,22 +61,29 @@
     if(isset($_POST['login'])){
         $email    = mysqli_real_escape_string($connect, $_POST['email']);
         $password = mysqli_real_escape_string($connect, $_POST['password']); 
-        $getUserData  = mysqli_query($connect, "SELECT id_user, username, email,  password FROM tb_user WHERE email = '$email'");
+        $getUserData  = mysqli_query($connect, "SELECT id_user, username, email, token,  password FROM tb_user WHERE email = '$email'");
         // $result = mysqli_query($connect, $query);
-        if(mysqli_num_rows($getUserData) == 1){
+        if(mysqli_num_rows($getUserData) == 1) {
         while ($row = mysqli_fetch_array($getUserData)) {
-            if (password_verify($password, $row['password'])) {
-                $_SESSION['id_user'] = $row['id_user'];
-                $_SESSION['loggedin'] = true;
-                $_SESSION['username'] = $row['username'];
-                $_SESSION['email'] = $row['email'];
-                header("location: ../../index.php");
-
-            }else{
-                header('Location: ./auth/login.php?pesan=gagal');
-            }    
+            if($row['token'] != 1){
+                $message = "Email anda belum diverifikasi, Silahkan cek email anda untuk verifikasi";
+                echo "<script type='text/javascript'>alert('$message')</script>";
+            }
+            elseif($row['token'] == 1){
+                if (password_verify($password, $row['password'])) {
+                    $_SESSION['id_user'] = $row['id_user'];
+                    $_SESSION['loggedin'] = true;
+                    $_SESSION['username'] = $row['username'];
+                    $_SESSION['email'] = $row['email'];
+                    header("location: ../../index.php");
+                }
+                else{
+                    header('Location: ./login.php?pesan=gagal');
+                }  
+            }
         }
-        }else{
+        }
+        else{
             $message = "Email anda belum terdaftar, silahkan registrasi terlebih dahulu";
             echo "<script type='text/javascript'>alert('$message')</script>";
         } 

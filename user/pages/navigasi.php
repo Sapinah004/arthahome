@@ -89,6 +89,20 @@
                 </div>
                             <?php
                         }
+                        elseif($data['tipe_notifikasi'] == 6){
+                            ?>
+                             <div class="text-sm p-2 hover:bg-slate-100 rounded-md ease-in-out duration-300">
+                    <a href="./core/notifikasi.php?notifikasi=<?php echo $data['id_notifikasi']?>" class="">
+                        <div>
+                           Rumah yang anda beli telah lunas
+                        </div>
+                        <time class="text-sm text-slate-300">
+                            <?php echo date_format(new DateTime($data['tanggal']), "d-m-Y, H:i")?>
+                        </time>
+                    </a>
+                </div>
+                            <?php
+                        }
                     }
                     
                 }     else{
