@@ -222,7 +222,6 @@
         $harga_dp = mysqli_real_escape_string($connect, $_POST['harga_dp']);
         $harga_bulanan = mysqli_real_escape_string($connect, $_POST['harga_bulanan']);
         $lama_bayar = mysqli_real_escape_string($connect, $_POST['lama_bayar']);
-        // $bunga = mysqli_real_escape_string($connect, $_POST['bunga']);
         $sql_getPrice = mysqli_query($connect, "SELECT * FROM tb_harga_rumah WHERE id_rumahdetail =" .$_GET['id']);
         $data = mysqli_fetch_assoc($sql_getPrice);
         $id_rumah = $data['id_rumah'];

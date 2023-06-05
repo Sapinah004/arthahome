@@ -1,5 +1,5 @@
 <?php
-    include('../../core/config.php');
+    include($_SERVER['DOCUMENT_ROOT'] . '/ArthaHome/user/core/config.php');
     session_start();
     global $connect;
     if(isset($_POST['registrasi'])){

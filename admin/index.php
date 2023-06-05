@@ -1,3 +1,17 @@
+<?php
+            // header("Cache-Control: no cache");
+            //  session_start();
+            // include("./core/login.php");
+            // if(isset($_GET['pesan'])){
+            //     if($_GET['pesan'] == "gagal"){
+            //         $message = "Username atau password salah";
+            //         echo "<script type='text/javascript'>alert('$message')</script>";
+            //     }else if($_GET['pesan'] == "belum_login"){
+            //         $message = "Anda harus login terlebih dahulu";
+            //         echo "<script type='text/javascript'>alert('$message')</script>";
+            //     }
+            // }
+        ?>
 <!DOCTYPE html>
     <html lang="en">
         <head>

@@ -1,6 +1,7 @@
 <?php
     include("../core/config.php");
 
+    
     function getHari($date){
         setlocale(LC_ALL, 'id-ID');
         return strftime("%A", strtotime($date));
