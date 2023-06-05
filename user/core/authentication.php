@@ -62,7 +62,6 @@
         $email    = mysqli_real_escape_string($connect, $_POST['email']);
         $password = mysqli_real_escape_string($connect, $_POST['password']); 
         $getUserData  = mysqli_query($connect, "SELECT id_user, username, email, token,  password FROM tb_user WHERE email = '$email'");
-        // $result = mysqli_query($connect, $query);
         if(mysqli_num_rows($getUserData) == 1) {
         while ($row = mysqli_fetch_array($getUserData)) {
             if($row['token'] != 1){
@@ -88,20 +87,16 @@
             echo "<script type='text/javascript'>alert('$message')</script>";
         } 
     }
-
     use PHPMailer\PHPMailer\PHPMailer;
     use PHPMailer\PHPMailer\SMTP;
     use PHPMailer\PHPMailer\Exception;
     function kirim_email($email_penerima, $nama_penerima, $judul_email, $isi_email){
         $email_pengirim = "sapinahsapinah149@gmail.com";
         $nama_pengirim = "Artha Home";
-
-        //Load Composer's autoloader
         require '../../vendor/autoload.php';
 
         //Create an instance; passing `true` enables exceptions
         $mail = new PHPMailer(true);
-
         try {
             //Server settings
             $mail->SMTPDebug = 0;                      //Enable verbose debug output
@@ -112,12 +107,9 @@
             $mail->Password   = 'qmvipngewzkypjtt';                               //SMTP password
             $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;            //Enable implicit TLS encryption
             $mail->Port       = 465;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
-
             //Recipients
             $mail->setFrom( $email_pengirim , $nama_pengirim);
             $mail->addAddress($email_penerima, $nama_penerima);     //Add a recipient
-
-        
             //Content
             $mail->isHTML(true);                                  //Set email format to HTML
             $mail->Subject = $judul_email;
@@ -131,4 +123,4 @@
             echo "<script type='text/javascript'>alert('$message')</script>";
         }
     }
-    ?>
+?>

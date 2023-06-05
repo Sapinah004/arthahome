@@ -14,10 +14,9 @@
         <div class="swiper mySwiper2" >
             <div class="swiper-wrapper">
                 <?php
-                    $sql = "SELECT * FROM tb_gambar_rumah WHERE id_rumah = '".$_GET['id']."'";
-                    $query = mysqli_query($connect, $sql);
-                    if(mysqli_num_rows($query) > 0){
-                        while($data = mysqli_fetch_array($query)){
+                    $sql = mysqli_query($connect, "SELECT * FROM tb_gambar_rumah WHERE id_rumah = '".$_GET['id']."'");
+                    if(mysqli_num_rows($sql) > 0){
+                        while($data = mysqli_fetch_array($sql)){
                 ?>
                     <div class="swiper-slide">
                         <img class="h-72 mx-auto w-full !object-contain object-center" src=" ./../Admin/core/product/images/<?php echo $data['gambar']?>" />
@@ -35,10 +34,9 @@
         <div thumbsSlider="" class="swiper mySwiper">
             <div class="swiper-wrapper">
                 <?php
-                    $sql = "SELECT * FROM tb_gambar_rumah WHERE id_rumah =" .$_GET['id'];
-                    $query = mysqli_query($connect, $sql);
-                    if(mysqli_num_rows($query) > 0){
-                        while($data = mysqli_fetch_array($query)){
+                    $sql = mysqli_query($connect, "SELECT * FROM tb_gambar_rumah WHERE id_rumah =" .$_GET['id']);
+                    if(mysqli_num_rows($sql) > 0){
+                        while($data = mysqli_fetch_array($sql)){
                 ?>
                     <div class="swiper-slide">
                         <img class="!h-36 object-cover object-center" src=" ./../Admin/core/product/images/<?php echo $data['gambar']?>" />
@@ -51,10 +49,9 @@
         </div>
     </div>
     <?php
-        $sql = "SELECT tb_rumah.*, MIN(tb_harga_rumah.harga) as harga, tb_harga_rumah.harga_pemesanan FROM tb_rumah JOIN tb_harga_rumah ON tb_rumah.id_rumah = tb_harga_rumah.id_rumah WHERE tb_rumah.id_rumah =" .$_GET['id']." GROUP BY tb_rumah.tipe;";
-        $query = mysqli_query($connect, $sql);
-        if(mysqli_num_rows($query) > 0){
-            $data = mysqli_fetch_array($query);
+        $sql = mysqli_query($connect, "SELECT tb_rumah.*, MIN(tb_harga_rumah.harga) as harga, tb_harga_rumah.harga_pemesanan FROM tb_rumah JOIN tb_harga_rumah ON tb_rumah.id_rumah = tb_harga_rumah.id_rumah WHERE tb_rumah.id_rumah =" .$_GET['id']." GROUP BY tb_rumah.tipe;");
+        if(mysqli_num_rows($sql) > 0){
+            $data = mysqli_fetch_array($sql);
             $id = $data['id_rumah'];
         }
     ?>
@@ -84,10 +81,9 @@
                         <form method="post">
                             <input type="hidden" name="id_rumah" value="<?php echo $id?>">
                             <?php
-                                $sql = "SELECT * FROM tb_wishlist WHERE id_rumah = $id AND id_user =".$_SESSION['id_user'];
-                                $query = mysqli_query($connect, $sql);
-                                if(mysqli_num_rows($query) == 1){
-                                    $data = mysqli_fetch_array($query);
+                                $sql = mysqli_query($connect, "SELECT * FROM tb_wishlist WHERE id_rumah = $id AND id_user =".$_SESSION['id_user']);
+                                if(mysqli_num_rows($sql) == 1){
+                                    $data = mysqli_fetch_array($sql);
                             ?>
                             <a title="favorit" href="./core/wishlist.php?delete_wishlist=<?php echo $id?>"><i class="fa-solid fa-star text-xl"></i></a>
                             <?php
@@ -108,9 +104,8 @@
                 </h2>
                 <div class="font-medium">
                     <?php
-                        $sql = "SELECT tb_rumah.*, MIN(tb_harga_rumah.harga) as harga FROM tb_rumah JOIN tb_harga_rumah ON tb_rumah.id_rumah = tb_harga_rumah.id_rumah WHERE tb_rumah.id_rumah =" .$_GET['id']." GROUP BY tb_rumah.tipe;";
-                        $query = mysqli_query($connect, $sql);
-                        $data = mysqli_fetch_array($query);
+                        $sql = mysqli_query($connect, "SELECT tb_rumah.*, MIN(tb_harga_rumah.harga) as harga FROM tb_rumah JOIN tb_harga_rumah ON tb_rumah.id_rumah = tb_harga_rumah.id_rumah WHERE tb_rumah.id_rumah =" .$_GET['id']." GROUP BY tb_rumah.tipe");
+                        $data = mysqli_fetch_array($sql);
                     ?>
                     <div class="flex justify-between mb-2">
                         <span>Type Rumah</span>
@@ -175,10 +170,9 @@
                 </h3>
                 <div class="grid grid-cols-3 gap-5">
                     <?php
-                        $sql ="SELECT * FROM tb_harga_rumah  WHERE id_rumah = " .$_GET['id']. " AND harga_dp != 0 ORDER BY harga ASC";
-                        $query = mysqli_query($connect, $sql);
-                        if(mysqli_num_rows($query) > 0){
-                            while($data = mysqli_fetch_array($query)){
+                        $sql = mysqli_query($connect, "SELECT * FROM tb_harga_rumah  WHERE id_rumah = " .$_GET['id']. " AND harga_dp != 0 ORDER BY harga ASC");
+                        if(mysqli_num_rows($sql) > 0){
+                            while($data = mysqli_fetch_array($sql)){
                     ?>
                     <div class=" bg-white border hover:shadow-lg rounded-md shadow-black/10 p-3">
                         <div class="w-full">

@@ -6,10 +6,9 @@
     <p class="mt-3 font-semibold text-lg text-slate-500 mb-5">List forum yang anda buat</p>
     <div class="">
         <?php
-            $sql = "SELECT f.id_forum, f.judul, v.total_view, f.topik, f.tanggal , u.username, COUNT(k.komentar) AS komentar, v.total_view FROM tb_forum AS f LEFT JOIN tb_komentar AS k ON f.id_forum = k.id_forum JOIN tb_user u ON u.id_user = f.id_user LEFT JOIN tb_view_forum v ON v.id_forum = f.id_forum WHERE f.id_user = ".$_SESSION['id_user']." GROUP BY f.id_forum ORDER by f.tanggal DESC";
-            $query = mysqli_query($connect, $sql);
-            if(mysqli_num_rows($query) > 0){
-                while($data = mysqli_fetch_array($query)){
+            $sql = mysqli_query($connect, "SELECT f.id_forum, f.judul, v.total_view, f.topik, f.tanggal , u.username, COUNT(k.komentar) AS komentar, v.total_view FROM tb_forum AS f LEFT JOIN tb_komentar AS k ON f.id_forum = k.id_forum JOIN tb_user u ON u.id_user = f.id_user LEFT JOIN tb_view_forum v ON v.id_forum = f.id_forum WHERE f.id_user = ".$_SESSION['id_user']." GROUP BY f.id_forum ORDER by f.tanggal DESC");
+            if(mysqli_num_rows($sql) > 0){
+                while($data = mysqli_fetch_array($sql)){
         ?>
         <div class="px-4 md:px-7 py-5 md:py-10 bg-gray-100 rounded-2xl shadow-lg mb-8">
                 <div class="md:flex md:space-x-5 justify-between">

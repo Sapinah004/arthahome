@@ -17,34 +17,32 @@
     </head>
     <body>
     <?php
-    include('./config.php');
-    if(!isset($_GET['email']) or !isset($_GET['kode'])){
-        $message = "Data yang diperlukan tidak tersedia";
-        echo "<script type='text/javascript'>alert('$message')</script>";
-    }
-    else{
-        $email = $_GET['email'];
-        $kode = $_GET['kode'];
-        $sql = mysqli_query($connect, "select * from tb_user where email = '$email'");
-        $data = mysqli_fetch_array($sql);
-        if($data["token"] == $kode){
-            $sql_update = mysqli_query($connect, "Update tb_user set token = '1' where email = '$email'");
-            // echo "akun telah aktif silahkan login disini";
-            ?>
-            <div class="bg-[url('../../assets/images/bg-verification.webp')] bg-cover bg-center h-screen relative">
-                <div class="absolute top-0 left-0 w-full h-full bg-white/50 backdrop-blur">
-                    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[30rem] bg-blue-700 max-w-2xl mx-auto px-5 py-10 text-white rounded-xl text-center font-yantramanav">
-                        <!-- Akun Artha Home anda telah aktif, silahkan melakukan login <a class="font-bold hover:underline" href="../pages/auth/login.php"> disini</a> -->
-                        <div>
-                            Pelanggan <span class="capitalize font-bold"><?php echo $data['username']?></span>, akun Artha Home anda telah aktif. <br>
-                            Silahkan melakukan login <a class="font-bold hover:underline" href="../pages/auth/login.php"> disini</a>
+        include('./config.php');
+        if(!isset($_GET['email']) or !isset($_GET['kode'])){
+            $message = "Data yang diperlukan tidak tersedia";
+            echo "<script type='text/javascript'>alert('$message')</script>";
+        }
+        else{
+            $email = $_GET['email'];
+            $kode = $_GET['kode'];
+            $sql = mysqli_query($connect, "select * from tb_user where email = '$email'");
+            $data = mysqli_fetch_array($sql);
+            if($data["token"] == $kode){
+                $sql_update = mysqli_query($connect, "Update tb_user set token = '1' where email = '$email'");
+                ?>
+                    <div class="bg-[url('../../assets/images/bg-verification.webp')] bg-cover bg-center h-screen relative">
+                        <div class="absolute top-0 left-0 w-full h-full bg-white/50 backdrop-blur">
+                            <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[30rem] bg-blue-700 max-w-2xl mx-auto px-5 py-10 text-white rounded-xl text-center font-yantramanav">
+                                <div>
+                                    Pelanggan <span class="capitalize font-bold"><?php echo $data['username']?></span>, akun Artha Home anda telah aktif. <br>
+                                    Silahkan melakukan login <a class="font-bold hover:underline" href="../pages/auth/login.php"> disini</a>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                </div>
-            </div>
-            <?php
+                <?php
+            }
         }
-    }
-?>
+    ?>
     </body>
 </html>

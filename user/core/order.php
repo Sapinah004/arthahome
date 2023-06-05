@@ -62,20 +62,17 @@
             $kk_image = date('d-m-Y').'-'.$gambar_kk;
             move_uploaded_file($tmp_npwp,'./assets/images/surat-npwp/'.date('d-m-Y').'-'.$gambar_npwp);
             $npwp_image = date('d-m-Y').'-'.$gambar_npwp;
-            $sql = "INSERT INTO tb_pesanan (id_rumah, id_user, id_rumahdetail, tanggal, email, telephone, tipe, no_rumah, status_pembelian, gambar_ktp, gambar_kk, gambar_npwp, no_ktp)
+            $sql_order = mysqli_query($connect, "INSERT INTO tb_pesanan (id_rumah, id_user, id_rumahdetail, tanggal, email, telephone, tipe, no_rumah, status_pembelian, gambar_ktp, gambar_kk, gambar_npwp, no_ktp)
             VALUES ('".$id_rumah."', '".$_SESSION['id_user']."', '".$id_rumahdetail."', NOW(), '".$email."', '".$telephone."', '".$tipe."',
-            '".$no_rumah."', '0','".$ktp_image."','".$kk_image."','".$npwp_image."','".$no_ktp."')";
-    $query = mysqli_query($connect, $sql);
-    if($query == true){
+            '".$no_rumah."', '0','".$ktp_image."','".$kk_image."','".$npwp_image."','".$no_ktp."')");
+    if($sql_order == true){
         $last_id = $connect->insert_id;
-        $sql = "INSERT INTO tb_notifikasi (id_order, tipe_notifikasi, id_user, status, tanggal)
-        VALUES ('".$last_id."', '0','".$_SESSION['id_user']."','0', NOW())";
-        $queryNotifikasi = mysqli_query($connect, $sql);
+        $sql_notification = mysqli_query($connect, "INSERT INTO tb_notifikasi (id_order, tipe_notifikasi, id_user, status, tanggal)
+        VALUES ('".$last_id."', '0','".$_SESSION['id_user']."','0', NOW())");
     }   
-    if($queryNotifikasi == true){
-        $sql = "DELETE FROM tb_norumah WHERE no_rumah ='".$no_rumah."' AND id_rumah = '".$id_rumah."'";
-        $querydelete = mysqli_query($connect, $sql);
-        if($querydelete == true){
+    if($sql_notification == true){
+        $sql_delete = mysqli_query($connect, "DELETE FROM tb_norumah WHERE no_rumah ='".$no_rumah."' AND id_rumah = '".$id_rumah."'");
+        if($sql_delete == true){
             $url = "./pages/thankyou.php";
             echo '<script> window.location.replace("'. $url .'");</script>';
         }else{
@@ -87,10 +84,7 @@
         $message = "Harap periksa kembali form anda dan coba lagi";
         echo "<script type='text/javascript'>alert('$message')</script>";
     }
-         
-         
         }
-        
     }
     if(isset($_POST['upload'])){
         global $connect;
@@ -101,7 +95,6 @@
         $size = ($_FILES["gambar"]["size"]);
         $fileType = pathinfo($gambar, PATHINFO_EXTENSION);
         $tmp = $_FILES["gambar"]["tmp_name"];
-
         if($size > $limit){
             $message = "Ukuran gambar terlalu besar, maksimal 10 MB";
             echo "<script type='text/javascript'>alert('$message')</script>";
@@ -113,13 +106,11 @@
         else{
             move_uploaded_file($tmp,$_SERVER['DOCUMENT_ROOT'] . '/arthahome/user/assets/images/bukti_pembayaran/'.date('d-m-Y').'-'.$gambar);
             $image = date('d-m-Y').'-'.$gambar;
-            $sqlInsertPembayaran = "INSERT INTO tb_pembayaran (id_order, id_user, gambar, tanggal, status_pembayaran) VALUES ('".$id_order."', '".$_SESSION['id_user']."', '".$image."', NOW(), '0')";
-            $queryBayar = mysqli_query($connect, $sqlInsertPembayaran);
-            if($queryBayar == TRUE){
-                $sqlNotifikasi = "INSERT INTO tb_notifikasi (id_order, tipe_notifikasi, id_user, status, tanggal) VALUES 
-                        ('".$id_order."','1', '".$_SESSION['id_user']."', '0', NOW())";
-                $query = mysqli_query($connect, $sqlNotifikasi);
-                if($query == TRUE){
+            $sqlInsertPembayaran = mysqli_query($connect, "INSERT INTO tb_pembayaran (id_order, id_user, gambar, tanggal, status_pembayaran) VALUES ('".$id_order."', '".$_SESSION['id_user']."', '".$image."', NOW(), '0')");
+            if($sqlInsertPembayaran == TRUE){
+                $sqlNotifikasi = mysqli_query($connect, "INSERT INTO tb_notifikasi (id_order, tipe_notifikasi, id_user, status, tanggal) VALUES 
+                ('".$id_order."','1', '".$_SESSION['id_user']."', '0', NOW())");
+                if($sqlNotifikasi == TRUE){
                     $message = "Bukti pembayaran berhasil diupload";
                     echo "<script type='text/javascript'>alert('$message')</script>";
                 }else{
@@ -127,7 +118,6 @@
                     echo "<script type='text/javascript'>alert('$message')</script>";
                 }
             }
-            
         }
     }
     if(isset($_GET['hapus_gambar'])){
@@ -141,9 +131,8 @@
         $deletePath = $_SERVER['DOCUMENT_ROOT']. "/arthahome/user/assets/images/bukti_pembayaran/".$gambar;
 
         if(unlink($deletePath)){
-            $sql = "DELETE FROM tb_pembayaran WHERE id_pembayaran = '".$id_pembayaran."'";
-            $query = mysqli_query($connect, $sql);
-            if($query == TRUE){
+            $sql = mysqli_query($connect, "DELETE FROM tb_pembayaran WHERE id_pembayaran = '".$id_pembayaran."'");
+            if($sql == TRUE){
                 $message = "Bukti pembayaran berhasil dihapus";
                 echo "<script type='text/javascript'>alert('$message')</script>";
                 $url = "../index.php?page=order-detail&order=$id_order";
@@ -165,7 +154,6 @@
         $id_order = trim($_POST['id_order']);
         $fileType = pathinfo($gambar, PATHINFO_EXTENSION);
         $size = $_FILES['update_gambar']['size'];
-
         if($size > $limit){
             $message = "Size gambar terlalu besar, maksimal gambar 10 MB";
             echo "<script type='text/javascript'>alert('$message')</script>";
@@ -175,25 +163,21 @@
             echo "<script type='text/javascript'>alert('$message')</script>";
         }
         else{
-            $sql = "SELECT * FROM tb_pembayaran WHERE id_pembayaran = $id_pembayaran";
-            $query = mysqli_query($connect, $sql);
-            $data = mysqli_fetch_array($query);
+            $sql = mysqli_query($connect, "SELECT * FROM tb_pembayaran WHERE id_pembayaran = $id_pembayaran");
+            $data = mysqli_fetch_array($sql);
             $gambarLama = $data['gambar'];
-
             unlink($folder.$gambarLama);
             move_uploaded_file($tmp, $_SERVER['DOCUMENT_ROOT']. "/arthahome/user/assets/images/bukti_pembayaran/".date('d-m-Y').'-'.$gambar);
             $x = date('d-m-Y').'-'.$gambar;
-            $sql = "UPDATE tb_pembayaran SET
-                    gambar = '".$x."',
-                    tanggal = NOW(),
-                    status_pembayaran = 0,
-                    catatan = '' WHERE id_pembayaran = '".$id_pembayaran."'";
-            $query = mysqli_query($connect, $sql);
-            if($query == TRUE){
-                $sql = "INSERT INTO tb_notifikasi (id_order, tipe_notifikasi, id_user, status, tanggal) VALUES 
-                        ('".$id_order."','2', '".$_SESSION['id_user']."', '0', NOW())";
-                $query = mysqli_query($connect, $sql);
-                if($query == TRUE){
+            $sql_update = mysqli_query($connect, "UPDATE tb_pembayaran SET
+                            gambar = '".$x."',
+                            tanggal = NOW(),
+                            status_pembayaran = 0,
+                            catatan = '' WHERE id_pembayaran = '".$id_pembayaran."'");
+            if($sql_update == TRUE){
+                $sql_notif = mysqli_query($connect, "INSERT INTO tb_notifikasi (id_order, tipe_notifikasi, id_user, status, tanggal) VALUES 
+                ('".$id_order."','2', '".$_SESSION['id_user']."', '0', NOW())");
+                if($sql_notif == TRUE){
                     $message = "Bukti pembayaran berhasil diubah";
                     echo "<script type='text/javascript'>alert('$message')</script>";
                 }else{
@@ -201,8 +185,6 @@
                     echo "<script type='text/javascript'>alert('$message')</script>";
                 }
             }
-            
         }
-
     }
 ?>

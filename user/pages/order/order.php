@@ -22,17 +22,12 @@
         <div id="tabContentExample">
             <div class="hidden " id="all-orders" role="tabpanel" aria-labelledby="all-tab">
                 <?php
-                    $sql ="SELECT * FROM tb_pesanan WHERE id_user = '".$_SESSION['id_user']."'";
-                    $query = mysqli_query($connect, $sql);
-                    if($query == TRUE){
-                        $data = mysqli_fetch_array($query);
-                        // SELECT tb_pesanan.*, MIN(tb_gambar_rumah.gambar) as gambar, tb_rumah.*, tb_harga_rumah.* FROM tb_pesanan JOIN tb_rumah ON tb_pesanan.id_rumah = tb_rumah.id_rumah LEFT JOIN tb_gambar_rumah ON tb_gambar_rumah.id_rumah = tb_rumah.id_rumah JOIN tb_harga_rumah ON tb_pesanan.id_rumahdetail = tb_harga_rumah.id_rumahdetail WHERE id_user = 27;
-                        // SELECT tb_pesanan.*, tb_gambar_rumah.gambar as gambar, tb_rumah.*, tb_harga_rumah.* FROM tb_pesanan JOIN tb_rumah ON tb_pesanan.id_rumah = tb_rumah.id_rumah LEFT JOIN tb_gambar_rumah ON tb_gambar_rumah.id_rumah = (SELECT id_gambar_rumah from tb_gambar_rumah WHERE tb_gambar_rumah.id_rumah = tb_rumah.id_rumah LIMIT 1) JOIN tb_harga_rumah ON tb_pesanan.id_rumahdetail = tb_harga_rumah.id_rumahdetail WHERE id_user;
-                        // SELECT tb_gambar_rumah.gambar as gambar FROM `tb_gambar_rumah` JOIN tb_pesanan ON tb_gambar_rumah.id_rumah = tb_pesanan.id_rumah GROUP BY tb_gambar_rumah.id_rumah;
-                        $sql = "SELECT tb_pesanan.*, tb_gambar_rumah.gambar as gambar, tb_rumah.*, tb_harga_rumah.* FROM tb_pesanan JOIN tb_rumah ON tb_pesanan.id_rumah = tb_rumah.id_rumah LEFT JOIN tb_gambar_rumah ON tb_gambar_rumah.id_rumah = tb_rumah.id_rumah JOIN tb_harga_rumah ON tb_pesanan.id_rumahdetail = tb_harga_rumah.id_rumahdetail WHERE id_user  = '".$_SESSION['id_user']."' GROUP BY tb_pesanan.id_order;";
-                        $query = mysqli_query($connect, $sql);
-                        if(mysqli_num_rows($query) > 0){
-                            while($data = mysqli_fetch_array($query)){
+                    $sql = mysqli_query($connect, "SELECT * FROM tb_pesanan WHERE id_user = '".$_SESSION['id_user']."'");
+                    if($sql == TRUE){
+                        $data = mysqli_fetch_array($sql);
+                        $sql_pesanan = mysqli_query($connect, "SELECT tb_pesanan.*, tb_gambar_rumah.gambar as gambar, tb_rumah.*, tb_harga_rumah.* FROM tb_pesanan JOIN tb_rumah ON tb_pesanan.id_rumah = tb_rumah.id_rumah LEFT JOIN tb_gambar_rumah ON tb_gambar_rumah.id_rumah = tb_rumah.id_rumah JOIN tb_harga_rumah ON tb_pesanan.id_rumahdetail = tb_harga_rumah.id_rumahdetail WHERE id_user  = '".$_SESSION['id_user']."' GROUP BY tb_pesanan.id_order");
+                        if(mysqli_num_rows($sql_pesanan) > 0){
+                            while($data = mysqli_fetch_array($sql_pesanan)){
                 ?>
                 <div class="grid grid-cols-12 lg:space-x-5 mb-10 items-center bg-gray-100 rounded-2xl p-7 shadow-lg">
                     <div class="col-span-12 lg:col-span-4">
@@ -96,15 +91,12 @@
             </div>
             <div class="hidden" id="tahap-pembayaran" role="tabpanel" aria-labelledby="tahap-pembayaran-tab">
                 <?php
-                    $sql ="SELECT * FROM tb_pesanan WHERE id_user = '".$_SESSION['id_user']."' AND status_pembelian = 0";
-                    $query = mysqli_query($connect, $sql);
-                    if(mysqli_num_rows($query) > 0){
-                        $data = mysqli_fetch_array($query);
-                        // SELECT tb_pesanan.*, tb_gambar_rumah.gambar as gambar, tb_rumah.*, tb_harga_rumah.* FROM tb_pesanan JOIN tb_rumah ON tb_pesanan.id_rumah = tb_rumah.id_rumah LEFT JOIN tb_gambar_rumah ON tb_gambar_rumah.id_rumah = tb_rumah.id_rumah JOIN tb_harga_rumah ON tb_pesanan.id_rumahdetail = tb_harga_rumah.id_rumahdetail WHERE id_user  = '".$_SESSION['id_user']."' GROUP BY tb_pesanan.id_order;
-                        $sql = "SELECT tb_pesanan.*, tb_gambar_rumah.gambar as gambar, tb_rumah.*, tb_harga_rumah.* FROM tb_pesanan JOIN tb_rumah ON tb_pesanan.id_rumah = tb_rumah.id_rumah LEFT JOIN tb_gambar_rumah ON tb_gambar_rumah.id_rumah = tb_rumah.id_rumah JOIN tb_harga_rumah ON tb_pesanan.id_rumahdetail = tb_harga_rumah.id_rumahdetail WHERE id_user  = '".$_SESSION['id_user']."' AND tb_pesanan.status_pembelian = 0 GROUP BY tb_pesanan.id_order";
-                        $query = mysqli_query($connect, $sql);
-                        if(mysqli_num_rows($query) > 0){
-                            while($data = mysqli_fetch_array($query)){
+                    $sql = mysqli_query($connect, "SELECT * FROM tb_pesanan WHERE id_user = '".$_SESSION['id_user']."' AND status_pembelian = 0");
+                    if(mysqli_num_rows($sql) > 0){
+                        $data = mysqli_fetch_array($sql);
+                        $sql_pesanan = mysqli_query($connect, "SELECT tb_pesanan.*, tb_gambar_rumah.gambar as gambar, tb_rumah.*, tb_harga_rumah.* FROM tb_pesanan JOIN tb_rumah ON tb_pesanan.id_rumah = tb_rumah.id_rumah LEFT JOIN tb_gambar_rumah ON tb_gambar_rumah.id_rumah = tb_rumah.id_rumah JOIN tb_harga_rumah ON tb_pesanan.id_rumahdetail = tb_harga_rumah.id_rumahdetail WHERE id_user  = '".$_SESSION['id_user']."' AND tb_pesanan.status_pembelian = 0 GROUP BY tb_pesanan.id_order");
+                        if(mysqli_num_rows($sql_pesanan) > 0){
+                            while($data = mysqli_fetch_array($sql_pesanan)){
                 ?>
                 <div class="grid grid-cols-12 lg:space-x-5 mb-10 items-center bg-gray-100 p-7 rounded-2xl shadow-lg">
                     <div class="col-span-12 lg:col-span-4">
@@ -171,14 +163,12 @@
             </div>
             <div class="hidden" id="lunas" role="tabpanel" aria-labelledby="lunas-tab">
                 <?php
-                    $sql ="SELECT * FROM tb_pesanan WHERE id_user = '".$_SESSION['id_user']."' and status_pembelian = 1";
-                    $query = mysqli_query($connect, $sql);
-                    if(mysqli_num_rows($query) > 0){
-                        $data = mysqli_fetch_array($query);
-                        $sql = "SELECT tb_pesanan.*, tb_gambar_rumah.gambar as gambar, tb_rumah.*, tb_harga_rumah.* FROM tb_pesanan JOIN tb_rumah ON tb_pesanan.id_rumah = tb_rumah.id_rumah LEFT JOIN tb_gambar_rumah ON tb_gambar_rumah.id_rumah = tb_rumah.id_rumah JOIN tb_harga_rumah ON tb_pesanan.id_rumahdetail = tb_harga_rumah.id_rumahdetail WHERE id_user  = '".$_SESSION['id_user']."' AND tb_pesanan.status_pembelian = 1 GROUP BY tb_pesanan.id_order ORDER BY tb_pesanan.tanggal DESC";
-                        $query = mysqli_query($connect, $sql);
-                        if(mysqli_num_rows($query) > 0){
-                            while($data = mysqli_fetch_array($query)){
+                    $sql = mysqli_query($connect, "SELECT * FROM tb_pesanan WHERE id_user = '".$_SESSION['id_user']."' and status_pembelian = 1");
+                    if(mysqli_num_rows($sql) > 0){
+                        $data = mysqli_fetch_array($sql);
+                        $sql_pesanan = mysqli_query($connect,"SELECT tb_pesanan.*, tb_gambar_rumah.gambar as gambar, tb_rumah.*, tb_harga_rumah.* FROM tb_pesanan JOIN tb_rumah ON tb_pesanan.id_rumah = tb_rumah.id_rumah LEFT JOIN tb_gambar_rumah ON tb_gambar_rumah.id_rumah = tb_rumah.id_rumah JOIN tb_harga_rumah ON tb_pesanan.id_rumahdetail = tb_harga_rumah.id_rumahdetail WHERE id_user  = '".$_SESSION['id_user']."' AND tb_pesanan.status_pembelian = 1 GROUP BY tb_pesanan.id_order ORDER BY tb_pesanan.tanggal DESC");
+                        if(mysqli_num_rows($sql_pesanan) > 0){
+                            while($data = mysqli_fetch_array($sql_pesanan)){
                 ?>
                 <div class="grid grid-cols-12 lg:space-x-5 mb-10 items-center bg-gray-100 p-7 rounded-2xl shadow-lg">
                     <div class="col-span-12 lg:col-span-4">

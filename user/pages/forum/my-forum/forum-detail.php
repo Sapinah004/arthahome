@@ -3,9 +3,8 @@
 ?>
 <div class="pt-32 lg:pt-52 pb-24 px-5 container mx-auto font-yantramanav max-w-6xl">
     <?php
-        $sql ="SELECT f.id_forum, f.judul, f.topik, f.tanggal, v.total_view, f.update_at, u.username, COUNT(k.komentar) AS komentar FROM tb_forum AS f LEFT JOIN tb_komentar AS k ON f.id_forum = k.id_forum JOIN tb_user u ON u.id_user = f.id_user LEFT JOIN tb_view_forum AS v ON v.id_forum = f.id_forum WHERE  f.id_forum = " .$_GET['id'];
-        $query = mysqli_query($connect, $sql);
-        $data = mysqli_fetch_array($query);
+        $sql = mysqli_query($connect, "SELECT f.id_forum, f.judul, f.topik, f.tanggal, v.total_view, f.update_at, u.username, COUNT(k.komentar) AS komentar FROM tb_forum AS f LEFT JOIN tb_komentar AS k ON f.id_forum = k.id_forum JOIN tb_user u ON u.id_user = f.id_user LEFT JOIN tb_view_forum AS v ON v.id_forum = f.id_forum WHERE  f.id_forum = " .$_GET['id']);
+        $data = mysqli_fetch_array($sql);
     ?>
     <div class="flex space-x-3 text-lg mb-8 md:mb-12">
         <span class="text-primary font-semibold hover:underline">
@@ -69,10 +68,9 @@
         </div>
         <div>
             <?php
-                $sql = "SELECT tb_komentar.id_komentar, tb_komentar.id_forum, tb_komentar.tanggal, tb_komentar.komentar, tb_komentar.id_user, tb_user.username FROM tb_komentar JOIN tb_user ON tb_komentar.id_user = tb_user.id_user WHERE id_forum =" .$_GET['id']. " ORDER BY tanggal DESC";
-                $query = mysqli_query($connect, $sql);
-                if(mysqli_num_rows($query) > 0){
-                    while($data = mysqli_fetch_array($query)){
+                $sql = mysqli_query($connect, "SELECT tb_komentar.id_komentar, tb_komentar.id_forum, tb_komentar.tanggal, tb_komentar.komentar, tb_komentar.id_user, tb_user.username FROM tb_komentar JOIN tb_user ON tb_komentar.id_user = tb_user.id_user WHERE id_forum =" .$_GET['id']. " ORDER BY tanggal DESC");
+                if(mysqli_num_rows($sql) > 0){
+                    while($data = mysqli_fetch_array($sql)){
             ?>
             <div class="mt-6 p-3 bg-gray-100 rounded-md mb-3 shadow">
                 <div class="flex space-x-6 items-center mb-3">

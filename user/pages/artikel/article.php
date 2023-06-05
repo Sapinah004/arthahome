@@ -6,10 +6,9 @@
     <p class="mt-3 text-center text-xl font-semibold">Kumpulan artikel, berita, tips & trick khusus untuk anda</p>
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 gap-y-12 mt-16">
         <?php
-            $sql = "SELECT * FROM tb_artikel GROUP BY tanggal DESC";
-            $query = mysqli_query($connect, $sql);
-            if(mysqli_num_rows($query) > 0){
-                while($data = mysqli_fetch_array($query)){
+            $sql = mysqli_query($connect, "SELECT * FROM tb_artikel GROUP BY tanggal DESC");
+            if(mysqli_num_rows($sql) > 0){
+                while($data = mysqli_fetch_array($sql)){
         ?>
         <div>
             <div class="relative">

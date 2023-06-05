@@ -11,10 +11,9 @@
     <h1 class="text-3xl md:text-5xl font-playfair text-primary font-bold">Properti Favorit</h1>
     <p class="font-raleway md:text-lg text-slate-500 mt-3 md:mt-6 font-semibold">Daftar rumah yang telah anda tandai favorit sebelumnya</p>
     <?php
-        $sql = "select tb_wishlist.*, tb_rumah.*, tb_gambar_rumah.gambar, MIN(tb_harga_rumah.harga) as harga FROM tb_wishlist LEFT JOIN tb_rumah ON tb_wishlist.id_rumah = tb_rumah.id_rumah LEFT JOIN tb_gambar_rumah ON tb_rumah.id_rumah = tb_gambar_rumah.id_rumah LEFT JOIN tb_harga_rumah ON tb_harga_rumah.id_rumah = tb_rumah.id_rumah WHERE tb_wishlist.id_user = ".$_SESSION['id_user']." GROUP BY tb_rumah.tipe ORDER BY tb_wishlist.id_wishlist DESC";
-        $query = mysqli_query($connect, $sql);
-        if(mysqli_num_rows($query) > 0){
-            while($data = mysqli_fetch_array($query)){
+        $sql = mysqli_query($connect, "SELECT tb_wishlist.*, tb_rumah.*, tb_gambar_rumah.gambar, MIN(tb_harga_rumah.harga) as harga FROM tb_wishlist LEFT JOIN tb_rumah ON tb_wishlist.id_rumah = tb_rumah.id_rumah LEFT JOIN tb_gambar_rumah ON tb_rumah.id_rumah = tb_gambar_rumah.id_rumah LEFT JOIN tb_harga_rumah ON tb_harga_rumah.id_rumah = tb_rumah.id_rumah WHERE tb_wishlist.id_user = ".$_SESSION['id_user']." GROUP BY tb_rumah.tipe ORDER BY tb_wishlist.id_wishlist DESC");
+        if(mysqli_num_rows($sql) > 0){
+            while($data = mysqli_fetch_array($sql)){
     ?>
     <div class="mt-7 md:mt-12">
         <div class="p-5 bg-gray-100 shadow-xl mb-8 rounded-md">
@@ -80,6 +79,6 @@
 </div>
 <script>
     if ( window.history.replaceState ) {
-  window.history.replaceState( null, null, window.location.href );
-}
+        window.history.replaceState( null, null, window.location.href );
+    }
 </script>

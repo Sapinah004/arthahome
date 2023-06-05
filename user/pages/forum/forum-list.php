@@ -1,11 +1,10 @@
 <?php
     include('./core/forum.php');
     if( !isset($_SESSION['loggedin']) ){
-        // header("Location:../pages/auth/login.php");
         ?>
-       <script>window.location.replace("./pages/auth/login.php");</script> 
+            <script>window.location.replace("./pages/auth/login.php");</script> 
         <?php
-        die;
+    die;
     }
 ?>
 <div class="container mx-auto max-w-6xl px-5 pt-32 lg:pt-52 pb-24 font-yantramanav text-primary">
@@ -24,10 +23,9 @@
     <div class="max-w-7xl mx-auto mt-7">
         <div class="space-y-10">
             <?php
-                $sql ="SELECT f.id_forum, f.judul, f.topik, f.tanggal , u.username, COUNT(k.komentar) AS komentar, v.id_view, v.total_view FROM tb_forum AS f LEFT JOIN tb_komentar AS k ON f.id_forum = k.id_forum JOIN tb_user u ON u.id_user = f.id_user LEFT JOIN tb_view_forum v ON f.id_forum = v.id_forum GROUP BY f.id_forum ORDER by f.tanggal DESC";
-                $query = mysqli_query($connect, $sql);
-                if(mysqli_num_rows($query) > 0){
-                    while($data = mysqli_fetch_array($query)){
+                $sql = mysqli_query($connect, "SELECT f.id_forum, f.judul, f.topik, f.tanggal , u.username, COUNT(k.komentar) AS komentar, v.id_view, v.total_view FROM tb_forum AS f LEFT JOIN tb_komentar AS k ON f.id_forum = k.id_forum JOIN tb_user u ON u.id_user = f.id_user LEFT JOIN tb_view_forum v ON f.id_forum = v.id_forum GROUP BY f.id_forum ORDER by f.tanggal DESC");
+                if(mysqli_num_rows($sql) > 0){
+                    while($data = mysqli_fetch_array($sql)){
             ?>
             <div class="px-4 md:px-7 py-5 md:py-10 bg-gray-100 rounded-2xl shadow-lg">
                 <div class="md:flex md:space-x-5 justify-between">

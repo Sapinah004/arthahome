@@ -1,6 +1,5 @@
 <?php
-      include($_SERVER['DOCUMENT_ROOT'] . '/ArthaHome/user/core/config.php');
-     
+    include($_SERVER['DOCUMENT_ROOT'] . '/ArthaHome/user/core/config.php');
     if(isset($_GET['notifikasi'])){
         $sql_updateNotification = mysqli_query($connect, "UPDATE tb_notifikasi SET status = 1 WHERE id_notifikasi =" .$_GET['notifikasi']);
         if($sql_updateNotification == TRUE){
@@ -14,7 +13,6 @@
         }
     }
     if(isset($_POST['deleteNotifikasi'])){
-        // $notifikasi = $_POST['id_notifikasi'];
         if(!isset($_POST['id_notifikasi'])){
             $message = "Pilih terlebih dahulu notifikasi yang ingin anda hapus";
             echo "<script type='text/javascript'>alert('$message')</script>";
@@ -33,5 +31,4 @@
             
         }
     }
-
 ?>

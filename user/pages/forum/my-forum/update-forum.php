@@ -1,8 +1,7 @@
 <?php
     include('./core/forum.php');
-    $sql = "SELECT * FROM tb_forum WHERE id_forum =" .$_GET['id'];
-    $query = mysqli_query($connect, $sql);
-    $data = mysqli_fetch_array($query);
+    $sql = mysqli_query($connect, "SELECT * FROM tb_forum WHERE id_forum =" .$_GET['id']);
+    $data = mysqli_fetch_array($sql);
 ?>
 <div class="pt-32 lg:pt-52 pb-24 px-5 text-primary container font-yantramanav mx-auto max-w-4xl">
     <a class=" text-secondary font-semibold text-xl" href="./index.php?page=forum-detail&id=<?php echo $data['id_forum']?>">

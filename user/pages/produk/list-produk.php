@@ -53,10 +53,9 @@
             <div class="grid grid-cols-3 gap-6 mt-12">
                 
                 <?php
-                    $sql = "SELECT tb_rumah.* , tb_gambar_rumah.*, MIN(tb_harga_rumah.harga) as harga FROM tb_rumah LEFT JOIN tb_gambar_rumah ON tb_rumah.id_rumah = tb_gambar_rumah.id_rumah LEFT JOIN tb_harga_rumah ON tb_harga_rumah.id_rumah = tb_rumah.id_rumah WHERE $filter LIKE '%$data%' GROUP BY tb_rumah.id_rumah";
-                    $query = mysqli_query($connect, $sql);
-                    if(mysqli_num_rows($query) > 0){
-                        while($data = mysqli_fetch_array($query)){
+                    $sql = mysqli_query($connect, "SELECT tb_rumah.* , tb_gambar_rumah.*, MIN(tb_harga_rumah.harga) as harga FROM tb_rumah LEFT JOIN tb_gambar_rumah ON tb_rumah.id_rumah = tb_gambar_rumah.id_rumah LEFT JOIN tb_harga_rumah ON tb_harga_rumah.id_rumah = tb_rumah.id_rumah WHERE $filter LIKE '%$data%' GROUP BY tb_rumah.id_rumah");
+                    if(mysqli_num_rows($sql) > 0){
+                        while($data = mysqli_fetch_array($sql)){
                 ?>
                 <div class="hover:scale-[1.01] transition-all duration-300">
                 <a href="../index.php?page=produk&id=<?php echo $data['id_rumah']?>" >
@@ -133,10 +132,9 @@
                 <div id="rumah" class="container mx-auto px-5 py-24">
                     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 ">
                         <?php
-                            $sql = "SELECT tb_rumah.* , tb_gambar_rumah.*, MIN(tb_harga_rumah.harga) as harga FROM tb_rumah LEFT JOIN tb_gambar_rumah ON tb_rumah.id_rumah = tb_gambar_rumah.id_rumah LEFT JOIN tb_harga_rumah ON tb_harga_rumah.id_rumah = tb_rumah.id_rumah LEFT JOIN tb_norumah ON tb_rumah.id_rumah = tb_norumah.id_rumah GROUP BY tb_rumah.id_rumah HAVING COUNT(tb_norumah.no_rumah) > 0";
-                            $query = mysqli_query($connect, $sql);
-                            if(mysqli_num_rows($query) > 0){
-                                while($data = mysqli_fetch_array($query)){
+                            $sql = mysqli_query($connect, "SELECT tb_rumah.* , tb_gambar_rumah.*, MIN(tb_harga_rumah.harga) as harga FROM tb_rumah LEFT JOIN tb_gambar_rumah ON tb_rumah.id_rumah = tb_gambar_rumah.id_rumah LEFT JOIN tb_harga_rumah ON tb_harga_rumah.id_rumah = tb_rumah.id_rumah LEFT JOIN tb_norumah ON tb_rumah.id_rumah = tb_norumah.id_rumah GROUP BY tb_rumah.id_rumah HAVING COUNT(tb_norumah.no_rumah) > 0");
+                            if(mysqli_num_rows($sql) > 0){
+                                while($data = mysqli_fetch_array($sql)){
                                     $id = $data['id_rumah'];
                                     $tipe = $data['tipe'];
                                     $lokasi = $data['lokasi'];

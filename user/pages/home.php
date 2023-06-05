@@ -253,10 +253,9 @@
         <h1 class="text-center font-playfair mb-12 font-bold text-5xl text-primary">Artikel & Blog</h1>
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6 gap-y-12">
             <?php
-                $sql = "SELECT * FROM tb_artikel GROUP BY tanggal DESC LIMIT 3";
-                $query = mysqli_query($connect, $sql);
-                if(mysqli_num_rows($query) > 0){
-                    while($data = mysqli_fetch_array($query)){
+                $sql = mysqli_query($connect, "SELECT * FROM tb_artikel GROUP BY tanggal DESC LIMIT 3" );
+                if(mysqli_num_rows($sql) > 0){
+                    while($data = mysqli_fetch_array($sql)){
             ?>
                 <div>
                     <div class="relative">
@@ -302,10 +301,9 @@
             <?php
                 include('./core/config.php');
                 $i = 0;
-                $sql = "SELECT * FROM tb_pengumuman";
-                $query = mysqli_query($connect, $sql);
-                if(mysqli_num_rows($query) > 0){
-                    while($data = mysqli_fetch_array($query)){
+                $sql = mysqli_query($connect, "SELECT * FROM tb_pengumuman");
+                if(mysqli_num_rows($sql) > 0){
+                    while($data = mysqli_fetch_array($sql)){
                         $x = $i++;
             ?>
             <div class="break-inside-void" data-modal-toggle="medium-modal<?php echo $x?>">
@@ -335,8 +333,6 @@
         </div>
     </div>
  </section>
-
-            
  <!-- Contact Us -->
  <section>
     <div class="bg-blueMain h-80 lg:h-36 w-full mt-12 xl:mt-36 font-yantramanav">

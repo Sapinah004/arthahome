@@ -3,9 +3,8 @@
 ?>
 <div class="container mx-auto max-w-6xl px-5 pt-52 pb-24 font-yantramanav">
     <?php
-        $sql = "SELECT * FROM tb_artikel WHERE id_artikel=".$_GET['id'];
-        $query = mysqli_query($connect, $sql);
-        $data = mysqli_fetch_array($query);
+        $sql_article = mysqli_query($connect, "SELECT * FROM tb_artikel WHERE id_artikel=".$_GET['id']);
+        $data = mysqli_fetch_array($sql_article);
     ?>
     <div class="mb-12 font-semibold text-lg tracking-wider">
         <ul class="list-none flex space-x-1">
