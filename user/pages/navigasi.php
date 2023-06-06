@@ -38,7 +38,7 @@
                 if(isset($_SESSION['loggedin']) == true){
             ?>
              <?php
-                $sql = mysqli_query($connect, "SELECT tb_user.*, tb_pesanan.*, tb_notifikasi.*, (SELECT lokasi FROM tb_rumah JOIN tb_pesanan ON tb_rumah.id_rumah = tb_pesanan.id_rumah WHERE tb_pesanan.id_order = tb_notifikasi.id_order) as lokasi FROM tb_notifikasi JOIN tb_pesanan ON tb_notifikasi.id_order = tb_pesanan.id_order JOIN tb_user ON tb_pesanan.id_user = tb_user.id_user WHERE tb_notifikasi.status = 0 AND tb_notifikasi.tipe_notifikasi NOT IN (0,1,2) AND tb_user.id_user = ".$_SESSION['id_user']." ORDER BY tb_notifikasi.tanggal DESC;");
+                $sql = mysqli_query($connect, "SELECT tb_user.*, tb_pesanan.*, tb_notifikasi.*, (SELECT lokasi FROM tb_rumah JOIN tb_pesanan ON tb_rumah.id_rumah = tb_pesanan.id_rumah WHERE tb_pesanan.id_order = tb_notifikasi.id_order) as lokasi FROM tb_notifikasi JOIN tb_pesanan ON tb_notifikasi.id_order = tb_pesanan.id_order JOIN tb_user ON tb_pesanan.id_user = tb_user.id_user WHERE tb_notifikasi.status = 0 AND tb_notifikasi.tipe_notifikasi NOT IN (0,1,2) AND tb_user.id_user = '".$_SESSION['id_user']."' ORDER BY tb_notifikasi.tanggal DESC;");
                 $count = mysqli_num_rows($sql);
             ?>
             <button id="dropdownAvatarNameButton" data-dropdown-toggle="dropdownNotification" class="relative px-3 py-1.5 rounded-md hover:bg-primary/10 focus:bg-primary/10 ease-in-out duration-200" type="button">
@@ -59,8 +59,8 @@
                 </div>
                 <div class="py-2 overflow-y-scroll max-h-72">
                     <?php 
-                        if(mysqli_num_rows($query) > 0){
-                            while($data = mysqli_fetch_array($query)){
+                        if(mysqli_num_rows($sql) > 0){
+                            while($data = mysqli_fetch_array($sql)){
                                 if($data['tipe_notifikasi'] == 3){
                     ?>
                     <div class="text-sm p-2 hover:bg-slate-100 rounded-md ease-in-out duration-300">

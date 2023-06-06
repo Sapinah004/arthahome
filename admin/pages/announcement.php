@@ -37,7 +37,7 @@
             </picture>
             <div class="flex justify-between items-center mt-3">
                 <span class="font-bold"><?php echo $data['gambar']?></span>
-                <a onClick="return confirm('Are you sure you want to delete?')" href="../core/announcement/announcement.php?delete_image=<?php echo $id?>" class="px-3 py-2 bg-red-600 hover:bg-red-700 text-white rounded-md ease-in-out duration-200">
+                <a onClick="return confirm('Anda yakin ingin menghapus pengumuman ini?')" href="../core/announcement/announcement.php?delete_image=<?php echo $id?>" class="px-3 py-2 bg-red-600 hover:bg-red-700 text-white rounded-md ease-in-out duration-200">
                     <i class="fa-regular fa-trash-can"></i>
                 </a>
             </div>

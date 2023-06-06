@@ -3,21 +3,21 @@
     require '../core/product/product.php';
 ?>
 <div class="p-5">
-<div class="py-4 bg-white flex space-x-5 justify-between">
-    <div class="flex space-x-5 items-center">
-        <?php
-            $sql = mysqli_query($connect, "SELECT * FROM tb_gambar_rumah WHERE id_gambar_rumah=".$_GET['id']); ;
-            $data = mysqli_fetch_array($sql);
-        ?>
-        <a title="kembali ke produk" href="../pages/dashboard.php?page=product&id=<?php echo $data['id_rumah']?>"  
-            class=" px-4 py-2 bg-slate-300 hover:bg-slate-400 ease-in-out duration-300 rounded-md">
-            <i class="fa-solid fa-chevron-left text-lg"></i>
-        </a>
-        <h1 class="font-playfair text-3xl font-bold text-primary">Update Gambar Rumah</h1>
-    </div>
-    <div>
-        <?php include("../pages/notifikasi.php")?>
-    </div>
+    <div class="py-4 bg-white flex space-x-5 justify-between">
+        <div class="flex space-x-5 items-center">
+            <?php
+                $sql = mysqli_query($connect, "SELECT * FROM tb_gambar_rumah WHERE id_gambar_rumah=".$_GET['id']); ;
+                $data = mysqli_fetch_array($sql);
+            ?>
+            <a title="kembali ke produk" href="../pages/dashboard.php?page=product&id=<?php echo $data['id_rumah']?>"  
+                class=" px-4 py-2 bg-slate-300 hover:bg-slate-400 ease-in-out duration-300 rounded-md">
+                <i class="fa-solid fa-chevron-left text-lg"></i>
+            </a>
+            <h1 class="font-playfair text-3xl font-bold text-primary">Update Gambar Rumah</h1>
+        </div>
+        <div>
+            <?php include("../pages/notifikasi.php")?>
+        </div>
     </div>
     <form method="post" enctype="multipart/form-data" action="" class="mt-6">
         <?php

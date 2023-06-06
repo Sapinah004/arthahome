@@ -17,7 +17,7 @@
             $message = "Email yang anda masukkan tidak valid";
             echo "<script type='text/javascript'>alert('$message')</script>";
         }elseif(!$uppercase || !$lowercase || !$number || !$specialChars ){
-            $message = "Password should be at least 8 characters in length and should include at least one upper case letter, one number, and one special character.";
+            $message = "Password harus memiliki minimal satu huruf kapital, satu angka, dan satu karakter spesial";
             echo "<script type='text/javascript'>alert('$message')</script>";
         }
         //  elseif(empty(preg_match("/@gmail.com$/" , $email) || preg_match("/@yahoo.com$/" , $email))){

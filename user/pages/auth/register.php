@@ -39,7 +39,7 @@
                         <form class="mt-5" method="POST">
                             <div>
                                 <label for="username" class="tracking-wider font-semibold ">Username</label>
-                                <input id="username" name="username" type="text" autocomplete="off" required="required" class="mt-1 mb-4 border-primary bg-white w-full px-3 py-2  text-primary focus:outline-none border-2 font-semibold placeholder-primary focus:placeholder-transparent rounded-sm" placeholder="Masukkan email anda">
+                                <input id="username" name="username" type="text" autocomplete="off" required="required" class="mt-1 mb-4 border-primary bg-white w-full px-3 py-2  text-primary focus:outline-none border-2 font-semibold placeholder-primary focus:placeholder-transparent rounded-sm" placeholder="Masukkan username anda">
                             </div>
                             <div>
                                 <label for="email" class="tracking-wider font-semibold ">Email</label>

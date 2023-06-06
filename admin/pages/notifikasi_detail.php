@@ -1,14 +1,11 @@
 <?php
     include('../core/config.php');
     include('../core/notifikasi.php');
-   ?>
+?>
 <div class="p-3 font-yantramanav">
     <form method="post">
         <div class="sticky top-0 py-4 bg-white flex items-center justify-between space-x-5">
             <div class="flex space-x-5 items-center">
-                <!-- <button title="kembali ke produk" onclick="history.back()" class="px-4 py-2 bg-slate-300 hover:bg-slate-400 ease-in-out duration-300 rounded-md">
-                    <i class="fa-solid fa-chevron-left text-lg"></i>
-                </button> -->
                 <h1 class="font-playfair text-3xl tracking-wider font-bold text-primary">Notifikasi</h1>
             </div>
             <div class="flex space-x-5 items-center">

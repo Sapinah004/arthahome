@@ -63,13 +63,13 @@
                     </div>
                     <div>
                         <label for="lokasi" class="font-semibold">Lokasi</label>
-                            <select id="location" name="lokasi" class="mt-2 w-full bg-slate-200 rounded-sm p-2 placeholder:text-sm text-black placeholder:text-slate-400 focus:outline-none focus:border-primary focus:ring-primary block focus:ring-1">
-                                <option value="batam centre">Batam Centre</option>
-                                <option value="sekupang">Sekupang</option>
-                                <option value="batu aji">Batu Aji</option>
-                                <option value="sadai">Sadai</option>
-                                <option value="nongsa">Nongsa</option>
-                            </select>
+                        <select id="location" name="lokasi" class="mt-2 w-full bg-slate-200 rounded-sm p-2 placeholder:text-sm text-black placeholder:text-slate-400 focus:outline-none focus:border-primary focus:ring-primary block focus:ring-1">
+                            <option value="batam centre">Batam Centre</option>
+                            <option value="sekupang">Sekupang</option>
+                            <option value="batu aji">Batu Aji</option>
+                            <option value="sadai">Sadai</option>
+                            <option value="nongsa">Nongsa</option>
+                        </select>
                     </div>
                 </div>
                 <div class="mt-12">
@@ -106,25 +106,25 @@
                                     placeholder="masukkan hanya angka">
                             </div>
                         </div>
+                    </div>
+                    <div class="flex space-x-5 mt-3">
+                        <button id="add" value="add new" onclick="tambahHarga();" type="button"
+                            class="mt-4 px-5 py-2 text-white rounded-md bg-blue-500 hover:bg-blue-700 ease-in-out duration-300">
+                            <i class="fa-solid fa-square-plus mr-3"></i>
+                            Tambah Form
+                        </button>
+                        <button id="remove" type="button" value="Remove last element" onclick="hapusHarga()"
+                            class="mt-4 px-5 py-2 bg-red-600 hover:bg-red-700 text-white ease-in-out rounded-md duration-300 ">
+                            <i class="fa-regular fa-trash-can mr-2"></i>
+                            Hapus Form 
+                        </button>
+                    </div>
                 </div>
-                <div class="flex space-x-5 mt-3">
-                    <button id="add" value="add new" onclick="tambahHarga();" type="button"
-                        class="mt-4 px-5 py-2 text-white rounded-md bg-blue-500 hover:bg-blue-700 ease-in-out duration-300">
-                        <i class="fa-solid fa-square-plus mr-3"></i>
-                        Tambah Form
-                    </button>
-                    <button id="remove" type="button" value="Remove last element" onclick="hapusHarga()"
-                        class="mt-4 px-5 py-2 bg-red-600 hover:bg-red-700 text-white ease-in-out rounded-md duration-300 ">
-                        <i class="fa-regular fa-trash-can mr-2"></i>
-                        Hapus Form 
-                    </button>
-                </div>
-            </div>
-            <div class="flex space-x-6 items-end mt-12">
-                <div id="no_rumah" class="w-2/5">
-                    <label for="no_rumah" class="font-bold">No Rumah</label>
-                    <input id="no_rumah" type="text" name="no_rumah[]" autocomplete="off" required="required"
-                        class="mt-2 w-full bg-slate-200 rounded-sm p-2 placeholder:text-sm text-black placeholder:text-slate-400 focus:outline-none focus:border-primary focus:ring-primary block focus:ring-1" placeholder="A01">
+                <div class="flex space-x-6 items-end mt-12">
+                    <div id="no_rumah" class="w-2/5">
+                        <label for="no_rumah" class="font-bold">No Rumah</label>
+                        <input id="no_rumah" type="text" name="no_rumah[]" autocomplete="off" required="required"
+                            class="mt-2 w-full bg-slate-200 rounded-sm p-2 placeholder:text-sm text-black placeholder:text-slate-400 focus:outline-none focus:border-primary focus:ring-primary block focus:ring-1" placeholder="A01">
                     </div>
                     <div class="flex space-x-3 mt-7">
                         <button id="add" value="add new" onclick="tambahNorumah();" type="button" class="px-5 py-2 rounded-md text-white bg-blue-500 hover:bg-blue-700 ease-in-out duration-300 ">

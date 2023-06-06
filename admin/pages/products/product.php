@@ -184,15 +184,6 @@
                             <?php
                             } 
                             ?>
-                               <!-- <?php if($data["lama_bayar"] > 0){
-                                ?>
-                             <tr>
-                                <td class="font-bold">Bunga</td>
-                                <td><?php echo number_format($data["bunga"])?> %</td>
-                            </tr>
-                            <?php
-                            } 
-                            ?> -->
                         </table>
                     </div>
                     <a href="../pages/dashboard.php?page=update_harga&id=<?php echo ($data["id_rumahdetail"])?>" class="flex-none">
@@ -214,111 +205,106 @@
                 Tambah Data
             </button>
             <form id="form_tambah_harga_rumah" class="hidden border-t border-primary mt-5" method="post">
-            <div id="form_harga_rumah">
-                <div id="form_harga">
-                    <input type="hidden" name="id_rumah" id="id_rumah" value="<?php echo $_GET['id']?>">
-                    <div class="gap-6 grid grid-cols-3 my-5 ">
-                        <label>
-                            <span class="font-bold">Harga</span>
-                            <input id="harga" name="harga[]" type="text" autocomplete="off" required="required"
-                                class="mt-2 w-full bg-slate-200 rounded-sm p-2 placeholder:text-sm text-black placeholder:text-slate-400 focus:outline-none focus:border-slate-600 focus:ring-slate-600 block focus:ring-2" placeholder="Masukkan hanya angka">
-                        </label>
-                        <label>
-                            <span class="font-bold">Harga DP</span>
-                            <input id="dp" type="text" name="harga_dp[]" autocomplete="off" required="required"
-                                class="mt-2 w-full bg-slate-200 rounded-sm p-2 placeholder:text-sm text-black placeholder:text-slate-400 focus:outline-none focus:border-slate-600 focus:ring-slate-600 block focus:ring-2" placeholder="masukkan hanya angka">
-                        </label>
-                        <label>
-                            <span class="font-bold">Harga per Bulan</span>
-                            <input id="harga_bulanan" name="harga_bulanan[]" type="text" autocomplete="off"
-                                required="required"
-                                class="mt-2 w-full bg-slate-200 rounded-sm p-2 placeholder:text-sm text-black placeholder:text-slate-400 focus:outline-none focus:border-slate-600 focus:ring-slate-600 block focus:ring-2" placeholder="masukkan hanya angka">
-                        </label>
-                        <label>
-                            <span class="font-bold">Lama Bayar</span>
-                            <input id="lama_bayar" name="lama_bayar[]" type="text" autocomplete="off"
-                                required="required"
-                                class="mt-2 w-full bg-slate-200 rounded-sm p-2 placeholder:text-sm text-black placeholder:text-slate-400 focus:outline-none focus:border-slate-600 focus:ring-slate-600 block focus:ring-2" placeholder="masukkan hanya angka">
-                        </label>
-                        <!-- <label>
-                            <span class="font-bold">Bunga</span>
-                            <input id="bunga" name="bunga[]" type="text" autocomplete="off" required="required"
-                                class="mt-2 w-full bg-slate-200 rounded-sm p-2 placeholder:text-sm text-black placeholder:text-slate-400 focus:outline-none focus:border-slate-600 focus:ring-slate-600 block focus:ring-2" placeholder="masukkan hanya angka">
-                        </label> -->
-                    </div>
-                </div>
-            </div>
-            <div class="flex space-x-5 mt-8 mb-16">
-                <button id="add" value="add new" onclick="tambahHarga();" type="button" class= "px-5 py-2 text-white rounded-md bg-blue-500 hover:bg-blue-700 ease-in-out duration-300">
-                    <i class="fa-solid fa-square-plus mr-3"></i>
-                    Tambah Form
-                </button>
-                <button id="remove" type="button" value="Remove last element" onclick="hapusHarga()" class="px-5 py-2 rounded-md text-white bg-red-600 hover:bg-red-700 ease-in-out duration-300 ">
-                    <i class="fa-regular fa-trash-can mr-2"></i>
-                    Hapus Form
-                </button>
-            </div>
-            <div>
-                <button type="submit" name="tambahDataHarga" class="px-5 py-2 bg-primary hover:bg-blue-900 ease-in-out duration-200 rounded-md text-white">
-                    <i class="fa-regular fa-floppy-disk mr-2"></i>
-                    Simpan
-                </button>
-            </div>
-        </form>
-    </div>
-    <div class="mt-5 border border-primary rounded-md px-3 py-5">
-        <h5 class="text-2xl font-bold font-playfair">Gambar Rumah</h5>
-        <div class="columns-3 my-5 gap-5">
-            <?php
-                $sql_getHousePicture = mysqli_query($connect, "SELECT * FROM tb_gambar_rumah WHERE id_rumah=" .$_GET['id']);
-                if(mysqli_num_rows($sql_getHousePicture) > 0){
-                    while($data = mysqli_fetch_assoc($sql_getHousePicture)){
-            ?>
-            <div class="shadow-md break-inside-avoid rounded-md p-2">
-                <input type="hidden" value="<?php echo $data['id_gambar_rumah']?>">
-                <picture>
-                    <img src="../core/product/images/<?php echo $data['gambar']?>" alt="">
-                </picture>
-                <a href="../pages/dashboard.php?page=update_gambar&id=<?php echo ($data["id_gambar_rumah"])?>">
-                    <button class="mt-2 px-5 py-2 rounded-md bg-green-500 hover:bg-green-700 ease-in-out duration-200 text-white">
-                        <i class="fa-regular fa-pen-to-square mr-2"></i>
-                        Edit Data
-                    </button>
-                </a>
-            </div>
-            <?php
-                    }
-                }
-                else{
-                    echo '<div class="font-bold italic text-slate-500">Tidak ada gambar rumah</div>';
-                }
-            ?>
-        </div>
-        <button onclick="addPicture()" class="px-5 py-2 text-white rounded-md bg-blue-500 hover:bg-blue-700 ease-in-out duration-200">
-            <i class="fa-solid fa-square-plus mr-2"></i>
-            Tambah Data
-        </button>
-        <form id="form_add_picture" class="hidden mt-5 border-t border-primary" method="post" enctype="multipart/form-data">
-            <div class="my-5 ">
-                <div id="picture">
-                    <div class="mb-3 font-bold">Gambar</div>
-                    <input type="hidden" name="id_rumah" value="<?php echo $_GET['id']?>">
-                    <div class="flex items-start space-x-5">
-                        <div>
-                            <label for="id" class="w-1/2">
-                                <input id="gambar" type="file" name="gambar[]" required="required" multiple class="block rounded-sm bg-slate-200 px-2 mb-2 w-full text-sm text-slate-500
-                                file:mr-4 file:py-1 file:px-4 file:rounded-sm file:border-0 file:text-sm file:font-semibold file:bg-violet-50 file:text-primary hover:file:bg-violet-100" />
+                <div id="form_harga_rumah">
+                    <div id="form_harga">
+                        <input type="hidden" name="id_rumah" id="id_rumah" value="<?php echo $_GET['id']?>">
+                        <div class="gap-6 grid grid-cols-3 my-5 ">
+                            <label>
+                                <span class="font-bold">Harga</span>
+                                <input id="harga" name="harga[]" type="text" autocomplete="off" required="required"
+                                    class="mt-2 w-full bg-slate-200 rounded-sm p-2 placeholder:text-sm text-black placeholder:text-slate-400 focus:outline-none focus:border-slate-600 focus:ring-slate-600 block focus:ring-2" placeholder="Masukkan hanya angka">
                             </label>
-                            <i class="font-semibold text-sm">Mohon upload gambar dengan format png, jpg, jpeg, atau webp dengan ukuran maksimal 10MB</i>
+                            <label>
+                                <span class="font-bold">Harga DP</span>
+                                <input id="dp" type="text" name="harga_dp[]" autocomplete="off" required="required"
+                                    class="mt-2 w-full bg-slate-200 rounded-sm p-2 placeholder:text-sm text-black placeholder:text-slate-400 focus:outline-none focus:border-slate-600 focus:ring-slate-600 block focus:ring-2" placeholder="masukkan hanya angka">
+                            </label>
+                            <label>
+                                <span class="font-bold">Harga per Bulan</span>
+                                <input id="harga_bulanan" name="harga_bulanan[]" type="text" autocomplete="off"
+                                    required="required"
+                                    class="mt-2 w-full bg-slate-200 rounded-sm p-2 placeholder:text-sm text-black placeholder:text-slate-400 focus:outline-none focus:border-slate-600 focus:ring-slate-600 block focus:ring-2" placeholder="masukkan hanya angka">
+                            </label>
+                            <label>
+                                <span class="font-bold">Lama Bayar</span>
+                                <input id="lama_bayar" name="lama_bayar[]" type="text" autocomplete="off"
+                                    required="required"
+                                    class="mt-2 w-full bg-slate-200 rounded-sm p-2 placeholder:text-sm text-black placeholder:text-slate-400 focus:outline-none focus:border-slate-600 focus:ring-slate-600 block focus:ring-2" placeholder="masukkan hanya angka">
+                            </label>
                         </div>
-                        <button type="submit" name="tambahGambar" class="px-5 mt-[2px] py-2 bg-primary rounded-md hover:bg-blue-900 ease-in-out duration-200 text-white">
-                            <i class="fa-regular fa-floppy-disk mr-2"></i>
-                            Simpan
-                        </button>
                     </div>
                 </div>
+                <div class="flex space-x-5 mt-8 mb-16">
+                    <button id="add" value="add new" onclick="tambahHarga();" type="button" class= "px-5 py-2 text-white rounded-md bg-blue-500 hover:bg-blue-700 ease-in-out duration-300">
+                        <i class="fa-solid fa-square-plus mr-3"></i>
+                        Tambah Form
+                    </button>
+                    <button id="remove" type="button" value="Remove last element" onclick="hapusHarga()" class="px-5 py-2 rounded-md text-white bg-red-600 hover:bg-red-700 ease-in-out duration-300 ">
+                        <i class="fa-regular fa-trash-can mr-2"></i>
+                        Hapus Form
+                    </button>
+                </div>
+                <div>
+                    <button type="submit" name="tambahDataHarga" class="px-5 py-2 bg-primary hover:bg-blue-900 ease-in-out duration-200 rounded-md text-white">
+                        <i class="fa-regular fa-floppy-disk mr-2"></i>
+                        Simpan
+                    </button>
+                </div>
+            </form>
+        </div>
+        <div class="mt-5 border border-primary rounded-md px-3 py-5">
+            <h5 class="text-2xl font-bold font-playfair">Gambar Rumah</h5>
+            <div class="columns-3 my-5 gap-5">
+                <?php
+                    $sql_getHousePicture = mysqli_query($connect, "SELECT * FROM tb_gambar_rumah WHERE id_rumah=" .$_GET['id']);
+                    if(mysqli_num_rows($sql_getHousePicture) > 0){
+                        while($data = mysqli_fetch_assoc($sql_getHousePicture)){
+                ?>
+                <div class="shadow-md break-inside-avoid rounded-md p-2">
+                    <input type="hidden" value="<?php echo $data['id_gambar_rumah']?>">
+                    <picture>
+                        <img src="../core/product/images/<?php echo $data['gambar']?>" alt="">
+                    </picture>
+                    <a href="../pages/dashboard.php?page=update_gambar&id=<?php echo ($data["id_gambar_rumah"])?>">
+                        <button class="mt-2 px-5 py-2 rounded-md bg-green-500 hover:bg-green-700 ease-in-out duration-200 text-white">
+                            <i class="fa-regular fa-pen-to-square mr-2"></i>
+                            Edit Data
+                        </button>
+                    </a>
+                </div>
+                <?php
+                        }
+                    }else{
+                        echo '<div class="font-bold italic text-slate-500">Tidak ada gambar rumah</div>';
+                    }
+                ?>
             </div>
-        </form>
+            <button onclick="addPicture()" class="px-5 py-2 text-white rounded-md bg-blue-500 hover:bg-blue-700 ease-in-out duration-200">
+                <i class="fa-solid fa-square-plus mr-2"></i>
+                Tambah Data
+            </button>
+            <form id="form_add_picture" class="hidden mt-5 border-t border-primary" method="post" enctype="multipart/form-data">
+                <div class="my-5 ">
+                    <div id="picture">
+                        <div class="mb-3 font-bold">Gambar</div>
+                        <input type="hidden" name="id_rumah" value="<?php echo $_GET['id']?>">
+                        <div class="flex items-start space-x-5">
+                            <div>
+                                <label for="id" class="w-1/2">
+                                    <input id="gambar" type="file" name="gambar[]" required="required" multiple class="block rounded-sm bg-slate-200 px-2 mb-2 w-full text-sm text-slate-500
+                                    file:mr-4 file:py-1 file:px-4 file:rounded-sm file:border-0 file:text-sm file:font-semibold file:bg-violet-50 file:text-primary hover:file:bg-violet-100" />
+                                </label>
+                                <i class="font-semibold text-sm">Mohon upload gambar dengan format png, jpg, jpeg, atau webp dengan ukuran maksimal 10MB</i>
+                            </div>
+                            <button type="submit" name="tambahGambar" class="px-5 mt-[2px] py-2 bg-primary rounded-md hover:bg-blue-900 ease-in-out duration-200 text-white">
+                                <i class="fa-regular fa-floppy-disk mr-2"></i>
+                                Simpan
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
     </div>
 </div>
 <!-- <script>

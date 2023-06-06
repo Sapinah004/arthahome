@@ -44,3 +44,20 @@
         </form>
     </div>
 </div>
+<script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
+<script>
+    var quill = new Quill('#editor', {
+        theme: 'snow',
+        modules: {
+            toolbar: [
+                ["bold", "italic" ,"underline", "strike"],
+                ["blockquote"],
+                [{ list: "ordered" }, { list: "bullet" }],
+                [{ script: "sub" }, { script: "super" }],
+            ]
+        },
+    });
+    quill.on('text-change', function(delta, oldDelta, source) {
+        document.querySelector("input[name='artikel']").value = quill.root.innerHTML;
+    });
+</script>

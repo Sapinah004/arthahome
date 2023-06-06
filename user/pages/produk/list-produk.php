@@ -53,7 +53,8 @@
             <div class="grid grid-cols-3 gap-6 mt-12">
                 
                 <?php
-                    $sql = mysqli_query($connect, "SELECT tb_rumah.* , tb_gambar_rumah.*, MIN(tb_harga_rumah.harga) as harga FROM tb_rumah LEFT JOIN tb_gambar_rumah ON tb_rumah.id_rumah = tb_gambar_rumah.id_rumah LEFT JOIN tb_harga_rumah ON tb_harga_rumah.id_rumah = tb_rumah.id_rumah WHERE $filter LIKE '%$data%' GROUP BY tb_rumah.id_rumah");
+                
+                    $sql = mysqli_query($connect, "SELECT tb_rumah.* , tb_gambar_rumah.*, MIN(tb_harga_rumah.harga) as harga FROM tb_rumah LEFT JOIN tb_gambar_rumah ON tb_rumah.id_rumah = tb_gambar_rumah.id_rumah LEFT JOIN tb_harga_rumah ON tb_harga_rumah.id_rumah = tb_rumah.id_rumah LEFT JOIN tb_norumah ON tb_rumah.id_rumah = tb_norumah.id_rumah WHERE $filter LIKE '%$data%' GROUP BY tb_rumah.id_rumah HAVING COUNT(tb_norumah.no_rumah) > 0");
                     if(mysqli_num_rows($sql) > 0){
                         while($data = mysqli_fetch_array($sql)){
                 ?>

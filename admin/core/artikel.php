@@ -1,12 +1,9 @@
 <?php
     include("../core/config.php");
-
-    
     function getHari($date){
         setlocale(LC_ALL, 'id-ID');
         return strftime("%A", strtotime($date));
     }
-
     if(isset($_POST['buat_artikel'])){
         global $connect;
         $judul = trim(mysqli_real_escape_string($connect, $_POST["judul"]));
@@ -17,7 +14,6 @@
         $fileType = pathinfo($gambar, PATHINFO_EXTENSION);
         $size = $_FILES['gambar']['size'];
         $artikel = trim($_POST['artikel']);
-
         if($size > $limit){
             $message = "Gambar terlalu besar, maksimal 10 MB";
             echo "<script type='text/javascript'>alert('$message')</script>";
@@ -92,27 +88,8 @@
             }
         }
     }
-    // if(isset($_POST['update_artikel'])){
-    //     $id_artikel = trim($_POST['id_artikel']);
-    //     $id_artikel_detail = $_POST['id_artikel_detail'];
-    //     $artikel = $_POST['artikel'];
-    //     // $jumlah_baris = sizeof($artikel);
-    //     // for($i = 0; $i<$jumlah_baris; $i++){
-    //         $sql_updateParagraf = mysqli_query($connect, "UPDATE tb_artikel_detail SET
-    //             artikel = '".$artikel."' WHERE id_artikel = '".$id_artikel."' AND id_artikel_detail = '".$id_artikel_detail."'");
-    //     // }
-    //     if($sql_updateParagraf == TRUE){
-    //         $message = "Artikel berhasil diubah";
-    //         echo "<script type='text/javascript'>alert('$message')</script>";
-    //     }
-    //     else{
-    //         $message = "Artikel gagal diubah";
-    //         echo "<script type='text/javascript'>alert('$message')</script>";
-    //     }
-    // }
     if(isset($_POST['update_artikel'])){
         $judul = trim($_POST['judul']);
-        // $gambar = trim($_POST['gambar']);
         $artikel = trim($_POST['artikel']);
         $id_artikel = trim($_POST['id_artikel']);
         $limit = 10 * 1024 * 1024;
@@ -122,7 +99,6 @@
         $folder = $_SERVER['DOCUMENT_ROOT'] . '/ArthaHome/Admin/assets/images/article/';
         $fileType = pathinfo($gambar, PATHINFO_EXTENSION);
         $size = $_FILES['gambar']['size'];
-
         if(empty($gambar)){
             $sql_updateArticle = mysqli_query($connect, "UPDATE tb_artikel SET
             judul = '".$judul."',
