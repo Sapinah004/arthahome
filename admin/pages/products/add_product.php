@@ -18,7 +18,7 @@
     <div class="overflow-y-auto px-2">
         <div class="mt-6">
             <form method="post"  enctype="multipart/form-data">
-                <div class="grid grid-cols-4 gap-6 ">
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 ">
                     <div>
                         <label for="tipe" class="font-semibold">Tipe</label>
                         <input id="tipe" type="number" autocomplete="off" name="tipe" required="required"

@@ -24,7 +24,7 @@
                 while($data = mysqli_fetch_assoc($sql_getProduct)){
                         $id_rumah = $data['id_rumah']
             ?>
-            <div class="grid grid-cols-4 gap-5 my-5 font-medium">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 my-5 font-medium">
                 <span class="hidden"><?php echo $id_rumah?></span>
                 <div class="flex space-x-5">
                     <span class="font-bold">Tipe :</span>
@@ -75,7 +75,7 @@
         </div>
         <div class="mt-5 border border-primary rounded-md px-3 py-5">
             <h3 class="text-2xl font-bold font-playfair">Nomor Rumah</h3>
-            <div class="columns-4 my-5 gap-5">
+            <div class="columns-1 md:columns-2 lg:columns-4 my-5 gap-5">
                 <?php
                     $sql_getHouseNumber = mysqli_query($connect, "SELECT * FROM tb_norumah WHERE id_rumah=".$_GET['id']);
                     if(mysqli_num_rows($sql_getHouseNumber) > 0){
@@ -135,7 +135,7 @@
         </div>
         <div class="mt-5 border border-primary rounded-md px-3 py-5">
             <h4 class="text-2xl font-bold font-playfair">Harga Rumah</h4>
-            <div class="columns-3 my-5 gap-3">
+            <div class="columns-1 md:columns-2 lg:columns-3 my-5 gap-3 space-y-3">
                 <?php
                     $sql_getPrice = mysqli_query($connect, "SELECT * FROM tb_harga_rumah WHERE id_rumah =" .$_GET['id']);
                     if(mysqli_num_rows($sql_getPrice) > 0){
@@ -254,7 +254,7 @@
         </div>
         <div class="mt-5 border border-primary rounded-md px-3 py-5">
             <h5 class="text-2xl font-bold font-playfair">Gambar Rumah</h5>
-            <div class="columns-3 my-5 gap-5">
+            <div class="columns-1 md:columns-2 lg:columns-3 my-5 gap-5 space-y-5">
                 <?php
                     $sql_getHousePicture = mysqli_query($connect, "SELECT * FROM tb_gambar_rumah WHERE id_rumah=" .$_GET['id']);
                     if(mysqli_num_rows($sql_getHousePicture) > 0){
@@ -263,7 +263,7 @@
                 <div class="shadow-md break-inside-avoid rounded-md p-2">
                     <input type="hidden" value="<?php echo $data['id_gambar_rumah']?>">
                     <picture>
-                        <img src="../core/product/images/<?php echo $data['gambar']?>" alt="">
+                        <img src="../core/product/images/<?php echo $data['gambar']?>" alt="<?php echo $data['gambar']?>">
                     </picture>
                     <a href="../pages/dashboard.php?page=update_gambar&id=<?php echo ($data["id_gambar_rumah"])?>">
                         <button class="mt-2 px-5 py-2 rounded-md bg-green-500 hover:bg-green-700 ease-in-out duration-200 text-white">

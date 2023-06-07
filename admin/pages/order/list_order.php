@@ -8,7 +8,7 @@
             <?php include("../pages/notifikasi.php");?>
         </div>
     </div>
-    <div class="mt-5 w-full h-full  block overflow-auto whitespace-nowrap">
+    <div class="mt-5 w-full h-full  block overflow-auto">
         <table class="table-auto w-full py-3 mb-5">
             <thead class="bg-slate-200 border-b border-slate-400">
                 <tr class="text-left">
@@ -49,10 +49,10 @@
                     }?>
                     </td>
                     <td class="text-white px-2 py-4">
-                        <button class="text-sm flex items-center space-x-1 bg-green-500 hover:bg-green-700 ease-in-out duration-300 rounded-md">
-                            <a href="../pages/dashboard.php?page=order_detail&order=<?php echo $data['id_order']?>" class="px-5 py-1.5">
-                                <i class="fa-regular fa-eye"></i>
-                                 <span>View</span>
+                        <button>
+                            <a  class="text-sm flex px-6 py-1.5  items-center space-x-2 bg-green-500 hover:bg-green-700 ease-in-out duration-300 rounded-md" href="../pages/dashboard.php?page=order_detail&order=<?php echo $data['id_order']?>" class="px-5 py-1.5">
+                                <i class="fa-regular fa-eye "></i>
+                                 <span class="flex-none">View</span>
                             </a>
                         </button>
                     </td>

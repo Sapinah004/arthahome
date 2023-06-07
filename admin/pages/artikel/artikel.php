@@ -3,7 +3,7 @@
 ?>
 <div class="pt-2 pb-5 px-5">
     <div class="w-full bg-white py-3 flex items-center justify-between sticky top-0">
-    <div class="flex space-x-5 items-center">
+        <div class="flex space-x-5 items-center">
             <button>
                 <a title="list artikel" href="../pages/dashboard.php?page=artikel-list" class=" px-4 py-3.5 bg-slate-300 hover:bg-slate-400 ease-in-out duration-300 rounded-md">
                     <i class="fa-solid fa-chevron-left text-lg"></i>

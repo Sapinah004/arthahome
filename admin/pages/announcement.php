@@ -11,11 +11,11 @@
     <h2 class="text-2xl font-bold font-playfair">Upload Poster</h2>
     <form method="post" enctype="multipart/form-data">
         <div class="flex space-x-2 items-center mt-5 mb-2">
-            <div class="w-1/2">
+            <div class="lg:w-1/2">
                 <input id="gambar" type="file" name="gambar[]" required="required" multiple class="w-full block rounded-sm bg-slate-200 px-2 text-sm text-slate-500
                     file:mr-4 file:py-1 file:px-4 file:rounded-sm file:border-0 file:text-sm file:font-semibold file:bg-violet-50 file:text-primary hover:file:bg-violet-100" />
             </div>
-            <button type="submit" name="addAnnouncement" class="px-5 py-2 rounded-md bg-primary hover:bg-blue-900 ease-in-out duration-200 text-white">
+            <button type="submit" name="addAnnouncement" class="flex-none px-5 py-2 rounded-md bg-primary hover:bg-blue-900 ease-in-out duration-200 text-white">
                 <i class="fa-solid fa-upload mr-2"></i>
                 Upload
             </button>
@@ -23,7 +23,7 @@
         <i class="font-semibold text-sm">Mohon upload gambar dengan format png, jpg, jpeg, atau webp dengan ukuran maksimal 10MB</i>
     </form>
     <h3 class="mt-10 font-playfair text-2xl font-bold mb-6 tracking-wider">Poster</h3>
-    <div class="columns-3 space-x-5 space-y-5">
+    <div class="columns-1 md:columns-2 lg:columns-3 gap-5 space-y-5">
         <?php
             $sql_getAnnouncement = mysqli_query($connect, "SELECT * FROM tb_pengumuman") ;
             if(mysqli_num_rows($sql_getAnnouncement) > 0){

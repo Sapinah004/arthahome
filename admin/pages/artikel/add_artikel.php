@@ -15,7 +15,7 @@
     </div>
     <div class="mt-5 w-full h-full  block overflow-auto whitespace-nowrap">
         <form method="post" enctype="multipart/form-data">
-            <div class="grid grid-cols-2 gap-10">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-5 lg:gap-10">
                 <div>
                     <div class="p-0.5">
                         <label for="judul" name="judul" class="block font-bold">Judul</label>

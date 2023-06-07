@@ -93,7 +93,7 @@
         <?php
             }else{
         ?>
-        <div class="mt-10 w-full h-full  block overflow-auto whitespace-nowrap">
+        <div class="mt-10 w-full h-full  block overflow-auto">
             <table class="table-auto w-full py-3 mb-5">
                 <thead class="bg-slate-200 w-full border-b border-slate-400">
                     <tr class="text-left">

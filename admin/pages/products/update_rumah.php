@@ -22,7 +22,7 @@
         <div>
             <input type="hidden" name="id_rumah" id="" value="<?php echo $data['id_rumah']?>">
         </div>
-        <div class="grid grid-cols-4 gap-5 mt-6">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 mt-6">
             <div>
                 <label for="tipe" class="font-bold">Tipe Rumah</label>
                 <input id="tipe" type="text" autocomplete="off" name="tipe" class="mt-2 w-full bg-slate-200 rounded-sm p-2 placeholder:text-sm text-black placeholder:text-slate-400 focus:outline-none focus:border-primary focus:ring-primary block focus:ring-1"

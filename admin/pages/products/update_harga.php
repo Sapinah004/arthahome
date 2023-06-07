@@ -25,7 +25,7 @@
             $query = mysqli_query($connect, $sql);
             $data = mysqli_fetch_assoc($query);
         ?>
-        <div class="grid grid-cols-3 gap-7">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-7">
             <input type="hidden" name="id_rumahdetail" value="<?php echo $data["id_rumahdetail"]?>">
             <div>
                 <label for="harga" class="font-bold">Harga</label>

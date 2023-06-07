@@ -25,11 +25,11 @@
             $query = mysqli_query($connect, $sql);
             $data = mysqli_fetch_assoc($query);
         ?>
-        <div class="grid grid-cols-2 gap-12 items-st">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-st">
             <div>
                 <input type="hidden" name="id_gambar_rumah" value="<?php echo $data['id_gambar_rumah']?>">
                 <picture>
-                    <img class="w-full h-full" src="../core/product/images/<?php echo $data['gambar']?>" alt="">
+                    <img class="w-full h-full" src="../core/product/images/<?php echo $data['gambar']?>" alt="<?php echo $data['gambar']?>">
                 </picture>
             </div>
             <div>

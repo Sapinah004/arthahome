@@ -16,7 +16,7 @@
         </div>
     </div>
     <form class="mt-6" method="post">
-        <div class="grid grid-cols-3 gap-6 mt-8 mb-6">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-8 mb-6">
             <?php 
                 $sql_getHouseNumber = mysqli_query($connect, "SELECT * FROM tb_norumah WHERE id_rumah =" .$_GET['id']);
                 while($data = mysqli_fetch_array($sql_getHouseNumber)){

@@ -24,7 +24,7 @@
     <form action="" method="post" enctype="multipart/form-data" class="mt-6">
         <input type="hidden" name="id_artikel" value=<?php echo $data['id_artikel']?>>
         <div class="flex flex-wrap gap-8">
-            <div class="w-[calc(50%-1rem)]">
+            <div class="w-full xl:w-[calc(50%-1rem)]">
                 <div class="p-0.5">
                     <label for="judul" name="judul" class="block font-bold">Judul</label>
                     <input id="judul" name="judul" autocomplete="off" type="text" required="required" value="<?php echo $data['judul']?>"
@@ -40,7 +40,7 @@
                     <img id="output_image" alt="" class="mt-5">
                 </div>
             </div>
-            <div class="w-[calc(50%-1rem)]">
+            <div class="w-full xl:w-[calc(50%-1rem)]">
                 <div class="p-0.5" id="artikel">
                     <label for="artikel" class="block font-bold mb-1">Artikel</label>
                     <input type="hidden" name="artikel" value="<?php echo $data['artikel']?>">
@@ -54,4 +54,20 @@
         </button>
     </form>
 </div>
-
+<script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
+<script>
+    var quill = new Quill('#editor', {
+        theme: 'snow',
+        modules: {
+            toolbar: [
+                ["bold", "italic" ,"underline", "strike"],
+                ["blockquote"],
+                [{ list: "ordered" }, { list: "bullet" }],
+                [{ script: "sub" }, { script: "super" }],
+            ]
+        },
+    });
+    quill.on('text-change', function(delta, oldDelta, source) {
+        document.querySelector("input[name='artikel']").value = quill.root.innerHTML;
+    });
+</script>
