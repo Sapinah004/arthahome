@@ -37,7 +37,7 @@
                     </div>
                     <button type="submit" name="buat_artikel" class="flex ml-auto space-x-3 items-center px-5 py-2 mt-10 text-white bg-primary hover:bg-blue-900 ease-in-out duration-300 rounded-md">
                         <i class="fa-regular fa-floppy-disk "></i>
-                        <span>Simpan</span> 
+                        <span>Simpan </span> 
                     </button>
                 </div>
             </div>

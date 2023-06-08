@@ -74,7 +74,7 @@
                 </div>
                 <div class="mt-12">
                     <div id="form_harga">
-                        <div class="grid grid-cols-4 gap-6">
+                        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
                             <div>
                                 <label for="harga" class="font-semibold">Harga</label>
                                 <input id="harga" name="harga[]" type="number" autocomplete="off" required="required"
@@ -120,8 +120,8 @@
                         </button>
                     </div>
                 </div>
-                <div class="flex space-x-6 items-end mt-12">
-                    <div id="no_rumah" class="w-2/5">
+                <div class="lg:flex gap-6 items-end mt-12">
+                    <div id="no_rumah" class="lg:w-2/5">
                         <label for="no_rumah" class="font-bold">No Rumah</label>
                         <input id="no_rumah" type="text" name="no_rumah[]" autocomplete="off" required="required"
                             class="mt-2 w-full bg-slate-200 rounded-sm p-2 placeholder:text-sm text-black placeholder:text-slate-400 focus:outline-none focus:border-primary focus:ring-primary block focus:ring-1" placeholder="A01">
@@ -140,7 +140,7 @@
                 <div class="mt-12">
                     <div id="picture">
                         <label fpr="gambar" class="font-bold">Gambar</label>
-                        <div class="flex space-x-6 items-center">
+                        <div class="lg:flex gap-6 items-center">
                             <div class="w-full lg:w-2/5">
                                 <input id="gambar" type="file" name="gambar[]" required="required" multiple class="mt-2 block rounded-sm bg-slate-200 px-2  w-full text-sm text-slate-500
                                     file:mr-4 file:py-1 file:px-4 file:rounded-sm file:border-0 file:text-sm file:font-semibold file:bg-violet-50 file:text-primary hover:file:bg-violet-100" />

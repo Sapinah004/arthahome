@@ -10,7 +10,7 @@
 <div class="overflow-auto px-5 mt-1 text-primary font-raleway">
     <h2 class="text-2xl font-bold font-playfair">Upload Poster</h2>
     <form method="post" enctype="multipart/form-data">
-        <div class="flex space-x-2 items-center mt-5 mb-2">
+        <div class="lg:flex space-y-2 lg:space-y-0 lg:space-x-2 items-center mt-5">
             <div class="lg:w-1/2">
                 <input id="gambar" type="file" name="gambar[]" required="required" multiple class="w-full block rounded-sm bg-slate-200 px-2 text-sm text-slate-500
                     file:mr-4 file:py-1 file:px-4 file:rounded-sm file:border-0 file:text-sm file:font-semibold file:bg-violet-50 file:text-primary hover:file:bg-violet-100" />
