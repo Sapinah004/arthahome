@@ -18,12 +18,12 @@
                 <div class="lg:px-24 text-white lg:text-primary place-self-center text-center lg:text-left">
                     <h1 class="font-playfair text-4xl lg:text-5xl font-bold tracking-wider">Artha Home Developer Property</h1>
                     <p class=" mt-8 text-lg lg:text-xl">
-                    Artha Home hadir untuk membantu Anda menemukan rumah impian yang sesuai dengan kebutuhan dan keinginan Anda. Dengan berbagai pilihan rumah berkualitas dan harga yang terjangkau, kami yakin dapat membantu mewujudkan impian Anda untuk memiliki rumah sendiri.
+                        Artha Home hadir untuk membantu Anda menemukan rumah impian yang sesuai dengan kebutuhan dan keinginan Anda. Dengan berbagai pilihan rumah berkualitas dan harga yang terjangkau, kami yakin dapat membantu mewujudkan impian Anda untuk memiliki rumah sendiri.
                     </p>
                     <button >
                         <a href="./pages/index.php?page=list-rumah" class="mx-auto lg:mx-0 flex space-x-2 items-center mt-8 px-7 tracking-wider font-semibold py-2.5 bg-secondary  lg:bg-primary rounded-tr-xl rounded-bl-xl hover:bg-yellow-600 lg:hover:bg-blue-900  text-white  ease-in-out duration-300">
-                        <span>Lihat Rumah</span> 
-                        <i class="fa-solid fa-arrow-right-long"></i>
+                            <span>Lihat Rumah</span> 
+                            <i class="fa-solid fa-arrow-right-long"></i>
                         </a>
                     </button>
                 </div>
@@ -68,8 +68,8 @@
                 <h1 class="text-2xl font-playfair text-white">Kami menawarkan berbagai tipe rumah di berbagai lokasi di kota Batam</h1>
                 <button>
                     <a href="" class="px-4 md:px-5 py-2.5 text-sm md:text-base tracking-wider flex space-x-3 font-semibold items-center text-white bg-secondary hover:bg-yellow-500 rounded-tr-xl rounded-bl-xl ease-in-out duration-300">
-                    <span>Lihat Rumah</span> 
-                    <i class="fa-solid fa-arrow-right-long "></i>
+                        <span>Lihat Rumah</span> 
+                        <i class="fa-solid fa-arrow-right-long "></i>
                     </a>
                 </button>
             </div>
@@ -257,25 +257,25 @@
                 if(mysqli_num_rows($sql) > 0){
                     while($data = mysqli_fetch_array($sql)){
             ?>
-                <div>
-                    <div class="relative">
-                        <picture>
-                            <img class="rounded-sm w-full h-72 object-cover object-center "  src="./../admin/assets/images/article/<?php echo $data["gambar"]?>" alt="<?php echo $data["judul"]?>">
-                        </picture>
-                        <div class="bg-secondary tracking-widest py-2 px-5 w-fit absolute bottom-0 translate-y-1/2 right-8 text-white rounded-md">
-                            <?php echo date_format(new DateTime($data['tanggal']), "d-m-Y")?>
-                        </div>
-                    </div>
-                    <div class="shadow-xl pb-7 px-5 rounded-xl">
-                        <h1 class="text-xl font-playfair mt-10 font-bold line-clamp-2"><?php echo $data["judul"]?></h1>
-                        <button >
-                            <a href="./pages/index.php?page=artikel-detail&id=<?php echo $data['id_artikel']?>"  class="px-5 py-2.5 mt-6 flex space-x-3 rounded-tr-xl rounded-bl-xl tracking-wider items-center  rounded-sm bg-secondary hover:bg-yellow-500 text-white  ease-in-out duration-300">
-                                <span>Selengkapnya</span>
-                                <i class="fa-solid fa-angle-right"> </i> 
-                            </a>
-                        </button>
+            <div>
+                <div class="relative">
+                    <picture>
+                        <img class="rounded-sm w-full h-72 object-cover object-center "  src="./../admin/assets/images/article/<?php echo $data["gambar"]?>" alt="<?php echo $data["judul"]?>">
+                    </picture>
+                    <div class="bg-secondary tracking-widest py-2 px-5 w-fit absolute bottom-0 translate-y-1/2 right-8 text-white rounded-md">
+                        <?php echo date_format(new DateTime($data['tanggal']), "d-m-Y")?>
                     </div>
                 </div>
+                <div class="shadow-xl pb-7 px-5 rounded-xl">
+                    <h1 class="text-xl font-playfair mt-10 font-bold line-clamp-2"><?php echo $data["judul"]?></h1>
+                    <button >
+                        <a href="./pages/index.php?page=artikel-detail&id=<?php echo $data['id_artikel']?>"  class="px-5 py-2.5 mt-6 flex space-x-3 rounded-tr-xl rounded-bl-xl tracking-wider items-center  rounded-sm bg-secondary hover:bg-yellow-500 text-white  ease-in-out duration-300">
+                            <span>Selengkapnya</span>
+                            <i class="fa-solid fa-angle-right"> </i> 
+                        </a>
+                    </button>
+                </div>
+            </div>
             <?php
                     }
                 }else{

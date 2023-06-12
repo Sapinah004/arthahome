@@ -17,7 +17,7 @@
             </li>
         </ul>
     </div>
-    <div  class="max-w-4xl mx-auto">
+    <div class="max-w-4xl mx-auto">
         <h1 class="text-3xl lg:text-5xl font-bold mb-5 text-center font-playfair">
             <?php echo $data['judul']?>
         </h1>

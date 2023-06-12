@@ -25,7 +25,7 @@
 <section>
     <div class="px-5 pb-24 font-yantramanav container mx-auto w-full -mt-9 relative z-20">
         <div class="p-12 font-yantramanav lg:mx-24 bg-gray-100 rounded-2xl shadow-xl border border-primary/40">
-            <form action="" method="post"  enctype="multipart/form-data" autocomplete="off">
+            <form method="post"  enctype="multipart/form-data" autocomplete="off">
                 <div class="flex items-end space-x-5 w-full">
                     <select  name="filter" id="underline_select" class=" border-primary font-medium block py-2.5 px-2 w-1/3  text-gray-500 bg-transparent border-0 border-b-2  appearance-none  focus:outline-none focus:ring-0 focus:border-primary/50 peer">
                         <option value="lokasi">Lokasi</option>
@@ -51,78 +51,75 @@
                     $filter = "lokasi";
             ?>
             <div class="grid grid-cols-3 gap-6 mt-12">
-                
                 <?php
-                
                     $sql = mysqli_query($connect, "SELECT tb_rumah.* , tb_gambar_rumah.*, MIN(tb_harga_rumah.harga) as harga FROM tb_rumah LEFT JOIN tb_gambar_rumah ON tb_rumah.id_rumah = tb_gambar_rumah.id_rumah LEFT JOIN tb_harga_rumah ON tb_harga_rumah.id_rumah = tb_rumah.id_rumah LEFT JOIN tb_norumah ON tb_rumah.id_rumah = tb_norumah.id_rumah WHERE $filter LIKE '%$data%' GROUP BY tb_rumah.id_rumah HAVING COUNT(tb_norumah.no_rumah) > 0");
                     if(mysqli_num_rows($sql) > 0){
                         while($data = mysqli_fetch_array($sql)){
                 ?>
                 <div class="hover:scale-[1.01] transition-all duration-300">
-                <a href="../index.php?page=produk&id=<?php echo $data['id_rumah']?>" >
-                            <picture>
-                                <img class="shadow-xl w-full h-56 object-cover object-center" src=" ./../Admin/core/product/images/<?php echo $data['gambar']?>"  alt="tipe <?php echo $tipe?>">
-                            </picture>
-                            <div class="rounded-md py-3 px-5  text-primary">
-                                <h1 class="font-playfair text-xl font-bold tracking-wider">Type <?php echo $data['tipe']?></h1>
-                                <div class="flex space-x-2 text-secondary mt-2 items-center text-sm">
-                                    <i class="fa-solid fa-location-dot"></i>
-                                    <span class="font-semibold capitalize"><?php echo $data['lokasi']?></span>
+                    <a href="../index.php?page=produk&id=<?php echo $data['id_rumah']?>" >
+                        <picture>
+                            <img class="shadow-xl w-full h-56 object-cover object-center" src=" ./../Admin/core/product/images/<?php echo $data['gambar']?>"  alt="tipe <?php echo $tipe?>">
+                        </picture>
+                        <div class="rounded-md py-3 px-5  text-primary">
+                            <h1 class="font-playfair text-xl font-bold tracking-wider">Type <?php echo $data['tipe']?></h1>
+                            <div class="flex space-x-2 text-secondary mt-2 items-center text-sm">
+                                <i class="fa-solid fa-location-dot"></i>
+                                <span class="font-semibold capitalize"><?php echo $data['lokasi']?></span>
+                            </div>
+                            <div class="mt-3 flex">
+                                <div class="basis-1/2 flex space-x-2 items-center">
+                                    <picture>
+                                        <img class="w-5" src="./assets/images/icon/width.png" alt="">
+                                    </picture>
+                                    <span><?php echo $data['luas_tanah']?> m <sup>2</sup></span>
                                 </div>
-                                <div class="mt-3 flex">
-                                    <div class="basis-1/2 flex space-x-2 items-center">
-                                        <picture>
-                                            <img class="w-5" src="./assets/images/icon/width.png" alt="">
-                                        </picture>
-                                        <span><?php echo $data['luas_tanah']?> m <sup>2</sup></span>
+                                <div class="basis-1/2 flex space-x-2 items-center">
+                                    <picture>
+                                        <img class="w-5" src="./assets/images/icon/bathroom.png" alt="">
+                                    </picture>
+                                    <div>
+                                        <?php echo $data['kamar_mandi']?> kamar mandi
                                     </div>
-                                    <div class="basis-1/2 flex space-x-2 items-center">
-                                        <picture>
-                                            <img class="w-5" src="./assets/images/icon/bathroom.png" alt="">
-                                        </picture>
-                                        <div>
-                                            <?php echo $data['kamar_mandi']?> kamar mandi
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="flex mt-2 items-center">
-                                    <div class="basis-1/2 flex space-x-2 items-center">
-                                        <picture>
-                                            <img class="w-5" src="./assets/images/icon/bedroom.png" alt="">
-                                        </picture>
-                                        <div>
-                                        <?php echo $data['kamar_tidur']?> kamar tidur
-                                        </div>
-                                    </div>
-                                    <div class="basis-1/2 flex space-x-2 items-center">
-                                        <picture>
-                                            <img class="w-5" src="./assets/images/icon/floor.png" alt="">
-                                        </picture>
-                                        <div>
-                                        <?php echo $data['jumlah_lantai']?> lantai
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="mt-3 pt-3 border-t border-primary text-2xl font-bold">
-                                    Rp. <?php echo number_format($data['harga'])?>
                                 </div>
                             </div>
-                            </a>
-                            
+                            <div class="flex mt-2 items-center">
+                                <div class="basis-1/2 flex space-x-2 items-center">
+                                    <picture>
+                                        <img class="w-5" src="./assets/images/icon/bedroom.png" alt="">
+                                    </picture>
+                                    <div>
+                                        <?php echo $data['kamar_tidur']?> kamar tidur
+                                    </div>
+                                </div>
+                                <div class="basis-1/2 flex space-x-2 items-center">
+                                    <picture>
+                                        <img class="w-5" src="./assets/images/icon/floor.png" alt="">
+                                    </picture>
+                                    <div>
+                                        <?php echo $data['jumlah_lantai']?> lantai
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="mt-3 pt-3 border-t border-primary text-2xl font-bold">
+                                Rp. <?php echo number_format($data['harga'])?>
+                            </div>
                         </div>
+                    </a>
+                </div>
                 <?php
                         }
                     }else{
-                        ?>
-                        <div class="col-span-3">
-                            <picture>
-                                <img class="w-1/2 mx-auto" src="./assets/images/no-data.jpg" alt="">
-                            </picture>
-                            <div class="font-bold tracking-wider font-playfair text-xl text-secondary text-center">
-                                Maaf, Data yang anda cari tidak ditemukan
-                            </div>
-                        </div>
-                        <?php
+                ?>
+                <div class="col-span-3">
+                    <picture>
+                        <img class="w-1/2 mx-auto" src="./assets/images/no-data.jpg" alt="">
+                    </picture>
+                    <div class="font-bold tracking-wider font-playfair text-xl text-secondary text-center">
+                        Maaf, Data yang anda cari tidak ditemukan
+                    </div>
+                </div>
+                <?php
                     }
                 ?>
             </div>
@@ -148,56 +145,55 @@
                                     $gambar = $data['gambar'];
                         ?>
                         <div class="hover:scale-[1.01] transition-all duration-300">
-                            <a href="./index.php?page=produk&id=<?php echo $id?>" >
-                            <picture>
-                                <img class="shadow-xl w-full h-56 object-cover object-center" src=" ./../Admin/core/product/images/<?php echo $gambar?>"  alt="tipe <?php echo $tipe?>">
-                            </picture>
-                            <div class="rounded-md py-3 px-5  text-primary">
-                                <h1 class="font-playfair text-xl font-bold tracking-wider">Type <?php echo $tipe?></h1>
-                                <div class="flex space-x-2 text-secondary mt-2 items-center text-sm">
-                                    <i class="fa-solid fa-location-dot"></i>
-                                    <span class="font-semibold capitalize"><?php echo $lokasi?></span>
-                                </div>
-                                <div class="mt-3 flex">
-                                    <div class="basis-1/2 flex space-x-2 items-center">
-                                        <picture>
-                                            <img class="w-5" src="./assets/images/icon/width.png" alt="">
-                                        </picture>
-                                        <span><?php echo $luas_tanah?> m <sup>2</sup></span>
+                            <a href="./index.php?page=produk&id=<?php echo $id?>">
+                                <picture>
+                                    <img class="shadow-xl w-full h-56 object-cover object-center" src=" ./../Admin/core/product/images/<?php echo $gambar?>"  alt="tipe <?php echo $tipe?>">
+                                </picture>
+                                <div class="rounded-md py-3 px-5  text-primary">
+                                    <h1 class="font-playfair text-xl font-bold tracking-wider">Type <?php echo $tipe?></h1>
+                                    <div class="flex space-x-2 text-secondary mt-2 items-center text-sm">
+                                        <i class="fa-solid fa-location-dot"></i>
+                                        <span class="font-semibold capitalize"><?php echo $lokasi?></span>
                                     </div>
-                                    <div class="basis-1/2 flex space-x-2 items-center">
-                                        <picture>
-                                            <img class="w-5" src="./assets/images/icon/bathroom.png" alt="">
-                                        </picture>
-                                        <div>
-                                            <?php echo $kamar_mandi?> kamar mandi
+                                    <div class="mt-3 flex">
+                                        <div class="basis-1/2 flex space-x-2 items-center">
+                                            <picture>
+                                                <img class="w-5" src="./assets/images/icon/width.png" alt="">
+                                            </picture>
+                                            <span><?php echo $luas_tanah?> m <sup>2</sup></span>
+                                        </div>
+                                        <div class="basis-1/2 flex space-x-2 items-center">
+                                            <picture>
+                                                <img class="w-5" src="./assets/images/icon/bathroom.png" alt="">
+                                            </picture>
+                                            <div>
+                                                <?php echo $kamar_mandi?> kamar mandi
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="flex mt-2 items-center">
-                                    <div class="basis-1/2 flex space-x-2 items-center">
-                                        <picture>
-                                            <img class="w-5" src="./assets/images/icon/bedroom.png" alt="">
-                                        </picture>
-                                        <div>
-                                        <?php echo $kamar_tidur?> kamar tidur
+                                    <div class="flex mt-2 items-center">
+                                        <div class="basis-1/2 flex space-x-2 items-center">
+                                            <picture>
+                                                <img class="w-5" src="./assets/images/icon/bedroom.png" alt="">
+                                            </picture>
+                                            <div>
+                                                <?php echo $kamar_tidur?> kamar tidur
+                                            </div>
+                                        </div>
+                                        <div class="basis-1/2 flex space-x-2 items-center">
+                                            <picture>
+                                                <img class="w-5" src="./assets/images/icon/floor.png" alt="">
+                                            </picture>
+                                            <div>
+                                                <?php echo $jumlah_lantai?> lantai
+                                            </div>
                                         </div>
                                     </div>
-                                    <div class="basis-1/2 flex space-x-2 items-center">
-                                        <picture>
-                                            <img class="w-5" src="./assets/images/icon/floor.png" alt="">
-                                        </picture>
-                                        <div>
-                                        <?php echo $jumlah_lantai?> lantai
-                                        </div>
+                                    <div class="mt-3 pt-3 border-t border-primary text-2xl font-bold">
+                                        Rp. <?php echo number_format($harga)?>
                                     </div>
                                 </div>
-                                <div class="mt-3 pt-3 border-t border-primary text-2xl font-bold">
-                                    Rp. <?php echo number_format($harga)?>
-                                </div>
-                            </div>
                             </a>
-                            
                         </div>
                         <?php
                                 }

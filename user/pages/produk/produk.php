@@ -55,8 +55,8 @@
             $id = $data['id_rumah'];
         }
     ?>
-    <div class=" text-primary lg:flex space-x-10 w-full">
-        <div class="w-4/6">
+    <div class=" text-primary lg:flex lg:space-x-10 w-full">
+        <div class="lg:w-4/6">
             <div class="py-6 border-b-2 border-slate-200">
                 <div class="flex justify-between items-center">
                     <div>
@@ -141,7 +141,7 @@
                 <h2 class="font-playfair font-bold text-3xl tracking-widest mb-4">
                     Fasilitas
                 </h2>
-                <div class="font-yantramanav columns-3 font-semibold">
+                <div class="font-yantramanav columns-1 md:columns-2 lg:columns-3 font-semibold">
                     <div class="mb-2">
                         <i class="fa-solid fa-square-check mr-3"></i>
                         <span>AC</span>
@@ -168,7 +168,7 @@
                 <h3 class="font-playfair font-bold text-3xl tracking-widest mb-4">
                     Paket Harga
                 </h3>
-                <div class="grid grid-cols-3 gap-5">
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
                     <?php
                         $sql = mysqli_query($connect, "SELECT * FROM tb_harga_rumah  WHERE id_rumah = " .$_GET['id']. " AND harga_dp != 0 ORDER BY harga ASC");
                         if(mysqli_num_rows($sql) > 0){
@@ -239,7 +239,7 @@
                 ?>
             </div>
         </div>
-        <div class="lg:sticky lg:top-28 h-fit max-w-sm w-2/6">
+        <div class="lg:sticky lg:top-28 h-fit lg:max-w-sm lg:w-2/6">
             <div class="mt-6 p-6 bg-gray-100 rounded-md">
                 <h4 class="font-playfair text-3xl tracking-widest mb-2">
                     Kontak Agen

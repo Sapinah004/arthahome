@@ -65,15 +65,15 @@
                         <div class="w-full">
                             <label for="paket_harga" class=" font-semibold text-lg">Pilih Paket Harga</label>
                             <select id="harga" name="paket_harga" class="mt-2 border-primary  w-full px-3 py-2  text-primary focus:border-primary focus:ring-primary focus:outline-none border-2 font-semibold placeholder-primary focus:placeholder-transparent rounded-md">
-                            <?php 
-                                $sql = "SELECT * FROM tb_harga_rumah WHERE id_rumah =" .$_GET['rumah']." ORDER BY harga ASC";
-                                $query = mysqli_query($connect, $sql);
-                                while($data = mysqli_fetch_array($query)){
-                            ?>
+                                <?php 
+                                    $sql = "SELECT * FROM tb_harga_rumah WHERE id_rumah =" .$_GET['rumah']." ORDER BY harga ASC";
+                                    $query = mysqli_query($connect, $sql);
+                                    while($data = mysqli_fetch_array($query)){
+                                ?>
                                 <option value="<?php echo $data['harga']?>">Rp. <?php echo number_format($data['harga']) ?></option>
-                            <?php
-                                }
-                            ?>    
+                                <?php
+                                    }
+                                ?>    
                             </select>
                         </div>
                         <button type="submit" name="pilih" class="flex-none px-5 py-2 tracking-wider text-lg text-white bg-primary  hover:bg-blue-900 font-medium rounded-tr-xl rounded-bl-xl ease-in-out duration-300">
@@ -88,7 +88,7 @@
         <h3 class="text-3xl  font-playfair text-primary font-bold tracking-wider mb-10">
             Detail Pembayaran
         </h3>
-        <form action="" method="post" enctype="multipart/form-data">
+        <form method="post" enctype="multipart/form-data">
             <?php 
                 $sql = "SELECT * FROM tb_rumah WHERE id_rumah =" .$_GET['rumah'];
                 $query = mysqli_query($connect, $sql);
@@ -117,15 +117,15 @@
                 <div class="relative">
                     <label for="no_rumah" class="font-semibold text-lg">No Rumah</label>
                     <select id="no_rumah" name="no_rumah" class="mt-2 border-primary bg-blueMain w-full px-3 py-2 text-primary focus:outline-none border-2 font-semibold focus:border-primary focus:ring-primary placeholder-primary focus:placeholder-transparent rounded-md">
-                    <?php 
-                        $sql = "SELECT * FROM tb_norumah WHERE id_rumah =" .$_GET['rumah'];
-                        $query = mysqli_query($connect, $sql);
-                        while($data = mysqli_fetch_array($query)){
-                    ?>
+                        <?php 
+                            $sql = "SELECT * FROM tb_norumah WHERE id_rumah =" .$_GET['rumah'];
+                            $query = mysqli_query($connect, $sql);
+                            while($data = mysqli_fetch_array($query)){
+                        ?>
                         <option value="<?php echo $data['no_rumah']?>"><?php echo $data['no_rumah']?></option>
-                    <?php
-                        }
-                    ?>    
+                        <?php
+                            }
+                        ?>    
                     </select>
                 </div>
                 <div>
@@ -152,55 +152,59 @@
                         $sql = "SELECT * FROM tb_harga_rumah WHERE harga = '".$harga."' AND id_rumah =" .$_GET['rumah'];
                         $query = mysqli_query($connect, $sql);
                         $data = mysqli_fetch_array($query);
-                    ?>
+                ?>
                 <div class=" grid grid-cols-3 gap-5 ">
                     <div>
                         <input type="hidden" name="id_rumahdetail" value="<?php echo $data['id_rumahdetail']?>">
                         <label for="harga" class="font-semibold text-lg">Harga Rumah</label>
                         <input type="text" name="harga" id="harga" class="mt-2 border-primary bg-blueMain w-full px-3 py-2 text-primary focus:outline-none focus:border-primary focus:ring-primary border-2 font-semibold placeholder-primary focus:placeholder-transparent rounded-md" value=" <?php echo number_format($data['harga']) ?>" readonly> 
                     </div>
-                    <?php if($data['harga_dp'] > 0){
+                    <?php 
+                        if($data['harga_dp'] > 0){
                     ?>
                     <div>
                         <label for="harga_dp" class="font-semibold text-lg">Harga Dp</label>
                         <input type="text"  id="harga_dp"  class="mt-2 border-primary bg-blueMain w-full px-3 py-2 text-primary focus:outline-none focus:border-primary focus:ring-primary border-2 font-semibold placeholder-primary focus:placeholder-transparent rounded-md" value="Rp. <?php echo number_format($data['harga_dp']) ?>" readonly> 
                     </div>
                     <?php
-                    }
+                        }
                     ?>
-                    <?php if($data['harga_bulanan'] > 0){
+                    <?php 
+                        if($data['harga_bulanan'] > 0){
                     ?>
                     <div>
                         <label for="harga_bulanan" class="font-semibold text-lg">Harga Per Bulan</label>
                         <input type="text"  id="harga_bulanan"  class="mt-2 border-primary bg-blueMain w-full px-3 py-2 text-primary focus:outline-none focus:border-primary focus:ring-primary border-2 font-semibold placeholder-primary focus:placeholder-transparent rounded-md" value="Rp. <?php echo number_format($data['harga_bulanan']) ?>" readonly> 
                     </div>
                     <?php
-                    }
+                        }
                     ?>
-                    <?php if($data['lama_bayar'] > 0){
+                    <?php 
+                        if($data['lama_bayar'] > 0){
                     ?>
                     <div>
                         <label for="lama_bayar" class="font-semibold text-lg">Lama Bayar</label>
                         <input type="text"  id="lama_bayar"  class="mt-2 border-primary bg-blueMain w-full px-3 py-2 text-primary focus:outline-none focus:border-primary focus:ring-primary border-2 font-semibold placeholder-primary focus:placeholder-transparent rounded-md" value="<?php echo $data['lama_bayar']?> bulan" readonly> 
                     </div>
                     <?php
-                    }
+                        }
                     ?>
-                    <?php if($data['harga_pemesanan'] > 0){
+                    <?php 
+                        if($data['harga_pemesanan'] > 0){
                     ?>
                     <div>
                         <label for="harga_pemesanan" class="font-semibold text-lg">Harga Pemesanan</label>
                         <input type="text"  id="harga_pemesanan"  class="mt-2 border-primary bg-blueMain w-full px-3 py-2 text-primary focus:outline-none focus:border-primary focus:ring-primary border-2 font-semibold placeholder-primary focus:placeholder-transparent rounded-md" value="Rp. <?php echo number_format($data['harga_pemesanan'])?>,-" readonly> 
                     </div>
                     <?php
-                    }
+                        }
                     ?>
                 </div>
                 <?php
-                }else{
-                    $sql = "SELECT * FROM tb_harga_rumah WHERE id_rumah =" .$_GET['rumah']." ORDER BY harga ASC";
-                    $query = mysqli_query($connect, $sql);
-                    $data = mysqli_fetch_array($query);
+                    }else{
+                        $sql = "SELECT * FROM tb_harga_rumah WHERE id_rumah =" .$_GET['rumah']." ORDER BY harga ASC";
+                        $query = mysqli_query($connect, $sql);
+                        $data = mysqli_fetch_array($query);
                 ?>
                 <div class="mt-5 grid grid-cols-3 gap-5">
                     <div>
@@ -208,41 +212,45 @@
                         <label for="harga_rumah" class="font-semibold text-lg">Harga Rumah</label>
                         <input type="text" name="harga_rumah" id="harga_rumah"  class="mt-2 border-primary bg-blueMain w-full px-3 py-2 text-primary focus:outline-none focus:border-primary focus:ring-primary border-2 font-semibold placeholder-primary focus:placeholder-transparent rounded-md" value="Rp. <?php echo number_format($data['harga']) ?>" readonly> 
                     </div>
-                    <?php if($data['harga_dp'] > 0){
+                    <?php 
+                        if($data['harga_dp'] > 0){
                     ?>
-                        <div>
-                            <label for="harga_dp" class="font-semibold text-lg">Harga Dp</label>
-                            <input type="text"  id="harga_dp"  class="mt-2 border-primary bg-blueMain w-full px-3 py-2 text-primary focus:outline-none focus:border-primary focus:ring-primary border-2 font-semibold placeholder-primary focus:placeholder-transparent rounded-md" value="Rp. <?php echo number_format($data['harga_dp']) ?>" readonly> 
-                        </div>
+                    <div>
+                        <label for="harga_dp" class="font-semibold text-lg">Harga Dp</label>
+                        <input type="text"  id="harga_dp"  class="mt-2 border-primary bg-blueMain w-full px-3 py-2 text-primary focus:outline-none focus:border-primary focus:ring-primary border-2 font-semibold placeholder-primary focus:placeholder-transparent rounded-md" value="Rp. <?php echo number_format($data['harga_dp']) ?>" readonly> 
+                    </div>
                     <?php
-                    }
+                        }
                     ?>
-                    <?php if($data['harga_bulanan'] > 0){
-                        ?>
-                        <div>
+                    <?php 
+                        if($data['harga_bulanan'] > 0){
+                    ?>
+                    <div>
                         <label for="harga_bulanan" class="font-semibold text-lg">Harga Per Bulan</label>
                         <input type="text"  id="harga_bulanan"  class="mt-2 border-primary bg-blueMain w-full px-3 py-2 text-primary focus:outline-none focus:border-primary focus:ring-primary border-2 font-semibold placeholder-primary focus:placeholder-transparent rounded-md" value="Rp. <?php echo number_format($data['harga_bulanan']) ?>" readonly> 
                     </div>
                     <?php
-                    }
+                        }
                     ?>
-                    <?php if($data['lama_bayar'] > 0){
+                    <?php 
+                        if($data['lama_bayar'] > 0){
                     ?>
-                        <div>
-                            <label for="lama_bayar" class="font-semibold text-lg">Lama Bayar</label>
-                            <input type="text"  id="lama_bayar"  class="mt-2 border-primary bg-blueMain w-full px-3 py-2 text-primary focus:outline-none focus:border-primary focus:ring-primary border-2 font-semibold placeholder-primary focus:placeholder-transparent rounded-md" value="<?php echo $data['lama_bayar']?> bulan" readonly> 
-                        </div>
-                        <?php
-                    }
-                    ?>
-                    <?php if($data['harga_pemesanan'] > 0){
-                    ?>
-                        <div>
-                            <label for="harga_pemesanan" class="font-semibold text-lg">Harga Pemesanan</label>
-                            <input type="text"  id="harga_pemesanan"  class="mt-2 border-primary bg-blueMain w-full px-3 py-2 text-primary focus:outline-none focus:border-primary focus:ring-primary border-2 font-semibold placeholder-primary focus:placeholder-transparent rounded-md" value="Rp. <?php echo number_format($data['harga_pemesanan'])?>,-" readonly> 
-                        </div>
+                    <div>
+                        <label for="lama_bayar" class="font-semibold text-lg">Lama Bayar</label>
+                        <input type="text"  id="lama_bayar"  class="mt-2 border-primary bg-blueMain w-full px-3 py-2 text-primary focus:outline-none focus:border-primary focus:ring-primary border-2 font-semibold placeholder-primary focus:placeholder-transparent rounded-md" value="<?php echo $data['lama_bayar']?> bulan" readonly> 
+                    </div>
                     <?php
-                    }
+                        }
+                    ?>
+                    <?php 
+                        if($data['harga_pemesanan'] > 0){
+                    ?>
+                    <div>
+                        <label for="harga_pemesanan" class="font-semibold text-lg">Harga Pemesanan</label>
+                        <input type="text"  id="harga_pemesanan"  class="mt-2 border-primary bg-blueMain w-full px-3 py-2 text-primary focus:outline-none focus:border-primary focus:ring-primary border-2 font-semibold placeholder-primary focus:placeholder-transparent rounded-md" value="Rp. <?php echo number_format($data['harga_pemesanan'])?>,-" readonly> 
+                    </div>
+                    <?php
+                        }
                     ?>
                 </div>
                 <?php

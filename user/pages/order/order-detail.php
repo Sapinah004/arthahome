@@ -50,59 +50,59 @@
             </div>
             <?php
                 if($data['harga_pemesanan'] > 0){
-                    ?>
-                    <div class="mt-4 md:mt-2 font-bold text-lg flex space-x-3 items-center">
-                        <span>Harga Pemesanan :</span>
-                        <span>Rp <?php echo number_format($data['harga_pemesanan'])?></span> 
-                    </div>
-                    <?php
+            ?>
+            <div class="mt-4 md:mt-2 font-bold text-lg flex space-x-3 items-center">
+                <span>Harga Pemesanan :</span>
+                <span>Rp <?php echo number_format($data['harga_pemesanan'])?></span> 
+            </div>
+            <?php
                 }
             ?>
             <?php
                 if($data['harga_dp'] > 0){
-                    ?>
-                    <div class="mt-4 md:mt-2 font-bold text-lg flex space-x-3 items-center">
-                        <span>Harga Dp :</span>
-                        <span>Rp <?php echo number_format($data['harga_dp'])?></span> 
-                    </div>
-                    <?php
+            ?>
+            <div class="mt-4 md:mt-2 font-bold text-lg flex space-x-3 items-center">
+                <span>Harga Dp :</span>
+                <span>Rp <?php echo number_format($data['harga_dp'])?></span> 
+            </div>
+            <?php
                 }
             ?>
             <?php
                 if($data['harga_bulanan'] > 0){
-                    ?>
-                    <div class="mt-4 md:mt-2 font-bold text-lg flex space-x-3 items-center">
-                        <span>Harga Per Bulan :</span>
-                        <span>Rp <?php echo number_format($data['harga_bulanan'])?></span> 
-                    </div>
-                    <?php
+            ?>
+            <div class="mt-4 md:mt-2 font-bold text-lg flex space-x-3 items-center">
+                <span>Harga Per Bulan :</span>
+                <span>Rp <?php echo number_format($data['harga_bulanan'])?></span> 
+            </div>
+            <?php
                 }
             ?>
             <?php
                 if($data['lama_bayar'] > 0){
-                    ?>
-                    <div class="mt-4 md:mt-2 font-bold text-lg flex space-x-3 items-center">
-                        <span>Lama Bayar :</span>
-                        <span> <?php echo number_format($data['lama_bayar'])?> Bulan</span> 
-                    </div>
-                    <?php
+            ?>
+            <div class="mt-4 md:mt-2 font-bold text-lg flex space-x-3 items-center">
+                <span>Lama Bayar :</span>
+                <span> <?php echo number_format($data['lama_bayar'])?> Bulan</span> 
+            </div>
+            <?php
                 }
             ?>
             <?php
                 if($data['lama_bayar'] > 1){
-                    ?>
-                    <div class="mt-4 md:mt-2 font-bold text-lg flex space-x-3 items-center">
-                        <span>Jatuh Tempo :</span>
-                        <span>Setiap tanggal <?php echo date_format(new DateTime($data['tanggal']), "d")?></span> 
-                    </div>
-                    <?php
+            ?>
+            <div class="mt-4 md:mt-2 font-bold text-lg flex space-x-3 items-center">
+                <span>Jatuh Tempo :</span>
+                <span>Setiap tanggal <?php echo date_format(new DateTime($data['tanggal']), "d")?></span> 
+            </div>
+            <?php
                 }
             ?>
         </div>
     </div>
     <div class="mt-8">
         <div>
-            <div class="flex flex-wrap md:justify-between gap-5 items-center">
+            <div class="flex flex-wrap justify-between gap-5 items-center">
                 <?php
                     if($data['status_pembelian'] == 0){
                         echo '<div class=" text-xl font-bold tracking-wider">Status pembelian : Dalam Pembayaran</div>';

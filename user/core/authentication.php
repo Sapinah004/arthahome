@@ -20,10 +20,6 @@
             $message = "Password harus memiliki minimal satu huruf kapital, satu angka, dan satu karakter spesial";
             echo "<script type='text/javascript'>alert('$message')</script>";
         }
-        //  elseif(empty(preg_match("/@gmail.com$/" , $email) || preg_match("/@yahoo.com$/" , $email))){
-        //     $message = "Cek kembali email anda, email yang diperbolehkan hanya yang berdomain gmail";
-        //     echo "<script type='text/javascript'>alert('$message')</script>";
-        // }
         elseif(strlen($password) < 6){
             $message = "Harap masukkan password minimal 6 karakter";
             echo "<script type='text/javascript'>alert('$message')</script>";

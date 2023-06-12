@@ -228,53 +228,33 @@
          </div>
     </div>
 </div>
-
-<!-- <script src="../path/to/flowbite/dist/flowbite.js"></script> -->
 <script src="https://unpkg.com/flowbite@1.5.4/dist/flowbite.js"></script> 
-
 <script>
-   // create an array of objects with the id, trigger element (eg. button), and the content element
-const tabElements = [
-    {
-        id: 'semua-pesanan',
-        triggerEl: document.querySelector('#all-tab'),
-        targetEl: document.querySelector('#all-orders')
-    },
-    {
-        id: 'pembayaran',
-        triggerEl: document.querySelector('#tahap-pembayaran-tab'),
-        targetEl: document.querySelector('#tahap-pembayaran')
-    },
-    {
-        id: 'selesai',
-        triggerEl: document.querySelector('#lunas-tab'),
-        targetEl: document.querySelector('#lunas')
-    },
+    const tabElements = [
+        {
+            id: 'semua-pesanan',
+            triggerEl: document.querySelector('#all-tab'),
+            targetEl: document.querySelector('#all-orders')
+        },
+        {
+            id: 'pembayaran',
+            triggerEl: document.querySelector('#tahap-pembayaran-tab'),
+            targetEl: document.querySelector('#tahap-pembayaran')
+        },
+        {
+            id: 'selesai',
+            triggerEl: document.querySelector('#lunas-tab'),
+            targetEl: document.querySelector('#lunas')
+        },
 
-];
-
-// // options with default values
-const options = {
-    defaultTabId: 'settings',
-    activeClasses: 'text-secondary hover:text-secondary !border-secondary',
-    inactiveClasses: 'text-primary hover:text-primary-blue-900 border-gray-100 hover:border-gray-300',
-   
-};
-
-// /*
-// * tabElements: array of tab objects
-// * options: optional
-// */
-const tabs = new Tabs(tabElements, options);
-
-// // shows another tab element
-tabs.show('pembayaran');
-
-// // get the tab object based on ID
-tabs.getTab('selesai')
-
-// // get the current active tab object
-tabs.getActiveTab()
-
-
+    ];
+    const options = {
+        defaultTabId: 'settings',
+        activeClasses: 'text-secondary hover:text-secondary !border-secondary',
+        inactiveClasses: 'text-primary hover:text-primary-blue-900 border-gray-100 hover:border-gray-300',
+    };
+    const tabs = new Tabs(tabElements, options);
+    tabs.show('pembayaran');
+    tabs.getTab('selesai')
+    tabs.getActiveTab()
 </script>
