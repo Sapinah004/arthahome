@@ -146,14 +146,14 @@
                                     file:mr-4 file:py-1 file:px-4 file:rounded-sm file:border-0 file:text-sm file:font-semibold file:bg-violet-50 file:text-primary hover:file:bg-violet-100" />
                             </div>
                             <div class="font-bold ">
-                                <i class="text-sm">Mohon upload gambar dengan format png, jpg, jpeg, atau webp dengan ukuran maksimal 10MB</i>
+                                <i class="text-sm">Mohon upload gambar dengan format png, jpg, jpeg, atau webp dengan ukuran maksimal 5MB</i>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="mt-12">
                     <label for="deskripsi" class="font-bold">Deskripsi Rumah</label>
-                    <textarea name="deskripsi" class="mt-2 w-full bg-slate-200 rounded-sm p-2 placeholder:text-sm text-black placeholder:text-slate-400 focus:outline-none focus:border-primary focus:ring-primary block focus:ring-1" placeholder="Rumah baru dengan konsep minimalis" id="" cols="30" rows="5"></textarea>
+                    <textarea name="deskripsi" required="required" class="mt-2 w-full bg-slate-200 rounded-sm p-2 placeholder:text-sm text-black placeholder:text-slate-400 focus:outline-none focus:border-primary focus:ring-primary block focus:ring-1" placeholder="Rumah baru dengan konsep minimalis" id="" cols="30" rows="5"></textarea>
                 </div>
                 <button type="submit" name="addProduct" class="flex items-center ml-auto px-5 py-2 mt-12 bg-primary rounded-md hover:bg-blue-900 ease-in-out duration-200 text-white">
                     <i class="fa-regular fa-floppy-disk mr-2"></i>

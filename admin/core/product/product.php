@@ -33,7 +33,7 @@
                     $sql_addPrice= mysqli_query($connect, "INSERT INTO tb_harga_rumah (id_rumah, harga,harga_dp,harga_bulanan,lama_bayar, harga_pemesanan) VALUES ('".$id_rumah."','".$harga[$i]."','".$harga_dp[$i]."','".$harga_bulanan[$i]."', '".$lama_bayar[$i]."','".$harga_pemesanan[$i]."')");
                 };
                 if($sql_addPrice == TRUE){
-                    $limit = 10 * 1024 * 1024;
+                    $limit = 5 * 1024 * 1024;
                     $ekstensi = array('png','jpg','jpeg','webp');
                     $gambar = ($_FILES["gambar"]["name"]);
                     $jumlah_gambar = count($gambar);
@@ -43,7 +43,7 @@
                         $fileType = pathinfo($gambar, PATHINFO_EXTENSION);
                         $size = $_FILES['gambar']['size'][$i];
                         if($size > $limit){
-                            $message = "Size gambar terlalu besar, maksimal 10 MB";
+                            $message = "Size gambar terlalu besar, maksimal 5 MB";
                             echo "<script type='text/javascript'>alert('$message')</script>";
                         }
                         elseif(!in_array($fileType, $ekstensi)){
@@ -106,7 +106,7 @@
         }
     }
     if(isset($_POST['tambahGambar'])){
-        $limit = 10 * 1024 * 1024;
+        $limit = 5 * 1024 * 1024;
         $ekstensi = array('png','jpg','jpeg','webp');
         $gambar = ($_FILES["gambar"]["name"]);
         $jumlah_gambar = count($gambar);
@@ -116,7 +116,7 @@
             $fileType = pathinfo($gambar, PATHINFO_EXTENSION);
             $size = $_FILES['gambar']['size'][$i];
             if($size > $limit){
-                $message = "Gambar terlalu besar, maksimal 10 MB";
+                $message = "Gambar terlalu besar, maksimal 5 MB";
                 echo "<script type='text/javascript'>alert('$message')</script>";
             }
             else{
@@ -262,7 +262,7 @@
     }
     if(isset($_POST['updateGambar'])){
         global $connect;
-        $limit = 10 * 1024 * 1024;
+        $limit = 5 * 1024 * 1024;
         $ekstensi = array('png','jpg','jpeg','webp');
         $gambar = ($_FILES["gambar"]["name"]);
         $folder = $_SERVER['DOCUMENT_ROOT'] . '/ArthaHome/Admin/core/product/images/';
@@ -272,7 +272,7 @@
         $size = $_FILES['gambar']['size'];
         if($tmp!=''){
             if($size > $limit){
-                $message = "Size gambar terlalu besar, maksimal 10 MB";
+                $message = "Size gambar terlalu besar, maksimal 5 MB";
                 echo "<script type='text/javascript'>alert('$message')</script>";
             }elseif(!in_array($fileType, $ekstensi)){
                 $message = "Ekstensi gambar tidak sesuai, gambar harus berekstensi png, jpg, jpeg, atau webp";

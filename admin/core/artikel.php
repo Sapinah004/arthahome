@@ -7,7 +7,7 @@
     if(isset($_POST['buat_artikel'])){
         global $connect;
         $judul = trim(mysqli_real_escape_string($connect, $_POST["judul"]));
-        $limit = 10 * 1024 * 1024;
+        $limit = 5 * 1024 * 1024;
         $ekstensi = array('png','jpg','jpeg','webp');
         $gambar = ($_FILES["gambar"]["name"]);
         $tmp = $_FILES['gambar']['tmp_name'];
@@ -15,7 +15,7 @@
         $size = $_FILES['gambar']['size'];
         $artikel = trim($_POST['artikel']);
         if($size > $limit){
-            $message = "Gambar terlalu besar, maksimal 10 MB";
+            $message = "Gambar terlalu besar, maksimal 5 MB";
             echo "<script type='text/javascript'>alert('$message')</script>";
         }
         elseif(!in_array($fileType, $ekstensi)){
@@ -54,7 +54,7 @@
     }
     if(isset($_POST['update_gambar'])){
         $id_artikel = trim($_POST['id_artikel']);
-        $limit = 10 * 1024 * 1024;
+        $limit = 5 * 1024 * 1024;
         $ekstensi = array('png','jpg','jpeg','webp');
         $gambar = ($_FILES["gambar"]["name"]);
         $tmp = $_FILES['gambar']['tmp_name'];
@@ -63,7 +63,7 @@
         $size = $_FILES['gambar']['size'];
 
         if($size > $limit){
-            $message = "Gambar terlalu besar, ukuran gambar maksimal 10 MB";
+            $message = "Gambar terlalu besar, ukuran gambar maksimal 5 MB";
             echo "<script type='text/javascript'>alert('$message')</script>";
         }
         elseif(!in_array($fileType, $ekstensi)){
@@ -92,7 +92,7 @@
         $judul = trim($_POST['judul']);
         $artikel = trim($_POST['artikel']);
         $id_artikel = trim($_POST['id_artikel']);
-        $limit = 10 * 1024 * 1024;
+        $limit = 5 * 1024 * 1024;
         $ekstensi = array('png','jpg','jpeg','webp');
         $gambar = ($_FILES["gambar"]["name"]);
         $tmp = $_FILES['gambar']['tmp_name'];
@@ -118,7 +118,7 @@
         }
         if(!empty($gambar)){
             if($size > $limit){
-                $message = "Gambar terlalu besar, ukuran gambar maksimal 10 MB";
+                $message = "Gambar terlalu besar, ukuran gambar maksimal 5 MB";
                 echo "<script type='text/javascript'>alert('$message')</script>";
             }
             elseif(!in_array($fileType, $ekstensi)){

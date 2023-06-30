@@ -9,7 +9,7 @@
         $no_ktp = trim($_POST['no_ktp']);
         $tipe = trim($_POST['tipe']);
         $no_rumah = trim($_POST['no_rumah']);
-        $limit = 10 * 1024 * 1024;
+        $limit = 5 * 1024 * 1024;
         $ekstensi = array('png','jpg','jpeg','webp');
         $gambar_ktp = $_FILES['gambar_ktp']['name'];
         $gambar_kk = $_FILES['gambar_kk']['name'];
@@ -24,11 +24,11 @@
         $size_kk = $_FILES['gambar_kk']['size'];
         $size_npwp = $_FILES['gambar_npwp']['size'];
         if($size_ktp > $limit){
-            $message = "Size gambar KTP terlalu besar, maksimal 10 MB";
+            $message = "Size gambar KTP terlalu besar, maksimal 5 MB";
             echo "<script type='text/javascript'>alert('$message')</script>";
         }
         elseif($size_kk > $limit){
-            $message = "Size gambar Kartu Keluarga terlalu besar, maksimal 10 MB";
+            $message = "Size gambar Kartu Keluarga terlalu besar, maksimal 5 MB";
             echo "<script type='text/javascript'>alert('$message')</script>";
         }
         elseif(strlen($telephone) < 11 || strlen($telephone) > 12){
@@ -40,7 +40,7 @@
             echo "<script type='text/javascript'>alert('$message')</script>";
         }
         elseif($size_npwp > $limit){
-            $message = "Size gambar surat NPWP terlalu besar, maksimal 10 MB";
+            $message = "Size gambar surat NPWP terlalu besar, maksimal 5 MB";
             echo "<script type='text/javascript'>alert('$message')</script>";
         }
         elseif(!in_array($fileTypeKTP, $ekstensi)){
@@ -88,7 +88,7 @@
     }
     if(isset($_POST['upload'])){
         global $connect;
-        $limit = 10 * 1024 * 1024;
+        $limit = 5 * 1024 * 1024;
         $extension = array('png', 'jpg','jpeg','gif');
         $gambar = ($_FILES["gambar"]["name"]);
         $id_order = trim($_POST['id_order']);
@@ -96,7 +96,7 @@
         $fileType = pathinfo($gambar, PATHINFO_EXTENSION);
         $tmp = $_FILES["gambar"]["tmp_name"];
         if($size > $limit){
-            $message = "Ukuran gambar terlalu besar, maksimal 10 MB";
+            $message = "Ukuran gambar terlalu besar, maksimal 5 MB";
             echo "<script type='text/javascript'>alert('$message')</script>";
         }
         elseif(!in_array($fileType, $extension)){
@@ -145,7 +145,7 @@
     }
     if(isset($_POST['updateImage'])){
         global $connect;
-        $limit = 10 * 1024 * 1024;
+        $limit = 5 * 1024 * 1024;
         $ekstensi = array('png', 'jpg', 'jpeg');
         $gambar = ($_FILES["update_gambar"]["name"]);
         $folder = $_SERVER['DOCUMENT_ROOT']. "/arthahome/User/assets/images/bukti_pembayaran/";
@@ -155,7 +155,7 @@
         $fileType = pathinfo($gambar, PATHINFO_EXTENSION);
         $size = $_FILES['update_gambar']['size'];
         if($size > $limit){
-            $message = "Size gambar terlalu besar, maksimal gambar 10 MB";
+            $message = "Size gambar terlalu besar, maksimal gambar 5 MB";
             echo "<script type='text/javascript'>alert('$message')</script>";
         }
         elseif(!in_array($fileType, $ekstensi)){

@@ -20,7 +20,7 @@
                 Upload
             </button>
         </div>
-        <i class="font-semibold text-sm">Mohon upload gambar dengan format png, jpg, jpeg, atau webp dengan ukuran maksimal 10MB</i>
+        <i class="font-semibold text-sm">Mohon upload gambar dengan format png, jpg, jpeg, atau webp dengan ukuran maksimal 5MB</i>
     </form>
     <h3 class="mt-10 font-playfair text-2xl font-bold mb-6 tracking-wider">Poster</h3>
     <div class="columns-1 md:columns-2 lg:columns-3 gap-5 space-y-5">

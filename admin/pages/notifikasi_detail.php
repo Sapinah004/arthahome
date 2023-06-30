@@ -142,3 +142,9 @@
         </div>
     </form>
 </div> -->
+<script>
+    // function agar tidak resubmission ketika refresh browser
+    if ( window.history.replaceState ) {
+        window.history.replaceState( null, null, window.location.href );
+    }
+</script>

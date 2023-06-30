@@ -18,16 +18,13 @@
         }
     }
       if(isset($_POST['deleteNotifikasi'])){
-        $notifikasi = $_POST['id_notifikasi'];
-        if(empty($notifikasi)){
-            $message = "Pilih terlebih dahulu notifikasi yang ingin and hapus";
+        if(!isset($_POST['id_notifikasi'])){
+            $message = "Pilih terlebih dahulu notifikasi yang ingin anda hapus";
             echo "<script type='text/javascript'>alert('$message')</script>";
-            echo $notifikasi;
         }
         else{
           global $connect;
             $id_notifikasi = ($_POST["id_notifikasi"]);
-           
             $notifikasi = sizeof($id_notifikasi);
             for($i = 0; $i < $notifikasi; $i++){
                 $del = $id_notifikasi[$i];

@@ -2,8 +2,8 @@
     include($_SERVER['DOCUMENT_ROOT'] . '/ArthaHome/Admin/core/config.php');
     if(isset($_POST['addAnnouncement'])){
         global $connect;
-        $limit = 10 * 1024 * 1024;
-        $limit = 10 * 1024 * 1024;
+        $limit = 5 * 1024 * 1024;
+        $limit = 5 * 1024 * 1024;
         $ekstensi = array('png','jpg','jpeg','webp');
         $gambar = ($_FILES["gambar"]["name"]);
         $jumlah_gambar = count($gambar);
@@ -13,7 +13,7 @@
             $fileType = pathinfo($gambar, PATHINFO_EXTENSION);
             $size = $_FILES['gambar']['size'][$i];
             if($size > $limit){
-                $message = "Ukuran gambar terlalu besar, maksimal 10 MB";
+                $message = "Ukuran gambar terlalu besar, maksimal 5 MB";
                 echo "<script type='text/javascript'>alert('$message')</script>";
             }
             elseif(!in_array($fileType, $ekstensi)){
